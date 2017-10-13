@@ -1,18 +1,13 @@
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>{{ 'LOGIN_TITLE' | translate }}</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content>
+<ion-content class="container vertical-align-content">
   <form (submit)="doLogin()">
     <ion-list>
-      
+
       <div padding>
-        <button ion-button color="primary" block>{{ 'LOGIN_BUTTON' | translate }}</button>
+        <img src="../../assets/grubie-login.png" class="logo">
+        <button class="facebook-btn" ion-button full round icon-start>
+          <ion-icon name="logo-facebook"></ion-icon>
+          {{ 'LOGIN_BUTTON' | translate }}
+        </button>
       </div>
 
     </ion-list>

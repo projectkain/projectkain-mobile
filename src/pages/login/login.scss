@@ -1,2 +1,18 @@
-page-login {
+.vertical-align-content>* {
+  display: flex!important;
+  align-content: center!important;
+  align-items: center!important;
+}
+
+.logo {
+  padding: 10px 30px;
+}
+
+.container {
+  background-color: #352b6a;
+}
+
+.facebook-btn {
+  background-color: #3b5998;
+  text-transform: none;
 }
