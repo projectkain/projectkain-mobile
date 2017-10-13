@@ -51,7 +51,7 @@ export function provideSettings(storage: Storage) {
         deps: [Http]
       }
     }),
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {mode: 'ios'}),
     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
