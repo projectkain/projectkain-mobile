@@ -1,9 +1,7 @@
-
 <ion-header>
-  <ion-searchbar
-  (ionInput)="getItems($event)"
-  placeholder="Search for a restaurant or meal"
-  debounce="300"></ion-searchbar>
+  <ion-toolbar color="main">
+    <ion-searchbar (ionInput)="getItems($event)" placeholder="Search for a restaurant or meal" debounce="300"></ion-searchbar>
+  </ion-toolbar>
 </ion-header>
 <ion-content>
   <ion-list>
