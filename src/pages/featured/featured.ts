@@ -54,7 +54,8 @@ export class FeaturedPage {
     {
       "name": "Bonitos Bar & Restaurant",
       "logo": "http://www.whatshappening.com.ph/uploads/2017/03/15/1489564483.jpg",
-    }];
+    }
+  ];
 
   newList = [
     {
@@ -139,7 +140,8 @@ export class FeaturedPage {
     {
       "name": "Turk's",
       "logo": "http://www.whatshappening.com.ph/uploads/2017/03/15/1489564483.jpg",
-    }];
+    }
+  ];
 
   featured: string = 'Hot';
   constructor(public navCtrl: NavController, public navParams: NavParams) {

@@ -5,12 +5,12 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar class="navbar">
+  <ion-navbar class="navbar" color="main">
     <ion-title>Featured</ion-title>
   </ion-navbar>
   <!-- Segment buttons with text -->
   <ion-toolbar>
-    <ion-segment color="primary" [(ngModel)]="featured">
+    <ion-segment color="main" [(ngModel)]="featured">
       <ion-segment-button value="Hot">
         Hot
       </ion-segment-button>
@@ -24,7 +24,6 @@
   </ion-toolbar>
 
 </ion-header>
-
 
 <ion-content>
   <div [ngSwitch]="featured" class="featured">

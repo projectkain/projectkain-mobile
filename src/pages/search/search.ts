@@ -13,7 +13,13 @@ export class SearchPage {
 
   currentItems: any = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public items: Items) { }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public items: Items) {
+
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad SearchPage');
+  }
 
   /**
    * Perform a service for the proper items.

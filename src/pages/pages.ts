@@ -6,6 +6,8 @@ export const FirstRunPage = 'LoginPage';
 export const MainPage = 'TabsPage';
 
 // The initial root pages for our tabs (remove if not using tabs)
-export const FeaturedTab = 'FeaturedPage';
+export const Tab1Root = 'FeaturedPage';
 export const Tab2Root = 'SearchPage';
-export const Tab3Root = 'SettingsPage';
+export const Tab3Root = 'BudgetPage';
+export const Tab4Root = 'MenuPage';
+export const Tab5Root = 'SettingsPage';

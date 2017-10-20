@@ -37,21 +37,21 @@ export class User {
    * the user entered on the form.
    */
   login(accountInfo: any) {
-    let seq = this.api.post('login', accountInfo).share();
-
-    seq
-      .map(res => res.json())
-      .subscribe(res => {
-        // If the API returned a successful response, mark the user as logged in
-        if (res.status == 'success') {
-          this._loggedIn(res);
-        } else {
-        }
-      }, err => {
-        console.error('ERROR', err);
-      });
-
-    return seq;
+    // let seq = this.api.post('login', accountInfo).share();
+    //
+    // seq
+    //   .map(res => res.json())
+    //   .subscribe(res => {
+    //     // If the API returned a successful response, mark the user as logged in
+    //     if (res.status == 'success') {
+    //       this._loggedIn(res);
+    //     } else {
+    //     }
+    //   }, err => {
+    //     console.error('ERROR', err);
+    //   });
+    //
+    // return seq;
   }
 
   /**
@@ -59,20 +59,20 @@ export class User {
    * the user entered on the form.
    */
   signup(accountInfo: any) {
-    let seq = this.api.post('signup', accountInfo).share();
-
-    seq
-      .map(res => res.json())
-      .subscribe(res => {
-        // If the API returned a successful response, mark the user as logged in
-        if (res.status == 'success') {
-          this._loggedIn(res);
-        }
-      }, err => {
-        console.error('ERROR', err);
-      });
-
-    return seq;
+    // let seq = this.api.post('signup', accountInfo).share();
+    //
+    // seq
+    //   .map(res => res.json())
+    //   .subscribe(res => {
+    //     // If the API returned a successful response, mark the user as logged in
+    //     if (res.status == 'success') {
+    //       this._loggedIn(res);
+    //     }
+    //   }, err => {
+    //     console.error('ERROR', err);
+    //   });
+    //
+    // return seq;
   }
 
   /**
