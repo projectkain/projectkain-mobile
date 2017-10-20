@@ -11,9 +11,11 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import {
   Api,
   RestaurantProvider,
+  MenuProvider,
   Settings,
   User
 } from '../providers/providers';
+
 import { MyApp } from './app.component';
 
 export function provideSettings(storage: Storage) {
@@ -50,6 +52,7 @@ export function provideSettings(storage: Storage) {
     User,
     Camera,
     RestaurantProvider,
+    MenuProvider,
     GoogleMaps,
     SplashScreen,
     StatusBar,
