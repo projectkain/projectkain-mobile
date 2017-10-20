@@ -1,6 +1,4 @@
 // http://ionicframework.com/docs/v2/theming/
-
-
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These
@@ -14,3 +12,25 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+.card-ios {
+  border-radius: 0.4em;
+}
+
+.card-title-ios {
+  font-size: 1.1em;
+  font-weight: bold;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card-content-ios {
+  padding: 5px 10px;
+}
+
+.price {
+  color: color($colors, ternary);
+  font-size: 0.9em;
+}
