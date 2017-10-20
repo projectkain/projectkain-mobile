@@ -8,13 +8,13 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { IonicStorageModule, Storage } from '@ionic/storage';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
-import { Items } from '../mocks/providers/items';
-import { Settings } from '../providers/providers';
-import { User } from '../providers/providers';
-import { Api } from '../providers/providers';
+import {
+  Api,
+  RestaurantProvider,
+  Settings,
+  User
+} from '../providers/providers';
 import { MyApp } from './app.component';
-import { RestaurantProvider } from '../providers/restaurant/restaurant';
-import { MenuProvider } from '../providers/menu/menu';
 
 export function provideSettings(storage: Storage) {
   /**
@@ -47,17 +47,15 @@ export function provideSettings(storage: Storage) {
   ],
   providers: [
     Api,
-      Items,
     User,
     Camera,
+    RestaurantProvider,
     GoogleMaps,
     SplashScreen,
     StatusBar,
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
-    { provide: ErrorHandler, useClass: IonicErrorHandler },
-    RestaurantProvider,
-    MenuProvider
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
 export class AppModule { }

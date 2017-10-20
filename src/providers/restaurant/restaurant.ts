@@ -15,4 +15,24 @@ export class RestaurantProvider {
     console.log('Hello RestaurantProvider Provider');
   }
 
+  getOne(id: number) {
+
+  }
+
+  getAll() {
+    
+  }
+
+  getHot() {
+
+  }
+
+  getNew() {
+
+  }
+
+  getUpvotes() {
+
+  }
+
 }
