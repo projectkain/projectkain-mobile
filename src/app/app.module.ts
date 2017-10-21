@@ -1,39 +1,33 @@
 import { ErrorHandler, NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
-import { Camera } from '@ionic-native/camera';
-import { GoogleMaps } from '@ionic-native/google-maps';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { Facebook } from '@ionic-native/facebook';
 import { StatusBar } from '@ionic-native/status-bar';
-import { IonicStorageModule, Storage } from '@ionic/storage';
+import { IonicStorageModule } from '@ionic/storage';
+import { AngularFireModule } from "angularfire2";
+import { AngularFireAuth } from 'angularfire2/auth';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import {
+  AuthProvider,
   Api,
   RestaurantProvider,
   MenuProvider,
-  Settings,
-  User
 } from '../providers/providers';
 
 import { MyApp } from './app.component';
+import { DatabaseProvider } from '../providers/database/database';
 
-export function provideSettings(storage: Storage) {
-  /**
-   * The Settings provider takes a set of default settings for your app.
-   *
-   * You can add new settings options at any time. Once the settings are saved,
-   * these values will not overwrite the saved values (this can be done manually if desired).
-   */
-  return new Settings(storage, {
-    option1: true,
-    option2: 'Ionitron J. Framework',
-    option3: '3',
-    option4: 'Hello'
-  });
-}
+export const firebaseConfig = {
+  apiKey: "AIzaSyCG5NS26JPIjiKiadt4LrtcGngvt2AWsfE",
+  authDomain: "grubie-af410.firebaseapp.com",
+  databaseURL: "https://grubie-af410.firebaseio.com",
+  projectId: "grubie-af410",
+  storageBucket: "grubie-af410.appspot.com",
+  messagingSenderId: "555543238508"
+};
 
 @NgModule({
   declarations: [
@@ -43,7 +37,8 @@ export function provideSettings(storage: Storage) {
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp, {mode: 'ios'}),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -51,18 +46,17 @@ export function provideSettings(storage: Storage) {
   ],
   providers: [
     Api,
-    User,
-    Camera,
+    AuthProvider,
     RestaurantProvider,
     MenuProvider,
-    GoogleMaps,
     SplashScreen,
     Facebook,
     NativeStorage,
+    AngularFireAuth,
     StatusBar,
-    { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    DatabaseProvider,
   ]
 })
 export class AppModule { }
