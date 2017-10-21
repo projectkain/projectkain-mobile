@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, ToastController } from 'ionic-angular';
-
-import { User } from '../../providers/providers';
+import { Facebook } from '@ionic-native/facebook';
+import { NativeStorage } from '@ionic-native/native-storage';
 import { MainPage } from '../pages';
 
 @IonicPage()
@@ -11,25 +11,32 @@ import { MainPage } from '../pages';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController,
-    public user: User,
-    public toastCtrl: ToastController) {
-
+  constructor(
+    public navCtrl: NavController,
+    public toastCtrl: ToastController,
+    public fb: Facebook,
+    public nativeStorage: NativeStorage) {
   }
 
-  doLogin() {
-    this.navCtrl.push(MainPage);
-    // this.user.login(this.account).subscribe((resp) => {
-    //   this.navCtrl.push(MainPage);
-    // }, (err) => {
-    //   this.navCtrl.push(MainPage);
-    //   // Unable to log in
-    //   let toast = this.toastCtrl.create({
-    //     message: this.loginErrorString,
-    //     duration: 3000,
-    //     position: 'top'
-    //   });
-    //   toast.present();
-    // });
+  ionViewDidLoad() {
+  }
+
+  async doLogin() {
+    try {
+
+      const response = await this.fb.login(['public_profile']);
+      const user = await this.fb.api(`/${response.authResponse.userID}?fields=name,email`, ['public_profile']);
+
+      this.nativeStorage.setItem('user', {
+        name: user.name,
+        email: user.email,
+      });
+
+      this.navCtrl.push(MainPage);
+
+    } catch(e) {
+      throw new Error(e);
+    }
+
   }
 }

@@ -1,30 +1,49 @@
 import { Component, ViewChild } from '@angular/core';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { NativeStorage } from '@ionic-native/native-storage';
 import { StatusBar } from '@ionic-native/status-bar';
-import { Config, Nav, Platform } from 'ionic-angular';
+import { Nav, Platform } from 'ionic-angular';
+import { ToastController } from 'ionic-angular';
 
-import { FirstRunPage } from '../pages/pages';
+import { FirstRunPage, MainPage } from '../pages/pages';
 import { Settings } from '../providers/providers';
 
 @Component({
   template: `<ion-nav #content [root]="rootPage"></ion-nav>`
 })
 export class MyApp {
-  rootPage = FirstRunPage;
+
+  rootPage;
 
   @ViewChild(Nav) nav: Nav;
 
+  constructor(
+    private platform: Platform,
+    private statusBar: StatusBar,
+    private splashScreen: SplashScreen,
+    settings: Settings,
+    public nativeStorage: NativeStorage,
+    public toastCtrl: ToastController) {
 
-  constructor(private platform: Platform, settings: Settings, private statusBar: StatusBar, private splashScreen: SplashScreen) {
-  }
-
-  ionViewDidLoad() {
     this.platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
+      this.checkifLoggedIn();
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+
+  }
+
+  async checkifLoggedIn() {
+    try {
+      const data = await this.nativeStorage.getItem('user');
+      this.rootPage = MainPage;
+    } catch(e) {
+      this.rootPage = FirstRunPage;
+    }
+
+  }
+
+  ionViewDidLoad() {
   }
 
   openPage(page) {
