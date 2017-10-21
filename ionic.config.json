@@ -1,6 +1,6 @@
 {
   "name": "projectkain-mobile",
-  "app_id": "",
+  "app_id": "db3ee987",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
