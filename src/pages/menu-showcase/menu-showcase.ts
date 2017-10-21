@@ -1,12 +1,6 @@
+import { MenuItemsPage } from './../menu-items/menu-items';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the MenuShowcasePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -26,8 +20,11 @@ export class MenuShowcasePage {
     this.items = new Array(6);
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MenuShowcasePage');
+  viewAll(){
+    this.navCtrl.push(MenuItemsPage, {
+      logo: this.defaultLogo
+    });
   }
+
 
 }
