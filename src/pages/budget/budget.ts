@@ -1,3 +1,4 @@
+import { BudgetSelectRestaurantPage } from './../budget-select-restaurant/budget-select-restaurant';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -11,4 +12,7 @@ export class BudgetPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
+  proceed(budget) {
+    this.navCtrl.push(BudgetSelectRestaurantPage, { budget });
+  }
 }

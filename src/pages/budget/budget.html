@@ -27,7 +27,7 @@
         <h1 class="budget" text-center>P{{budget}}.00</h1>
         <ion-range min="0" max="1000" [(ngModel)]="budget">
         </ion-range>
-        <button ion-button round color="main" >Proceed</button>
+        <button ion-button round color="main" (click)="proceed(budget)">Proceed</button>
       </ion-col>
     </ion-row>
   </ion-grid>
