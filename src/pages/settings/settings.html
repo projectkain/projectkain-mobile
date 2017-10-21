@@ -16,10 +16,10 @@
   <ion-list>
     <ion-item>
       <ion-avatar item-start>
-        <img src="../../assets/img/marty-avatar.png">
+        <img src="{{user.photoURL? user.photoURL : ''}}">
       </ion-avatar>
-      <h2>Marty McFly</h2>
-      <p>slacker@hillvaley.ca</p>
+      <h2>{{user.displayName? user.displayName : ''}}</h2>
+      <p>{{user.email? user.email : ''}}</p>
     </ion-item>
   </ion-list>
 

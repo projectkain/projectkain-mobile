@@ -2,7 +2,8 @@ import { FirstRunPage } from './../pages';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Facebook } from '@ionic-native/facebook';
-import { NativeStorage } from '@ionic-native/native-storage';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { DatabaseProvider } from '../../providers/database/database';
 import { App } from 'ionic-angular';
 
 /**
@@ -19,17 +20,16 @@ import { App } from 'ionic-angular';
 })
 export class SettingsPage {
 
-  constructor(public navCtrl: NavController,
-    public navParams: NavParams,
-    public app: App,
+  private user: any = this.dbProvider.getCurrentUser();
+
+  constructor(
     private fb: Facebook,
-    private nativeStorage: NativeStorage) { }
+    private dbProvider: DatabaseProvider,
+    private afAuth: AngularFireAuth) { }
 
   async dologOut() {
     try {
-      await this.fb.logout();
-      await this.nativeStorage.remove('user');
-      this.app.getRootNav().setRoot(FirstRunPage);
+      await this.afAuth.auth.signOut();
     } catch(e) {
       throw new Error(e);
     }

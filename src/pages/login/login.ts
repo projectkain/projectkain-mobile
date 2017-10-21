@@ -1,9 +1,14 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, ToastController } from 'ionic-angular';
+import {
+  IonicPage,
+  NavController,
+  ToastController,
+  Platform
+} from 'ionic-angular';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { Facebook } from '@ionic-native/facebook';
-import { NativeStorage } from '@ionic-native/native-storage';
+import * as firebase from 'firebase/app';
 import { MainPage } from '../pages';
-import { AuthProvider } from '../../providers/providers';
 
 @IonicPage()
 @Component({
@@ -13,34 +18,34 @@ import { AuthProvider } from '../../providers/providers';
 export class LoginPage {
 
   constructor(
-    public navCtrl: NavController,
-    public toastCtrl: ToastController,
-    public fb: Facebook,
-    public nativeStorage: NativeStorage,
-    public authProvider: AuthProvider) {
+    private navCtrl: NavController,
+    private toastCtrl: ToastController,
+    private fb: Facebook,
+    private auth: AngularFireAuth,
+    private platform: Platform) {
   }
 
   ionViewDidLoad() {}
 
   ionViewCanEnter() {
+
   }
 
   async doLogin() {
     try {
-
-      const response = await this.fb.login(['public_profile']);
-      const user = await this.fb.api(`/${response.authResponse.userID}?fields=name,email`, ['public_profile']);
-
-      this.nativeStorage.setItem('user', {
-        name: user.name,
-        email: user.email,
-      });
+      if(this.platform.is('cordova')) {
+        const res = await this.fb.login(['email','public_profile']);
+        const facebookCredential = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken);
+        await firebase.auth().signInWithCredential(facebookCredential);
+      }
+      else {
+        const res = await this.auth.auth
+          .signInWithPopup(new firebase.auth.FacebookAuthProvider());
+      }
 
       this.navCtrl.setRoot(MainPage);
-
-    } catch(e) {
-      throw new Error(e);
+    } catch(err) {
+      throw new Error(err)
     }
-
   }
 }
