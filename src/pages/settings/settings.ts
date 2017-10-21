@@ -1,7 +1,8 @@
-import { FirstRunPage } from './../pages';
+  import { FirstRunPage } from './../pages';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
+import { Facebook } from '@ionic-native/facebook';
+import { NativeStorage } from '@ionic-native/native-storage';
 import { App } from 'ionic-angular';
 
 /**
@@ -21,11 +22,17 @@ export class SettingsPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public app: App,
-    private storage: Storage) { }
+    private fb: Facebook,
+    private nativeStorage: NativeStorage) { }
 
-  logOut() {
-    this.storage.clear();
-    this.app.getRootNav().setRoot(FirstRunPage);
+  async dologOut() {
+    try {
+      await this.fb.logout();
+      await this.nativeStorage.remove('user');
+      this.app.getRootNav().setRoot(FirstRunPage);
+    } catch(e) {
+      throw new Error(e);
+    }
   }
 
 
