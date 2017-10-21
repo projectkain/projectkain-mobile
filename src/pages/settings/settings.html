@@ -12,7 +12,43 @@
 
 </ion-header>
 
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="../../assets/img/marty-avatar.png">
+      </ion-avatar>
+      <h2>Marty McFly</h2>
+      <p>slacker@hillvaley.ca</p>
+    </ion-item>
+  </ion-list>
 
-<ion-content padding>
+  <ion-list>
+    <ion-list-header>
+      Notifications
+    </ion-list-header>
+    <ion-item>
+      <ion-label>Menu Additions</ion-label>
+      <ion-toggle value="foo" checked="true" color="main"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>New Restaurants</ion-label>
+      <ion-toggle value="foo" checked="true" color="main">></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>Price Changes</ion-label>
+      <ion-toggle value="foo" checked="true" color="main">></ion-toggle>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-list-header>
+      Help Us Improve Grubie
+    </ion-list-header>
+    <button ion-item>Send Feedback</button>
+    <button ion-item>Report a Bug</button>
+  </ion-list>
+  <div padding>
+    <button ion-button full round color="main" (click)="logOut()">Log Out</button>
+  </div>
 
 </ion-content>
