@@ -3,10 +3,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Nav, Platform } from 'ionic-angular';
-import { ToastController } from 'ionic-angular';
 
 import { FirstRunPage, MainPage } from '../pages/pages';
-import { Settings } from '../providers/providers';
 
 @Component({
   template: `<ion-nav #content [root]="rootPage"></ion-nav>`
@@ -21,9 +19,7 @@ export class MyApp {
     private platform: Platform,
     private statusBar: StatusBar,
     private splashScreen: SplashScreen,
-    settings: Settings,
-    public nativeStorage: NativeStorage,
-    public toastCtrl: ToastController) {
+    public nativeStorage: NativeStorage) {
 
     this.platform.ready().then(() => {
       this.checkifLoggedIn();
@@ -35,7 +31,7 @@ export class MyApp {
 
   async checkifLoggedIn() {
     try {
-      const data = await this.nativeStorage.getItem('user');
+      await this.nativeStorage.getItem('user');
       this.rootPage = MainPage;
     } catch(e) {
       this.rootPage = FirstRunPage;

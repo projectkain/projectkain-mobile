@@ -1,4 +1,4 @@
-  import { FirstRunPage } from './../pages';
+import { FirstRunPage } from './../pages';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Facebook } from '@ionic-native/facebook';

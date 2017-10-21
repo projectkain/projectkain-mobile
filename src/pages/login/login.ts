@@ -3,6 +3,7 @@ import { IonicPage, NavController, ToastController } from 'ionic-angular';
 import { Facebook } from '@ionic-native/facebook';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { MainPage } from '../pages';
+import { AuthProvider } from '../../providers/providers';
 
 @IonicPage()
 @Component({
@@ -15,10 +16,13 @@ export class LoginPage {
     public navCtrl: NavController,
     public toastCtrl: ToastController,
     public fb: Facebook,
-    public nativeStorage: NativeStorage) {
+    public nativeStorage: NativeStorage,
+    public authProvider: AuthProvider) {
   }
 
-  ionViewDidLoad() {
+  ionViewDidLoad() {}
+
+  ionViewCanEnter() {
   }
 
   async doLogin() {
@@ -32,7 +36,7 @@ export class LoginPage {
         email: user.email,
       });
 
-      this.navCtrl.push(MainPage);
+      this.navCtrl.setRoot(MainPage);
 
     } catch(e) {
       throw new Error(e);

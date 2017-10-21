@@ -1,13 +1,11 @@
 import { Api } from './api/api';
-import { Settings } from './settings/settings';
-import { User } from './user/user';
+import { AuthProvider } from './auth/auth';
 import { RestaurantProvider } from '../mocks/providers/restaurant';
 import { MenuProvider } from '../mocks/providers/menu';
 
 export {
+    AuthProvider,
     Api,
     RestaurantProvider,
-    MenuProvider,
-    Settings,
-    User
+    MenuProvider
 };
