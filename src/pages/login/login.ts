@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import {
   IonicPage,
   NavController,
-  ToastController,
   Platform
 } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -19,17 +18,13 @@ export class LoginPage {
 
   constructor(
     private navCtrl: NavController,
-    private toastCtrl: ToastController,
     private fb: Facebook,
-    private auth: AngularFireAuth,
+    private afAuth: AngularFireAuth,
     private platform: Platform) {
   }
 
   ionViewDidLoad() {}
-
-  ionViewCanEnter() {
-
-  }
+  ionViewCanEnter() {}
 
   async doLogin() {
     try {
@@ -39,7 +34,7 @@ export class LoginPage {
         await firebase.auth().signInWithCredential(facebookCredential);
       }
       else {
-        const res = await this.auth.auth
+        await this.afAuth.auth
           .signInWithPopup(new firebase.auth.FacebookAuthProvider());
       }
 
