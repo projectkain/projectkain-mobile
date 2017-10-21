@@ -1,3 +1,4 @@
+import { MenuShowcasePage } from './../menu-showcase/menu-showcase';
 import { Restaurant } from './../../models/restaurant';
 import { RestaurantProvider } from './../../mocks/providers/restaurant';
 import { Component } from '@angular/core';
@@ -16,9 +17,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'menu.html',
 })
 export class MenuPage {
-  restaurants: any[];
+  restaurants: Restaurant[];
   constructor(public navCtrl: NavController, public navParams: NavParams, private provider: RestaurantProvider) {
     this.restaurants = this.provider.getAll();
+  }
+
+  select(restaurant: Restaurant) {
+    this.navCtrl.push(MenuShowcasePage,
+      {
+        name: restaurant.name,
+        id: restaurant.id,
+        logo: restaurant.logo
+      });
   }
 
 }

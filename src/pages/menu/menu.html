@@ -7,7 +7,7 @@
   <ion-grid>
     <ion-row>
       <ion-col *ngFor="let restaurant of restaurants" col-6>
-        <ion-card>
+        <ion-card (click)="select(restaurant)">
           <img [src]="restaurant.logo"/>
           <ion-card-content>
             <ion-card-title>
