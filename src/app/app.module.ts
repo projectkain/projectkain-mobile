@@ -1,5 +1,6 @@
 import { MenuItemsPage } from './../pages/menu-items/menu-items';
 import { MenuShowcasePage } from './../pages/menu-showcase/menu-showcase';
+import { BudgetSelectRestaurantPage } from './../pages/budget-select-restaurant/budget-select-restaurant';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -39,19 +40,21 @@ export function provideSettings(storage: Storage) {
   declarations: [
     MyApp,
     MenuShowcasePage,
-    MenuItemsPage
+    MenuItemsPage,
+    BudgetSelectRestaurantPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp, {mode: 'ios'}),
+    IonicModule.forRoot(MyApp, { mode: 'ios' }),
     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     MenuShowcasePage,
-    MenuItemsPage
+    MenuItemsPage,
+    BudgetSelectRestaurantPage
   ],
   providers: [
     Api,
@@ -62,6 +65,7 @@ export function provideSettings(storage: Storage) {
     GoogleMaps,
     SplashScreen,
     StatusBar,
+
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler }

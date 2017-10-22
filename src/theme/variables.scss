@@ -17,10 +17,20 @@ $background-color: #fff;
 // to match your app's branding. Ionic uses a Sass map of
 // colors so you can add, rename and remove colors as needed.
 // The "primary" color is the only required color in the map.
-$colors: ( primary: #eb5b52, secondary: #f5b02f, ternary: #01b89a, danger: #f53d3d, light: #f4f4f4, dark: #222, main: #352b6a, );
+$colors: (
+  primary: #eb5b52,
+  secondary: #f5b02f,
+  ternary: #01b89a,
+  danger: #f53d3d,
+  light: #f4f4f4,
+  dark: #222,
+  main: #352b6a,
+);
+
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
+
 
 $searchbar-ios-background-color: #352b6a;
 $tabs-ios-tab-icon-color-active: #F08A83;
@@ -32,8 +42,19 @@ $list-ios-header-font-size: 1.8rem;
 $list-ios-header-letter-spacing: 0px;
 $list-ios-header-text-transform: none;
 
+$range-ios-bar-active-background-color: #66c6fe;
+$range-ios-bar-background-color: #3f4c53;
 
 
+$card-ios-margin-top: 0px;
+$card-ios-margin-bottom: 3px;
+$card-ios-margin-left: 0px;
+$card-ios-margin-right: 0px;
+
+$segment-button-ios-border-radius: 8px;
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
 
 // App Material Design Variables
 // --------------------------------------------------
@@ -49,10 +70,6 @@ $list-ios-header-text-transform: none;
 // default are overridden.
 @import "ionic.theme.default";
 
-$card-ios-margin-top: 0px;
-$card-ios-margin-bottom: 3px;
-$card-ios-margin-left: 0px;
-$card-ios-margin-right: 0px;
 // Ionicons
 // --------------------------------------------------
 // The premium icon font for Ionic. For more info, please see:

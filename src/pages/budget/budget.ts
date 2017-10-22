@@ -1,12 +1,6 @@
+import { BudgetSelectRestaurantPage } from './../budget-select-restaurant/budget-select-restaurant';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the BudgetPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -14,12 +8,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'budget.html',
 })
 export class BudgetPage {
-
+  budget = 150;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad BudgetPage');
+  proceed(budget) {
+    this.navCtrl.push(BudgetSelectRestaurantPage, { budget });
   }
-
 }
