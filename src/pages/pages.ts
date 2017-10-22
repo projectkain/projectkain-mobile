@@ -5,6 +5,7 @@ export const FirstRunPage = 'LoginPage';
 // Change this if not using tabs
 export const MainPage = 'TabsPage';
 
+
 // The initial root pages for our tabs (remove if not using tabs)
 export const Tab1Root = 'FeaturedPage';
 export const Tab2Root = 'SearchPage';
