@@ -24,7 +24,12 @@ export class FeaturedPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public restaurantProvider: RestaurantProvider) {
+  }
 
+  ngOnInit() {
+    this.getHotList();
+    this.getNewList();
+    this.getUpvotesList();
   }
 
   ionViewDidLoad() {
@@ -33,14 +38,17 @@ export class FeaturedPage {
 
   getHotList() {
     this.hotList = this.restaurantProvider.getHot();
+    this.hotList = new Array(10);
   }
 
   getNewList() {
     this.newList = this.restaurantProvider.getNew();
+    this.newList = new Array(10);
   }
 
-  getUpvotes() {
+  getUpvotesList() {
     this.upvotesList = this.restaurantProvider.getUpvotes();
+    this.upvotesList = new Array(10);
   }
 
 
