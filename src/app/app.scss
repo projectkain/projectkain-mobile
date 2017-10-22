@@ -51,6 +51,29 @@
   font-family: "Museo Sans Rounded 500";
 }
 
+.card-ios {
+  border-radius: 0.4em;
+}
+
+.card-title-ios {
+  font-size: 1.1em;
+  font-weight: bold;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card-content-ios {
+  padding: 5px 10px;
+}
+
+.price {
+  color: color($colors, ternary);
+  font-size: 0.9em;
+}
+
 ion-title{
   font-family: "Museo Sans Rounded 700"
 }
