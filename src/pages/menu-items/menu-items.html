@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar color="main">
+    <ion-title>All Meals</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let item of items; let i = index;" col-6>
+        <ion-card>
+          <img [src]="defaultLogo" />
+          <ion-card-content>
+            <ion-card-title>
+              Item #{{i+1}}
+            </ion-card-title>
+            <span class="price">
+              <span>P 50.00</span>
+            </span>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

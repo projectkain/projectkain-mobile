@@ -1,3 +1,5 @@
+import { MenuItemsPage } from './../pages/menu-items/menu-items';
+import { MenuShowcasePage } from './../pages/menu-showcase/menu-showcase';
 import { BudgetSelectRestaurantPage } from './../pages/budget-select-restaurant/budget-select-restaurant';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
@@ -37,6 +39,8 @@ export function provideSettings(storage: Storage) {
 @NgModule({
   declarations: [
     MyApp,
+    MenuShowcasePage,
+    MenuItemsPage,
     BudgetSelectRestaurantPage
   ],
   imports: [
@@ -48,6 +52,8 @@ export function provideSettings(storage: Storage) {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    MenuShowcasePage,
+    MenuItemsPage,
     BudgetSelectRestaurantPage
   ],
   providers: [
