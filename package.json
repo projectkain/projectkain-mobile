@@ -40,7 +40,8 @@
     "cordova-android": "~6.3.0",
     "cordova-browser": "^4.1.0",
     "cordova-plugin-facebook4": "^1.9.1",
-    "cordova-plugin-nativestorage": "^2.2.2"
+    "cordova-plugin-nativestorage": "^2.2.2",
+    "cordova-ios": "~4.5.2"
   },
   "devDependencies": {
     "@ionic/app-scripts": "2.1.4",
