@@ -1,7 +1,5 @@
+import { Restaurant } from './../../models/restaurant';
 import { Injectable } from '@angular/core';
-
-import { Restaurant } from '../../models/restaurant';
-
 
 @Injectable()
 export class RestaurantProvider {
@@ -74,7 +72,11 @@ export class RestaurantProvider {
         "name": "Bonchon Chicken",
         "logo": "../../assets/img/restaurants/BONC.png",
         "id": "BONC",
-        "rank": [0, 6, 8]
+        "rank": {
+          "hot": 0,
+          "newRank": 6,
+          "upvotes": 8
+        }
 
       },
       {
@@ -204,15 +206,53 @@ export class RestaurantProvider {
   }
 
   getHot() {
-    return this.restaurants;
+    let list = [];
+    this.restaurants.filter(e => {
+      if (e.rank.hot !== 0) {
+        list.push(e);
+      }
+    });
+
+    return this.sortList(list)
+
   }
 
   getNew() {
-    return this.restaurants;
+    let list = [];
+    this.restaurants.filter(e => {
+      if (e.rank.newRank !== 0) {
+        list.push(e);
+      }
+    });
+
+    return list;
   }
 
   getUpvotes() {
-    return this.restaurants;
+    let list = [];
+    this.restaurants.filter(e => {
+      if (e.rank.upvotes !== 0) {
+        list.push(e);
+      }
+    });
+
+    return list;
   }
+
+  sortList(list: Restaurant[]) {
+    return list.sort(this.compare);
+  }
+
+  compare(a, b) {
+    if (a.rank.hot < b.rank.hot) {
+      return -1;
+    }
+    else if (a.rank.hot > a.rank.hot) {
+      return 1;
+    }
+  }
+
+
+
 
 }

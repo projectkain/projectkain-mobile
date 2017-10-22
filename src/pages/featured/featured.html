@@ -32,10 +32,10 @@
         <div class="item-start" item-start>
           <div class="numbering">{{i+1}}</div>
           <ion-avatar>
-            <img src="../../assets/img/queen-live.png"/>
+            <img [src]="restaurant.logo"/>
           </ion-avatar>
         </div>
-        <h2>Restaurant #{{i+1}}</h2>
+        <h2>{{restaurant.name}}</h2>
       </button>
     </ion-list>
     <ion-list *ngSwitchCase="'New'">
@@ -43,10 +43,10 @@
         <div class="item-start" item-start>
           <div class="numbering">{{i+1}}</div>
           <ion-avatar>
-            <img src="../../assets/img/ian-avatar.png"/>
+            <img [src]="restaurant.logo"/>
           </ion-avatar>
         </div>
-        <h2>Restaurant #{{i+1}}</h2>
+        <h2>{{restaurant.name}}</h2>
       </button>
     </ion-list>
     <ion-list *ngSwitchCase="'Upvotes'">
@@ -54,10 +54,10 @@
         <div class="item-start" item-start>
           <div class="numbering">{{i+1}}</div>
           <ion-avatar>
-            <img src="../../assets/img/badu-live.png"/>
+            <img [src]="restaurant.logo"/>
           </ion-avatar>
         </div>
-        <h2>Restaurant #{{i+1}}</h2>
+        <h2>{{restaurant.name}}</h2>
       </button>
     </ion-list>
   </div>
