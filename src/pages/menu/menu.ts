@@ -4,13 +4,6 @@ import { RestaurantProvider } from './../../mocks/providers/restaurant';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the MenuPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-menu',
@@ -23,12 +16,7 @@ export class MenuPage {
   }
 
   select(restaurant: Restaurant) {
-    this.navCtrl.push(MenuShowcasePage,
-      {
-        name: restaurant.name,
-        id: restaurant.id,
-        logo: restaurant.logo
-      });
+    this.navCtrl.push(MenuShowcasePage, { restaurant });
   }
 
 }
