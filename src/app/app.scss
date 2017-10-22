@@ -88,3 +88,33 @@ ion-card-title {
   font-family: "Museo Sans Rounded 700";
   font-size: 0.9em;
 }
+
+ion-icon {
+  &[class*="grubie-"] {
+    mask-size: contain;
+    mask-position: 50% 50%;
+    mask-repeat: no-repeat;
+    background: currentColor;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    min-width: 1em;
+    min-height: 1em;
+  } // custom icons
+  &[class*="grubie-featured"] {
+    mask-image: url(../assets/flame.svg);
+    min-width: 0.8em;
+    min-height: 0.8em;
+  }
+  &[class*="grubie-search"] {
+    mask-image: url(../assets/search.svg);
+  }
+  &[class*="grubie-budget"] {
+    mask-image: url(../assets/budget.svg);
+  }
+  &[class*="grubie-menu"] {
+    mask-image: url(../assets/menu.svg);
+  }
+  &[class*="grubie-settings"] {
+    mask-image: url(../assets/settings.svg);
+  }
+}
