@@ -37,7 +37,10 @@
     "rxjs": "5.4.0",
     "sw-toolbox": "3.6.0",
     "zone.js": "0.8.12",
-    "cordova-android": "~6.3.0"
+    "cordova-android": "~6.3.0",
+    "cordova-browser": "^4.1.0",
+    "cordova-plugin-facebook4": "^1.9.1",
+    "cordova-plugin-nativestorage": "^2.2.2"
   },
   "devDependencies": {
     "@ionic/app-scripts": "2.1.4",
@@ -51,11 +54,17 @@
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-statusbar": {},
       "cordova-plugin-whitelist": {},
-      "ionic-plugin-keyboard": {}
+      "ionic-plugin-keyboard": {},
+      "cordova-plugin-facebook4": {
+        "APP_ID": "1740924042598540",
+        "APP_NAME": "Grubie"
+      },
+      "cordova-plugin-nativestorage": {}
     },
     "platforms": [
-      "android"
+      "android",
+      "browser",
+      "ios"
     ]
   }
 }
-
