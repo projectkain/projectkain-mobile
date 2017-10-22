@@ -1,3 +1,4 @@
+import { BudgetMenuItemsPage } from './../pages/budget-menu-items/budget-menu-items';
 import { MenuItemsPage } from './../pages/menu-items/menu-items';
 import { MenuShowcasePage } from './../pages/menu-showcase/menu-showcase';
 import { BudgetSelectRestaurantPage } from './../pages/budget-select-restaurant/budget-select-restaurant';
@@ -41,7 +42,8 @@ export function provideSettings(storage: Storage) {
     MyApp,
     MenuShowcasePage,
     MenuItemsPage,
-    BudgetSelectRestaurantPage
+    BudgetSelectRestaurantPage,
+    BudgetMenuItemsPage
   ],
   imports: [
     BrowserModule,
@@ -54,7 +56,8 @@ export function provideSettings(storage: Storage) {
     MyApp,
     MenuShowcasePage,
     MenuItemsPage,
-    BudgetSelectRestaurantPage
+    BudgetSelectRestaurantPage,
+    BudgetMenuItemsPage
   ],
   providers: [
     Api,
