@@ -16,7 +16,9 @@ export class RestaurantProvider {
           "hot": 0,
           "newRank": 0,
           "upvotes": 5
-        }
+        },
+        "location": "2F Centtro Mall, Los Banos, Laguna",
+        "phone": "(0925) 454 2542"
       },
       {
         "name": "Anyummmet Bagnet",
@@ -26,7 +28,9 @@ export class RestaurantProvider {
           "hot": 0,
           "newRank": 0,
           "upvotes": 1
-        }
+        },
+        "location": "",
+        "phone": ""
       },
       {
         "name": "Auntie Pearl's Pizza",
@@ -36,7 +40,9 @@ export class RestaurantProvider {
           "hot": 0,
           "newRank": 0,
           "upvotes": 8
-        }
+        },
+        "location": "",
+        "phone": ""
       },
       {
         "name": "Big D's Ramen",
@@ -46,7 +52,9 @@ export class RestaurantProvider {
           "hot": 4,
           "newRank": 0,
           "upvotes": 4
-        }
+        },
+        "location": "",
+        "phone": ""
       },
       {
         "name": "Board's UP!",
@@ -56,7 +64,9 @@ export class RestaurantProvider {
           "hot": 5,
           "newRank": 0,
           "upvotes": 5
-        }
+        },
+        "location": "",
+        "phone": ""
       },
       {
         "name": "Bogart's Bentelog",
@@ -66,7 +76,9 @@ export class RestaurantProvider {
           "hot": 2,
           "newRank": 0,
           "upvotes": 2
-        }
+        },
+        "location": "",
+        "phone": ""
       },
       {
         "name": "Bonchon Chicken",
@@ -76,7 +88,9 @@ export class RestaurantProvider {
           "hot": 0,
           "newRank": 6,
           "upvotes": 8
-        }
+        },
+        "location": "",
+        "phone": ""
 
       },
       {
@@ -87,7 +101,9 @@ export class RestaurantProvider {
           "hot": 10,
           "newRank": 0,
           "upvotes": 0
-        }
+        },
+        "location": "",
+        "phone": ""
       },
       {
         "name": "BurgerVenture",
@@ -97,7 +113,9 @@ export class RestaurantProvider {
           "hot": 0,
           "newRank": 4,
           "upvotes": 0
-        }
+        },
+        "location": "",
+        "phone": ""
       },
       {
         "name": "Doymeals Eatshop",
@@ -107,7 +125,9 @@ export class RestaurantProvider {
           "hot": 1,
           "newRank": 0,
           "upvotes": 1
-        }
+        },
+        "location": "",
+        "phone": ""
       },
       {
         "name": "Eatsumo Teri Haus",
@@ -117,7 +137,9 @@ export class RestaurantProvider {
           "hot": 3,
           "newRank": 0,
           "upvotes": 3
-        }
+        },
+        "location": "",
+        "phone": ""
       },
       {
         "name": "Fatman Los Banos",
@@ -127,7 +149,9 @@ export class RestaurantProvider {
           "hot": 7,
           "newRank": 0,
           "upvotes": 0
-        }
+        },
+        "location": "",
+        "phone": ""
       },
       {
         "name": "Heneral Ulam",
@@ -137,7 +161,9 @@ export class RestaurantProvider {
           "hot": 0,
           "newRank": 9,
           "upvotes": 0
-        }
+        },
+        "location": "",
+        "phone": ""
       },
       {
         "name": "High Grounds Gourmet",
@@ -147,7 +173,9 @@ export class RestaurantProvider {
           "hot": 6,
           "newRank": 0,
           "upvotes": 6
-        }
+        },
+        "location": "",
+        "phone": ""
       },
       {
         "name": "Seoul Kitchen",
@@ -157,7 +185,9 @@ export class RestaurantProvider {
           "hot": 9,
           "newRank": 0,
           "upvotes": 9
-        }
+        },
+        "location": "",
+        "phone": ""
       },
       {
         "name": "Sibling's Bar and Restaurant",
@@ -167,7 +197,9 @@ export class RestaurantProvider {
           "hot": 0,
           "newRank": 10,
           "upvotes": 0
-        }
+        },
+        "location": "",
+        "phone": ""
       },
       {
         "name": "The Plumber's Kitchen",
@@ -177,7 +209,9 @@ export class RestaurantProvider {
           "hot": 0,
           "newRank": 3,
           "upvotes": 0
-        }
+        },
+        "location": "",
+        "phone": ""
       },
       {
         "name": "Turk's",
@@ -187,7 +221,9 @@ export class RestaurantProvider {
           "hot": 0,
           "newRank": 7,
           "upvotes": 10
-        }
+        },
+        "location": "",
+        "phone": ""
       },
     ];
 
