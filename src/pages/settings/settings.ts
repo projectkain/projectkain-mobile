@@ -1,10 +1,7 @@
-import { FirstRunPage } from './../pages';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Facebook } from '@ionic-native/facebook';
+import { IonicPage } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { DatabaseProvider } from '../../providers/database/database';
-import { App } from 'ionic-angular';
 
 /**
  * Generated class for the SettingsPage page.
@@ -20,12 +17,13 @@ import { App } from 'ionic-angular';
 })
 export class SettingsPage {
 
-  private user: any = this.dbProvider.getCurrentUser();
+  private user: any;
 
   constructor(
-    private fb: Facebook,
     private dbProvider: DatabaseProvider,
-    private afAuth: AngularFireAuth) { }
+    private afAuth: AngularFireAuth) {
+    this.user = this.dbProvider.getCurrentUser();
+  }
 
   async dologOut() {
     try {

@@ -17,13 +17,4 @@ export class AuthProvider {
   }
 
 
-  async isLoggedin() {
-    try {
-      this.nativeStorage.getItem('user');
-      return true;
-    } catch(e) {
-      return false;
-    }
-  }
-
 }
