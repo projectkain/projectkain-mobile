@@ -1,3 +1,4 @@
+import { SearchFilterPage } from './../pages/search-filter/search-filter';
 import { BudgetMenuItemsPage } from './../pages/budget-menu-items/budget-menu-items';
 import { MenuItemsPage } from './../pages/menu-items/menu-items';
 import { MenuShowcasePage } from './../pages/menu-showcase/menu-showcase';
@@ -43,7 +44,8 @@ export function provideSettings(storage: Storage) {
     MenuShowcasePage,
     MenuItemsPage,
     BudgetSelectRestaurantPage,
-    BudgetMenuItemsPage
+    BudgetMenuItemsPage,
+    SearchFilterPage
   ],
   imports: [
     BrowserModule,
@@ -57,7 +59,8 @@ export function provideSettings(storage: Storage) {
     MenuShowcasePage,
     MenuItemsPage,
     BudgetSelectRestaurantPage,
-    BudgetMenuItemsPage
+    BudgetMenuItemsPage,
+    SearchFilterPage
   ],
   providers: [
     Api,
