@@ -242,37 +242,15 @@ export class RestaurantProvider {
   }
 
   getHot() {
-    let list = [];
-    this.restaurants.filter(e => {
-      if (e.rank.hot !== 0) {
-        list.push(e);
-      }
-    });
-
-    return this.sortList(list)
-
+    return this.sortList(this.restaurants.filter(e => e.rank.hot !== 0));
   }
 
   getNew() {
-    let list = [];
-    this.restaurants.filter(e => {
-      if (e.rank.newRank !== 0) {
-        list.push(e);
-      }
-    });
-
-    return list;
+    return this.restaurants.filter(e => e.rank.newRank !== 0);
   }
 
   getUpvotes() {
-    let list = [];
-    this.restaurants.filter(e => {
-      if (e.rank.upvotes !== 0) {
-        list.push(e);
-      }
-    });
-
-    return list;
+    return this.restaurants.filter(e => e.rank.upvotes !== 0);
   }
 
   sortList(list: Restaurant[]) {
