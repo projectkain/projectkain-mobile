@@ -1,6 +1,4 @@
 // http://ionicframework.com/docs/v2/theming/
-
-
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These
@@ -14,3 +12,109 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+@font-face {
+  font-family: 'Museo Sans Rounded 300';
+  src: url('../../www/fonts/MuseoSansRounded-300.otf');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Museo Sans Rounded 500';
+  src: url('../../www/fonts/MuseoSansRounded-500.otf');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Museo Sans Rounded 700';
+  src: url('../../www/fonts/MuseoSansRounded-700.otf');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Museo Sans Rounded 900';
+  src: url('../../www/fonts/MuseoSansRounded-900.otf');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Museo Sans Rounded 1000';
+  src: url('../../www/fonts/MuseoSansRounded-1000.otf');
+  font-weight: 1000;
+  font-style: normal;
+}
+
+* {
+  font-family: "Museo Sans Rounded 500";
+}
+
+.card-ios {
+  border-radius: 0.4em;
+}
+
+.card-title-ios {
+  font-size: 1.1em;
+  font-weight: bold;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card-content-ios {
+  padding: 5px 10px;
+}
+
+ion-title {
+  font-family: "Museo Sans Rounded 700"
+}
+
+ion-card-title {
+  font-family: "Museo Sans Rounded 700";
+}
+
+.resto-details {
+  color: color($colors, primary);
+  font-family: "Museo Sans Rounded 700";
+  font-size: 0.9em;
+}
+
+.price {
+  color: color($colors, ternary);
+  font-family: "Museo Sans Rounded 700";
+  font-size: 0.9em;
+}
+
+ion-icon {
+  &[class*="grubie-"] {
+    mask-size: contain;
+    mask-position: 50% 50%;
+    mask-repeat: no-repeat;
+    background: currentColor;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    min-width: 1em;
+    min-height: 1em;
+  } // custom icons
+  &[class*="grubie-featured"] {
+    mask-image: url(../assets/flame.svg);
+    min-width: 0.8em;
+    min-height: 0.8em;
+  }
+  &[class*="grubie-search"] {
+    mask-image: url(../assets/search.svg);
+  }
+  &[class*="grubie-budget"] {
+    mask-image: url(../assets/budget.svg);
+  }
+  &[class*="grubie-menu"] {
+    mask-image: url(../assets/menu.svg);
+  }
+  &[class*="grubie-settings"] {
+    mask-image: url(../assets/settings.svg);
+  }
+}

@@ -30,7 +30,7 @@ export const firebaseConfig = {
 
 @NgModule({
   declarations: [
-    MyApp
+    MyApp,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +41,7 @@ export const firebaseConfig = {
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp
+    MyApp,
   ],
   providers: [
     AuthProvider,

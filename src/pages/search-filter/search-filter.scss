@@ -1,0 +1,20 @@
+page-search-filter {
+  .item-ios .item-button {
+    padding: 10px 10px;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .button-inner {
+    font-family: "Museo Sans Rounded 700"
+  }
+  ion-item-divider .label.label-ios {
+    color: #b7b7b7;
+    font-family: "Museo Sans Rounded 700";
+    font-size: 14px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  ion-item-divider .label.label-ios > ion-icon {
+    padding-right: 8px;
+  }
+}

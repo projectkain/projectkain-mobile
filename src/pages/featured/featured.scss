@@ -1,6 +1,48 @@
-page-featured {}
-
-
-.featured *{
-  margin-bottom: 0px;
+page-featured {
+  .featured * {
+    margin-bottom: 0px;
+  }
+  ion-thumbnail>img {
+    border-radius: 100px;
+  }
+  ion-list>.item.item-block.item-ios {
+    padding-left: 0px;
+    border-bottom: 0.55px solid #c8c7cc;
+  }
+  ion-segment {
+    background-color: white;
+  }
+  .toolbar-ios .segment-button {
+    height: 2.9rem;
+    font-family: "Museo Sans Rounded 700";
+    font-size: 1.35rem;
+    line-height: 2.8rem;
+  }
+  .item-ios ion-avatar img {
+    width: 2.353em;
+    height: 2.353em;
+  }
+  .item-ios h2 {
+    font-family: "Museo Sans Rounded 700"
+  }
+  .label.label-ios {
+    margin-top: 0px;
+  }
+  .item-ios.item-block .item-inner {
+    border-bottom: 0px;
+  }
+  .item-start {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .numbering {
+    box-sizing: content-box;
+    color: black;
+    font-family: "Museo Sans Rounded 300";
+    font-size: 13.5px;
+    padding: 0px 8px;
+    text-align: center;
+    width: 20px;
+  }
 }

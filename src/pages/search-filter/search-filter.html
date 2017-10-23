@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="main">
+    <ion-title>
+      Filter
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text>Close</span>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list no-lines>
+    <ion-item-divider>
+      <ion-icon name="swap"></ion-icon>Sort By
+    </ion-item-divider>
+    <ion-item text-wrap>
+      <button ion-button outline round color="main">Lowest to Highest Price</button>
+      <button ion-button outline round color="main">Alphabetical</button>
+      <button ion-button outline round color="main">Highest to Lowest Price</button>
+      <button ion-button outline round color="main">Relevance</button>
+    </ion-item>
+    <ion-item-divider>
+      <ion-icon name="apps"></ion-icon>Category
+    </ion-item-divider>
+    <ion-item text-wrap>
+      <button ion-button outline round color="main">Rice Meal</button>
+      <button ion-button outline round color="main">Appetizer</button>
+      <button ion-button outline round color="main">Ala Carte</button>
+      <button ion-button outline round color="main">Breakfast Meal</button>
+      <button ion-button outline round color="main">Quick Snack</button>
+      <button ion-button outline round color="main">Drinks</button>
+      <button ion-button outline round color="main">Short Order</button>
+      <button ion-button outline round color="main">Dessert</button>
+      <button ion-button outline round color="main">Ice-cold</button>
+      <button ion-button outline round color="main">Family</button>
+      <button ion-button outline round color="main">Best-seller</button>
+      <button ion-button outline round color="main">Buffet</button>
+      <button ion-button outline round color="main">Japanese</button>
+      <button ion-button outline round color="main">Korean</button>
+      <button ion-button outline round color="main">Thai</button>
+    </ion-item>
+  </ion-list>
+
+  <div padding>
+    <button ion-button round color="ternary" full (click)="apply()">Apply Filter</button>
+  </div>
+</ion-content>
