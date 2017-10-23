@@ -1,4 +1,3 @@
-import { MenuShowcasePage } from './../menu-showcase/menu-showcase';
 import { Restaurant } from './../../models/restaurant';
 import { RestaurantProvider } from './../../mocks/providers/restaurant';
 import { Component } from '@angular/core';
@@ -16,7 +15,7 @@ export class MenuPage {
   }
 
   select(restaurant: Restaurant) {
-    this.navCtrl.push(MenuShowcasePage, { restaurant });
+    this.navCtrl.push('MenuShowcasePage', { restaurant });
   }
 
 }

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, ToastController } from 'ionic-angular';
 
-import { User } from '../../providers/providers';
 import { MainPage } from '../pages';
 
 @IonicPage()
@@ -12,10 +11,7 @@ import { MainPage } from '../pages';
 export class LoginPage {
 
   constructor(public navCtrl: NavController,
-    public user: User,
-    public toastCtrl: ToastController) {
-
-  }
+    public toastCtrl: ToastController) {}
 
   doLogin() {
     this.navCtrl.push(MainPage);

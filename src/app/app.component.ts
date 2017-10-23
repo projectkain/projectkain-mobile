@@ -4,7 +4,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { Nav, Platform } from 'ionic-angular';
 
 import { FirstRunPage } from '../pages/pages';
-import { Settings } from '../providers/providers';
 
 @Component({
   template: `<ion-nav #content [root]="rootPage"></ion-nav>`
@@ -15,7 +14,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
 
-  constructor(private platform: Platform, settings: Settings, private statusBar: StatusBar, private splashScreen: SplashScreen) {
+  constructor(private platform: Platform, private statusBar: StatusBar, private splashScreen: SplashScreen) {
   }
 
   ionViewDidLoad() {

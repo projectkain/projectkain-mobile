@@ -1,51 +1,21 @@
-import { SearchFilterPage } from './../pages/search-filter/search-filter';
-import { BudgetMenuItemsPage } from './../pages/budget-menu-items/budget-menu-items';
-import { MenuItemsPage } from './../pages/menu-items/menu-items';
-import { MenuShowcasePage } from './../pages/menu-showcase/menu-showcase';
-import { BudgetSelectRestaurantPage } from './../pages/budget-select-restaurant/budget-select-restaurant';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
-import { Camera } from '@ionic-native/camera';
-import { GoogleMaps } from '@ionic-native/google-maps';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-import { IonicStorageModule, Storage } from '@ionic/storage';
+import { IonicStorageModule } from '@ionic/storage';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import {
-  Api,
   RestaurantProvider,
   MenuProvider,
-  Settings,
-  User
 } from '../providers/providers';
 
 import { MyApp } from './app.component';
 
-export function provideSettings(storage: Storage) {
-  /**
-   * The Settings provider takes a set of default settings for your app.
-   *
-   * You can add new settings options at any time. Once the settings are saved,
-   * these values will not overwrite the saved values (this can be done manually if desired).
-   */
-  return new Settings(storage, {
-    option1: true,
-    option2: 'Ionitron J. Framework',
-    option3: '3',
-    option4: 'Hello'
-  });
-}
-
 @NgModule({
   declarations: [
     MyApp,
-    MenuShowcasePage,
-    MenuItemsPage,
-    BudgetSelectRestaurantPage,
-    BudgetMenuItemsPage,
-    SearchFilterPage
   ],
   imports: [
     BrowserModule,
@@ -56,23 +26,12 @@ export function provideSettings(storage: Storage) {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    MenuShowcasePage,
-    MenuItemsPage,
-    BudgetSelectRestaurantPage,
-    BudgetMenuItemsPage,
-    SearchFilterPage
   ],
   providers: [
-    Api,
-    User,
-    Camera,
     RestaurantProvider,
     MenuProvider,
-    GoogleMaps,
     SplashScreen,
     StatusBar,
-
-    { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]

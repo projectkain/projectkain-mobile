@@ -1,4 +1,3 @@
-import { BudgetMenuItemsPage } from './../budget-menu-items/budget-menu-items';
 import { Restaurant } from './../../models/restaurant';
 import { RestaurantProvider } from './../../mocks/providers/restaurant';
 import { Component } from '@angular/core';
@@ -24,7 +23,7 @@ export class BudgetSelectRestaurantPage {
   }
 
   select(restaurant: Restaurant) {
-    this.navCtrl.push(BudgetMenuItemsPage, {
+    this.navCtrl.push('BudgetMenuItemsPage', {
       budget: this.navParams.get('budget'),
       restaurant: restaurant
     });

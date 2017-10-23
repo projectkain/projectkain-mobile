@@ -1,5 +1,4 @@
 import { Restaurant } from './../../models/restaurant';
-import { MenuItemsPage } from './../menu-items/menu-items';
 import { Component } from '@angular/core';
 import { AlertController, IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
 
@@ -29,7 +28,7 @@ export class MenuShowcasePage {
   }
 
   viewAll() {
-    this.navCtrl.push(MenuItemsPage, {
+    this.navCtrl.push('MenuItemsPage', {
       logo: this.defaultLogo
     });
   }
