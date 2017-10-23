@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage } from 'ionic-angular';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { DatabaseProvider } from '../../providers/database/database';
+import { AuthProvider } from '../../providers/auth/auth';
 
 /**
  * Generated class for the SettingsPage page.
@@ -17,26 +16,29 @@ import { DatabaseProvider } from '../../providers/database/database';
 })
 export class SettingsPage {
 
-  private user: any;
+  public displayName: any;
+  public email: any;
+  public photoURL: any;
 
-  constructor(
-    private dbProvider: DatabaseProvider,
-    private afAuth: AngularFireAuth) {
-    this.user = this.dbProvider.getCurrentUser();
+  constructor(private authProvider: AuthProvider) {
+    const {
+      displayName,
+      email,
+      photoURL
+    } = this.authProvider.getCurrentUser();
+
+    this.displayName = displayName;
+    this.email = email;
+    this.photoURL = photoURL;
+
   }
 
   async dologOut() {
     try {
-      await this.afAuth.auth.signOut();
+      await this.authProvider.logOut();
     } catch(e) {
       throw new Error(e);
     }
   }
-
-
-
-
-
-
 
 }

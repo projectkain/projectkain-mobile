@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { NativeStorage } from '@ionic-native/native-storage';
-import { Http } from '@angular/http';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { Facebook } from '@ionic-native/facebook';
+import * as firebase from 'firebase';
 import 'rxjs/add/operator/map';
 
 /*
@@ -12,9 +13,43 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AuthProvider {
 
-  constructor(public http: Http, public nativeStorage: NativeStorage) {
-    console.log('Hello AuthProvider Provider');
+  private authState: any = null;
+
+  constructor(
+    private afAuth: AngularFireAuth,
+    private fb: Facebook) {
+
+    this.afAuth.authState.subscribe(auth => this.authState = auth);
+
   }
 
+  getCurrentUser() {
+    return this.afAuth.auth.currentUser;
+  }
+
+  getCurrentUserId() {
+    return this.afAuth.auth.currentUser.uid;
+  }
+
+  async logIn() {
+    try {
+      const response  = await this.fb.login(['email', 'public_profile']);
+      const credentials = firebase.auth.FacebookAuthProvider
+        .credential(response.authResponse.accessToken);
+      await firebase.auth().signInWithCredential(credentials);
+      this.authState = this.afAuth.auth.currentUser;
+    } catch(e) {
+      throw new Error(e);
+    }
+  }
+
+  async logOut() {
+    try {
+      await this.afAuth.auth.signOut();
+      this.authState = null;
+    } catch(e) {
+      throw new Error(e);
+    }
+  }
 
 }
