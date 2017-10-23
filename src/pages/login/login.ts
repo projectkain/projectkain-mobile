@@ -11,7 +11,8 @@ export class LoginPage {
 
   constructor(
     private authProvider: AuthProvider,
-    private toastCtrl: ToastController) {}
+    private toastCtrl: ToastController) {    
+  }
 
   ionViewDidLoad() {}
   ionViewCanEnter() {}

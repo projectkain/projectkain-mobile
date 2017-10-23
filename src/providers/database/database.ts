@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 /*
@@ -12,12 +11,8 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class DatabaseProvider {
 
-  constructor(public http: Http, private afAuth: AngularFireAuth) {
+  constructor(private afAuth: AngularFireAuth) {
     console.log('Hello DatabaseProvider Provider');
-  }
-
-  getCurrentUser() {
-    return this.afAuth.auth.currentUser;
   }
 
 }

@@ -2,7 +2,6 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { NativeStorage } from '@ionic-native/native-storage';
 import { Facebook } from '@ionic-native/facebook';
 import { StatusBar } from '@ionic-native/status-bar';
 import { IonicStorageModule } from '@ionic/storage';
@@ -49,7 +48,6 @@ export const firebaseConfig = {
     MenuProvider,
     SplashScreen,
     Facebook,
-    NativeStorage,
     AngularFireAuth,
     StatusBar,
     // Keep this to enable Ionic's runtime error handling during development

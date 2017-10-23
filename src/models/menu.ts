@@ -8,10 +8,7 @@ export class Menu {
   content: FoodItem[];
 
   constructor(fields: { id: number, content: FoodItem[] }) {
-    const {
-      id,
-      content
-    } = fields;
+    const { id, content } = fields;
 
     this.id      = id;
     this.content = content;

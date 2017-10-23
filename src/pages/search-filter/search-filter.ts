@@ -15,7 +15,10 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 })
 export class SearchFilterPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private viewCtrl: ViewController) {
+  constructor(
+    private navCtrl: NavController,
+    private navParams: NavParams,
+    private viewCtrl: ViewController) {
   }
 
   dismiss() {

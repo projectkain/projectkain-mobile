@@ -10,8 +10,9 @@ export class SearchPage {
 
   currentItems: any = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-
+  constructor(
+    private navCtrl: NavController,
+    private navParams: NavParams) {
   }
 
   ionViewDidLoad() {

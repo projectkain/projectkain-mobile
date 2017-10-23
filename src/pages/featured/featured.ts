@@ -20,9 +20,9 @@ export class FeaturedPage {
 
   featured: string = 'Hot';
   constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    public restaurantProvider: RestaurantProvider) {
+    private navCtrl: NavController,
+    private navParams: NavParams,
+    private restaurantProvider: RestaurantProvider) {
   }
 
   ngOnInit() {

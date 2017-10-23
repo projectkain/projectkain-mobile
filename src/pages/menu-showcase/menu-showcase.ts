@@ -15,11 +15,11 @@ export class MenuShowcasePage {
   items: any[];
 
   constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
+    private navCtrl: NavController,
+    private navParams: NavParams,
     private actionSheetCtrl: ActionSheetController,
-    private alertCtrl: AlertController
-  ) {
+    private alertCtrl: AlertController) {
+      
     this.restaurant = this.navParams.get('restaurant');
     this.pageTitle = this.navParams.get('restaurant').name;
     this.defaultLogo = this.navParams.get('restaurant').logo;

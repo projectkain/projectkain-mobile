@@ -21,6 +21,6 @@ export class TabsPage {
   tab4Root: any = Tab4Root;
   tab5Root: any = Tab5Root;
 
-  constructor(public navCtrl: NavController) {
+  constructor(private navCtrl: NavController) {
   }
 }

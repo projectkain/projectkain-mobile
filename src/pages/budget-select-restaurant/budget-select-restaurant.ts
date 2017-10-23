@@ -18,8 +18,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class BudgetSelectRestaurantPage {
 
   restaurants: Restaurant[];
-  constructor(public navCtrl: NavController, public navParams: NavParams, private provider: RestaurantProvider) {
-    this.restaurants = this.provider.getAll();
+  constructor(
+    private navCtrl: NavController,
+    private navParams: NavParams,
+    private restaurantProvider: RestaurantProvider) {
+    this.restaurants = this.restaurantProvider.getAll();
   }
 
   select(restaurant: Restaurant) {

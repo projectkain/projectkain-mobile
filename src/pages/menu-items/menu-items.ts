@@ -11,7 +11,10 @@ export class MenuItemsPage {
   items: any[];
   defaultLogo: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController) {
+  constructor(
+    private navCtrl: NavController,
+    private navParams: NavParams,
+    private modalCtrl: ModalController) {
     this.defaultLogo = this.navParams.get('logo');
     this.items = new Array(20);
   }

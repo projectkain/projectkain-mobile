@@ -15,8 +15,8 @@ export class BudgetMenuItemsPage {
   pageTitle: string;
 
   constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
+    private navCtrl: NavController,
+    private navParams: NavParams,
     private actionSheetCtrl: ActionSheetController,
     private alertCtrl: AlertController
   ) {
