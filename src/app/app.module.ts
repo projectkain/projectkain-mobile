@@ -12,7 +12,6 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import {
   AuthProvider,
-  Api,
   RestaurantProvider,
   MenuProvider,
 } from '../providers/providers';
@@ -45,7 +44,6 @@ export const firebaseConfig = {
     MyApp
   ],
   providers: [
-    Api,
     AuthProvider,
     RestaurantProvider,
     MenuProvider,

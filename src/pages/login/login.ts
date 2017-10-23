@@ -1,13 +1,6 @@
 import { Component } from '@angular/core';
-import {
-  IonicPage,
-  NavController,
-  Platform
-} from 'ionic-angular';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { Facebook } from '@ionic-native/facebook';
-import * as firebase from 'firebase/app';
-import { MainPage } from '../pages';
+import { IonicPage, ToastController } from 'ionic-angular';
+import { AuthProvider } from '../../providers/auth/auth';
 
 @IonicPage()
 @Component({
@@ -17,30 +10,22 @@ import { MainPage } from '../pages';
 export class LoginPage {
 
   constructor(
-    private navCtrl: NavController,
-    private fb: Facebook,
-    private afAuth: AngularFireAuth,
-    private platform: Platform) {
-  }
+    private authProvider: AuthProvider,
+    private toastCtrl: ToastController) {}
 
   ionViewDidLoad() {}
   ionViewCanEnter() {}
 
-  async doLogin() {
+  doLogin() {
     try {
-      if(this.platform.is('cordova')) {
-        const res = await this.fb.login(['email','public_profile']);
-        const facebookCredential = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken);
-        await firebase.auth().signInWithCredential(facebookCredential);
-      }
-      else {
-        await this.afAuth.auth
-          .signInWithPopup(new firebase.auth.FacebookAuthProvider());
-      }
-
-      this.navCtrl.setRoot(MainPage);
-    } catch(err) {
-      throw new Error(err)
+      this.authProvider.logIn();
+      this.toastCtrl.create({
+        message: `Successfully logged in! ${this.authProvider.authState.displayName}`,
+        duration: 2000,
+        position: 'top',
+      }).present();
+    } catch(e) {
+      throw new Error(e);
     }
   }
 }
