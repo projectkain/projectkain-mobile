@@ -18,18 +18,18 @@ export class SettingsPage {
 
   public displayName: any;
   public email: any;
-  public photoUrl: any;
+  public photoURL: any;
 
   constructor(private authProvider: AuthProvider) {
     const {
       displayName,
       email,
-      photoUrl
+      photoURL
     } = this.authProvider.getCurrentUser();
 
     this.displayName = displayName;
     this.email = email;
-    this.photoUrl = photoUrl;
+    this.photoURL = photoURL;
 
   }
 

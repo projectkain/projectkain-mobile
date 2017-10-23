@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { Facebook } from '@ionic-native/facebook';
 import * as firebase from 'firebase';
 import 'rxjs/add/operator/map';
 
@@ -12,31 +13,31 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AuthProvider {
 
-  authState: any = null;
+  private authState: any = null;
 
-  constructor(private afAuth: AngularFireAuth) {
+  constructor(
+    private afAuth: AngularFireAuth,
+    private fb: Facebook) {
 
     this.afAuth.authState.subscribe(auth => this.authState = auth);
 
   }
 
-  isAuthenticated() {
-    return this.authState !== null;
-  }
-
   getCurrentUser() {
-    return this.isAuthenticated() ? this.authState : null;
+    return this.afAuth.auth.currentUser;
   }
 
-  getCurrentUserId(): string {
-    return this.isAuthenticated() ? this.authState.uid : '';
+  getCurrentUserId() {
+    return this.afAuth.auth.currentUser.uid;
   }
 
   async logIn() {
-    const provider = new firebase.auth.FacebookAuthProvider();
     try {
-      const credentials = await this.afAuth.auth.signInWithRedirect(provider);
-      this.authState = credentials.user;
+      const response  = await this.fb.login(['email', 'public_profile']);
+      const credentials = firebase.auth.FacebookAuthProvider
+        .credential(response.authResponse.accessToken);
+      await firebase.auth().signInWithCredential(credentials);
+      this.authState = this.afAuth.auth.currentUser;
     } catch(e) {
       throw new Error(e);
     }

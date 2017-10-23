@@ -20,7 +20,7 @@ export class LoginPage {
     try {
       this.authProvider.logIn();
       this.toastCtrl.create({
-        message: `Successfully logged in! ${this.authProvider.authState.displayName}`,
+        message: `Successfully logged in!`,
         duration: 2000,
         position: 'top',
       }).present();
