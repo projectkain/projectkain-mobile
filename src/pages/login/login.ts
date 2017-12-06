@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, ToastController } from 'ionic-angular';
+import { IonicPage } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 
 @IonicPage()
@@ -10,8 +10,7 @@ import { AuthProvider } from '../../providers/auth/auth';
 export class LoginPage {
 
   constructor(
-    private authProvider: AuthProvider,
-    private toastCtrl: ToastController) {    
+    private authProvider: AuthProvider) {
   }
 
   ionViewDidLoad() {}
@@ -20,11 +19,6 @@ export class LoginPage {
   doLogin() {
     try {
       this.authProvider.logIn();
-      this.toastCtrl.create({
-        message: `Successfully logged in!`,
-        duration: 2000,
-        position: 'top',
-      }).present();
     } catch(e) {
       throw new Error(e);
     }

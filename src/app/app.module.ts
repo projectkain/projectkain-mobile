@@ -11,12 +11,9 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import {
   AuthProvider,
-  RestaurantProvider,
-  MenuProvider,
 } from '../providers/providers';
 
 import { MyApp } from './app.component';
-import { DatabaseProvider } from '../providers/database/database';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCG5NS26JPIjiKiadt4LrtcGngvt2AWsfE",
@@ -44,15 +41,12 @@ export const firebaseConfig = {
   ],
   providers: [
     AuthProvider,
-    RestaurantProvider,
-    MenuProvider,
     SplashScreen,
     Facebook,
     AngularFireAuth,
     StatusBar,
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    DatabaseProvider,
   ]
 })
 export class AppModule { }
