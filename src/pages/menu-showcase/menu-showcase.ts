@@ -29,4 +29,10 @@ export class MenuShowcasePage {
     this.title = this.restaurant.name;
   }
 
+  viewAll() {
+    this.navCtrl.push('MenuItemsPage', {
+      restaurant: this.restaurant,
+    });
+  }
+
 }
