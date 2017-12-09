@@ -3,7 +3,8 @@ import { Observable } from 'rxjs/Observable';
 import { Restaurant } from './../../models/restaurant';
 import { FoodItem } from './../../models/foodItem';
 import { RestaurantProvider } from '../../providers/restaurant/restaurant';
-import { IonicPage, NavParams} from 'ionic-angular';
+import { IonicPage, NavParams, ActionSheetController, AlertController } from 'ionic-angular';
+import { CallNumber } from '@ionic-native/call-number';
 
 @IonicPage()
 @Component({
@@ -18,6 +19,9 @@ export class BudgetMenuItemsPage {
   title: string = '';
 
   constructor(
+    private actionSheetCtrl: ActionSheetController,
+    private alertCtrl: AlertController,
+    private callNumber: CallNumber,
     private navParams: NavParams,
     private restaurantProvider: RestaurantProvider) {
   }
@@ -32,13 +36,64 @@ export class BudgetMenuItemsPage {
   search(event) {
     this.menu = this.restaurantProvider.getMenuByBudget(this.restaurant.id, this.budget);
     const value = event.target.value;
-    if(value && value.trim() != '') {
+    if (value && value.trim() != '') {
       this.menu = this.menu.map(items => {
         return items.filter(e => {
           return e.Name.trim().toLowerCase().includes(value.trim().toLowerCase());
         });
       });
     }
+  }
+
+  presentActionSheet() {
+    let sheet = {
+      title: this.restaurant.name,
+      buttons: []
+    }
+
+    if (this.restaurant.contactNumber != '') {
+      sheet.buttons.unshift({
+        text: `Call ${this.restaurant.contactNumber}`,
+        handler: () => {
+          this.callNumber.callNumber(this.restaurant.contactNumber, true);
+        }
+      });
+    }
+
+    sheet.buttons.unshift({
+      text: 'Show Details',
+      handler: () => {
+        let alert = this.alertCtrl.create({
+          title: this.restaurant.name,
+          message: `<p>Store Hours: ${this.restaurant.storeHours}</p>
+                        <span>${this.restaurant.address}</span>`,
+          buttons: ['OK']
+        });
+        alert.present();
+      }
+    });
+
+    sheet.buttons.unshift({
+      text: 'Upvote',
+      handler: () => {
+        let alert = this.alertCtrl.create({
+          title: this.restaurant.name,
+          message: `You have upvoted ${this.restaurant.name}`,
+          buttons: ['OK']
+        });
+        alert.present();
+      }
+    });
+
+    sheet.buttons.push({
+      text: 'Cancel',
+      role: 'cancel',
+      handler: () => {
+      }
+    });
+
+    let actionSheet = this.actionSheetCtrl.create(sheet);
+    actionSheet.present();
   }
 
 }
