@@ -1,6 +1,8 @@
 import { Restaurant } from './../../models/restaurant';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Observable } from 'rxjs/Observable';
+import { IonicPage, NavController } from 'ionic-angular';
+import { RestaurantProvider } from '../../providers/restaurant/restaurant';
 
 @IonicPage()
 @Component({
@@ -8,11 +10,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'menu.html',
 })
 export class MenuPage {
-  restaurants: Restaurant[];
+  private restaurants: Observable<Restaurant[]>;
   constructor(
     private navCtrl: NavController,
-    private navParams: NavParams) {
-    // this.restaurants = this.restaurantProvider.getAll();
+    private restaurantProvider: RestaurantProvider) {
+  }
+
+  ionViewDidLoad() {
+    this.restaurants = this.restaurantProvider.getRestaurants();
   }
 
   select(restaurant: Restaurant) {

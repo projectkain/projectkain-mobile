@@ -17,9 +17,7 @@ import { Restaurant } from './../../models/restaurant';
   templateUrl: 'budget-select-restaurant.html',
 })
 export class BudgetSelectRestaurantPage {
-
   private restaurants: Observable<Restaurant[]>;
-
   budget:number = this.navParams.get('budget');
   constructor(
     private navCtrl: NavController,
