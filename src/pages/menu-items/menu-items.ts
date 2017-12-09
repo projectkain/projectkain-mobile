@@ -1,6 +1,10 @@
 import { SearchFilterPage } from './../search-filter/search-filter';
+import { Observable } from 'rxjs/Observable';
+import { FoodItem } from './../../models/foodItem';
 import { Component } from '@angular/core';
+import { Restaurant } from './../../models/restaurant';
 import { ModalController, IonicPage, NavController, NavParams } from 'ionic-angular';
+import { RestaurantProvider } from '../../providers/restaurant/restaurant';
 
 @IonicPage()
 @Component({
@@ -9,18 +13,36 @@ import { ModalController, IonicPage, NavController, NavParams } from 'ionic-angu
 })
 export class MenuItemsPage {
   items: any[];
-  defaultLogo: string;
-
+  defaultLogo: string
+  menu: Observable<FoodItem[]>;
+  restaurant: Restaurant;
   constructor(
     private navCtrl: NavController,
     private navParams: NavParams,
-    private modalCtrl: ModalController) {
-    this.defaultLogo = this.navParams.get('logo');
-    this.items = new Array(20);
+    private modalCtrl: ModalController,
+    private restaurantProvider: RestaurantProvider) {
+  }
+
+  ionViewWillEnter() {
+    this.restaurant = this.navParams.get('restaurant');
+    this.menu = this.restaurantProvider.getMenu(this.restaurant.id);
   }
 
   filter(){
     let modal = this.modalCtrl.create(SearchFilterPage);
     modal.present();
   }
+
+  search(event) {
+    this.menu = this.restaurantProvider.getMenu(this.restaurant.id);
+    const value = event.target.value;
+    if(value && value.trim() != '') {
+      this.menu = this.menu.map(items => {
+        return items.filter(e => {
+          return e.Name.trim().toLowerCase().includes(value.trim().toLowerCase());
+        });
+      });
+    }
+  }
+
 }
