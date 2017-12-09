@@ -1,5 +1,8 @@
 import { Restaurant } from './../../models/restaurant';
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { FoodItem } from './../../models/foodItem';
+import { RestaurantProvider } from '../../providers/restaurant/restaurant';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
@@ -9,14 +12,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class MenuShowcasePage {
   restaurant: Restaurant;
-  pageTitle: string;
+  title: string = '';
   defaultLogo: string;
   bestsellers: any[];
-  items: any[];
+  menu: Observable<FoodItem[]>;
 
   constructor(
     private navCtrl: NavController,
-    private navParams: NavParams) {
+    private navParams: NavParams,
+    private restaurantProvider: RestaurantProvider) {
+  }
+
+  ionViewWillEnter() {
+    this.restaurant = this.navParams.get('restaurant');
+    this.menu = this.restaurantProvider.getMenu(this.restaurant.id);
+    this.title = this.restaurant.name;
   }
 
 }
