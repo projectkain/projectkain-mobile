@@ -33,7 +33,8 @@ export class UpvoteProvider {
     }).valueChanges();
   }
 
-  setUpvote(userId, restoId) {
+  setUpvote(restoId) {
+    const userId = this.authProvider.getCurrentUserId();
     const upvote: Upvote = { userId, restoId };
     const upvotePath = `${userId}^${restoId}`;
     const newRef = this.upvoteCollection.doc(upvotePath);

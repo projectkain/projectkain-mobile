@@ -5,6 +5,7 @@ import { FoodItem } from './../../models/foodItem';
 import { RestaurantProvider } from '../../providers/restaurant/restaurant';
 import { IonicPage, NavController, NavParams, ActionSheetController, AlertController } from 'ionic-angular';
 import { CallNumber } from '@ionic-native/call-number';
+import { UpvoteProvider } from '../../providers/upvote/upvote';
 @IonicPage()
 @Component({
   selector: 'page-menu-showcase',
@@ -23,7 +24,8 @@ export class MenuShowcasePage {
     private callNumber: CallNumber,
     private navCtrl: NavController,
     private navParams: NavParams,
-    private restaurantProvider: RestaurantProvider) {
+    private restaurantProvider: RestaurantProvider,
+    private upvoteProvider: UpvoteProvider) {
   }
 
   ionViewWillEnter() {
@@ -69,6 +71,7 @@ export class MenuShowcasePage {
     sheet.buttons.unshift({
       text: 'Upvote',
       handler: () => {
+        this.doUpvote();
         let alert = this.alertCtrl.create({
           title: this.restaurant.name,
           message: `You have upvoted ${this.restaurant.name}`,
@@ -88,4 +91,9 @@ export class MenuShowcasePage {
     let actionSheet = this.actionSheetCtrl.create(sheet);
     actionSheet.present();
   }
+
+  doUpvote() {
+    this.upvoteProvider.setUpvote(this.restaurant.id);
+  }
+
 }
