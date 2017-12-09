@@ -8,4 +8,5 @@ export interface Restaurant {
   contactNumber: string;
   storeHours:    string;
   menu:          FoodItem[];
+  url:           string;
 }
