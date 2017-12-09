@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import { AuthProvider } from '../../providers/auth/auth';
 import { Upvote } from './../../models/upvote';
 
 import {
   AngularFirestore,
   AngularFirestoreCollection,
-  AngularFirestoreDocument
 } from 'angularfire2/firestore';
 
 
@@ -37,7 +35,7 @@ export class UpvoteProvider {
 
   setUpvote(userId, restoId) {
     const upvote: Upvote = { userId, restoId };
-    const upvotePath = `${userId}-${restoId}`;
+    const upvotePath = `${userId}^${restoId}`;
     const newRef = this.upvoteCollection.doc(upvotePath);
     newRef.update(upvote)
       .then(async () => {
