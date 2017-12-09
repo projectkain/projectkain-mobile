@@ -22,7 +22,7 @@ export class UpvoteProvider {
 
   getUserUpvotes() {
     const id = this.authProvider.getCurrentUserId();
-    return this.afs.collection('upvotes', ref => {
+    return this.afs.collection<Upvote>('upvotes', ref => {
       return ref.where('userId', '==', id);
     }).valueChanges();
   }

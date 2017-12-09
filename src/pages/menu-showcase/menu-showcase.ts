@@ -17,6 +17,7 @@ export class MenuShowcasePage {
   defaultLogo: string;
   bestsellers: any[];
   menu: Observable<FoodItem[]>;
+  upvotedString: string;
 
   constructor(
     private actionSheetCtrl: ActionSheetController,
@@ -28,10 +29,11 @@ export class MenuShowcasePage {
     private upvoteProvider: UpvoteProvider) {
   }
 
-  ionViewWillEnter() {
+  ionViewDidLoad() {
     this.restaurant = this.navParams.get('restaurant');
     this.menu = this.restaurantProvider.getMenu(this.restaurant.id);
     this.title = this.restaurant.name;
+    this.checkUpvoted();
   }
 
   viewAll() {
@@ -40,7 +42,8 @@ export class MenuShowcasePage {
     });
   }
 
-  presentActionSheet() {
+  async presentActionSheet() {
+
     let sheet = {
       title: this.restaurant.name,
       buttons: []
@@ -69,7 +72,7 @@ export class MenuShowcasePage {
     });
 
     sheet.buttons.unshift({
-      text: 'Upvote',
+      text: `${this.upvotedString}`,
       handler: () => {
         this.doUpvote();
         let alert = this.alertCtrl.create({
@@ -94,6 +97,18 @@ export class MenuShowcasePage {
 
   doUpvote() {
     this.upvoteProvider.setUpvote(this.restaurant.id);
+  }
+
+  checkUpvoted() {
+    this.upvoteProvider.getUserUpvotes().subscribe(upvotes => {
+      if(upvotes.filter(u => u.restoId === this.restaurant.id).length > 0) {
+        this.upvotedString = 'Remove Upvote';
+      }
+      else {
+        this.upvotedString = 'Upvote';
+      }
+
+    });
   }
 
 }
