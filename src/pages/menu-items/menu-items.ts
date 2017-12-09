@@ -34,7 +34,15 @@ export class MenuItemsPage {
   }
 
   search(event) {
-
+    this.menu = this.restaurantProvider.getMenu(this.restaurant.id);
+    const value = event.target.value;
+    if(value && value.trim() != '') {
+      this.menu = this.menu.map(items => {
+        return items.filter(e => {
+          return e.Name.trim().toLowerCase().includes(value.trim().toLowerCase());
+        });
+      });
+    }
   }
 
 }
