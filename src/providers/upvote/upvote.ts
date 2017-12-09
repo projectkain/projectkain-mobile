@@ -29,9 +29,9 @@ export class UpvoteProvider {
     }).valueChanges();
   }
 
-  getRestaurantUpvotes(restoId) {
+  getRestaurantUpvotes(id) {
     return this.afs.collection('upvotes', ref => {
-      return ref.where('restoId', '==', restoId);
+      return ref.where('restoId', '==', id);
     }).valueChanges();
   }
 
