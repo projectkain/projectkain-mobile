@@ -1,11 +1,6 @@
 <ion-header>
   <ion-navbar color="main">
     <ion-title>{{ title }}</ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only (click)="presentActionSheet()">
-        <ion-icon name="more"></ion-icon>
-      </button>
-    </ion-buttons>
   </ion-navbar>
   <ion-searchbar (ionInput)="search($event)" placeholder="Search Meal" debounce="700">
   </ion-searchbar>
