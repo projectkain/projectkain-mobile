@@ -26,6 +26,20 @@ export class RestaurantProvider {
     });
   }
 
+  getUpvotesList() {
+    return this.afs.collection('restaurants', ref => {
+      return ref.orderBy('upvotes', 'desc').limit(10);
+    }).valueChanges();
+  }
+
+  // getHotList() {
+  //
+  // }
+  //
+  // getNewList() {
+  //
+  // }
+
   getMenu(restoId) {
     const restoDoc = this.restoCollection.doc(restoId);
     return restoDoc.collection<FoodItem>('fooditems', ref => {

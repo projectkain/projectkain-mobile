@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { RestaurantProvider } from '../../providers/restaurant/restaurant';
+import { Restaurant } from './../../models/restaurant';
+import { Observable } from 'rxjs/Observable';
 /**
  * Generated class for the FeaturedPage page.
  *
@@ -15,34 +18,33 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class FeaturedPage {
   hotList = [];
   newList = [];
-  upvotesList = [];
+  private upvotesList: Observable<Restaurant[]>;
 
   featured: string = 'Hot';
   constructor(
     private navCtrl: NavController,
-    private navParams: NavParams) {
-  }
-
-  ngOnInit() {
-    this.getHotList();
-    this.getNewList();
-    this.getUpvotesList();
+    private navParams: NavParams,
+    private restaurantProvider: RestaurantProvider) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad FeaturedPage');
+
+    this.getHotList();
+    this.getNewList();
+    this.getUpvotesList();
+
   }
 
   getHotList() {
-    // this.hotList = this.restaurantProvider.getHot();
+    // this.hotList = this.restaurantProvider.getHotList();
   }
 
   getNewList() {
-    // this.newList = this.restaurantProvider.getNew();
+    // this.newList = this.restaurantProvider.getNewList();
   }
 
   getUpvotesList() {
-    // this.upvotesList = this.restaurantProvider.getUpvotes();
+    this.upvotesList = this.restaurantProvider.getUpvotesList();
   }
 
 
