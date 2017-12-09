@@ -1,7 +1,12 @@
 <ion-header>
   <ion-navbar color="main">
-    <ion-title>{{pageTitle}}</ion-title>
+    <ion-title>{{ title }}</ion-title>
   </ion-navbar>
+  <ion-searchbar
+  (ionInput)="search($event)"
+  placeholder="Search Meal"
+  debounce="700">
+  </ion-searchbar>
 </ion-header>
 
 <ion-content>
@@ -12,13 +17,13 @@
       </ion-col>
       <ion-col *ngFor="let item of menu | async;" col-6>
         <ion-card>
-          <img src="assets/budget-meal.png"/>
+          <img src="assets/default-logo.png"/>
           <ion-card-content>
-            <ion-card-title *ngIf="item.Variant != ''">
-              {{ item.Name }} ({{ item.Variant }})
-            </ion-card-title>
-            <ion-card-title *ngIf="item.Variant == ''">
+            <ion-card-title text-wrap *ngIf="item.Variant === ''">
               {{ item.Name }}
+            </ion-card-title>
+            <ion-card-title text-wrap *ngIf="item.Variant !== ''">
+              {{ item.Name }} ({{ item.Variant }})
             </ion-card-title>
             <span class="price">
               <span>P {{ item.Price }}.00</span>

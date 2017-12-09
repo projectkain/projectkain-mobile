@@ -3,7 +3,6 @@ import { Observable } from 'rxjs/Observable';
 import { Restaurant } from '../../models/restaurant';
 import { FoodItem } from '../../models/foodItem';
 
-
 import {
   AngularFirestore,
   AngularFirestoreCollection,
@@ -46,8 +45,6 @@ export class RestaurantProvider {
       .orderBy('Price', 'asc');
     }).valueChanges();
   }
-
-
 
 
 }

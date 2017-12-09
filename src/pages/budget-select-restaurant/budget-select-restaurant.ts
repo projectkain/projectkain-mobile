@@ -25,10 +25,11 @@ export class BudgetSelectRestaurantPage {
     private navCtrl: NavController,
     private navParams: NavParams,
     private restaurantProvider: RestaurantProvider) {
-    this.restaurants = this.restaurantProvider.getRestaurants();
   }
 
-  ionViewDidLoad() {}
+  ionViewDidLoad() {
+    this.restaurants = this.restaurantProvider.getRestaurants();
+  }
 
   select(restaurant: Restaurant) {
     this.navCtrl.push('BudgetMenuItemsPage', {
