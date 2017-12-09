@@ -14,6 +14,7 @@ import { MyApp } from './app.component';
 
 import { AuthProvider } from '../providers/auth/auth';
 import { RestaurantProvider } from '../providers/restaurant/restaurant';
+import { UpvoteProvider } from '../providers/upvote/upvote';
 
 const FIREBASE_CONFIG = {
   apiKey: "AIzaSyCG5NS26JPIjiKiadt4LrtcGngvt2AWsfE",
@@ -50,6 +51,7 @@ const FIREBASE_CONFIG = {
     CallNumber,
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler },
+    UpvoteProvider,
   ]
 })
 export class AppModule { }

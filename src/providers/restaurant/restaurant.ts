@@ -27,14 +27,14 @@ export class RestaurantProvider {
   }
 
   getMenu(restoId) {
-    const restoDoc = this.afs.doc(`restaurants/${restoId}`);
+    const restoDoc = this.restoCollection.doc(restoId);
     return restoDoc.collection<FoodItem>('fooditems', ref => {
       return ref.orderBy('Price', 'asc');
     }).valueChanges();
   }
 
   getMenuByBudget(restoId, budget) {
-    const restoDoc = this.afs.doc(`restaurants/${restoId}`);
+    const restoDoc = this.restoCollection.doc(restoId);
     return restoDoc.collection<FoodItem>('fooditems', ref => {
       return ref.where('Price', '<=', budget.upper)
       .where('Price', '>=', budget.lower)

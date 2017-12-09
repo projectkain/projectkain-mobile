@@ -9,7 +9,7 @@ import { IonicPage, NavController } from 'ionic-angular';
 export class BudgetPage {
 
   private budget:Object = {
-    lower: 150,
+    lower: 50,
     upper: 300
   };
 
