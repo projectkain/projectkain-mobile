@@ -21,6 +21,5 @@ export class TabsPage {
   tab4Root: any = Tab4Root;
   tab5Root: any = Tab5Root;
 
-  constructor(private navCtrl: NavController) {
-  }
+  constructor(private navCtrl: NavController) {}
 }

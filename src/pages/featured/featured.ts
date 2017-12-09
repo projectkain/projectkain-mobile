@@ -1,4 +1,3 @@
-import { RestaurantProvider } from './../../mocks/providers/restaurant';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 /**
@@ -21,8 +20,7 @@ export class FeaturedPage {
   featured: string = 'Hot';
   constructor(
     private navCtrl: NavController,
-    private navParams: NavParams,
-    private restaurantProvider: RestaurantProvider) {
+    private navParams: NavParams) {
   }
 
   ngOnInit() {
@@ -36,15 +34,15 @@ export class FeaturedPage {
   }
 
   getHotList() {
-    this.hotList = this.restaurantProvider.getHot();
+    // this.hotList = this.restaurantProvider.getHot();
   }
 
   getNewList() {
-    this.newList = this.restaurantProvider.getNew();
+    // this.newList = this.restaurantProvider.getNew();
   }
 
   getUpvotesList() {
-    this.upvotesList = this.restaurantProvider.getUpvotes();
+    // this.upvotesList = this.restaurantProvider.getUpvotes();
   }
 
 

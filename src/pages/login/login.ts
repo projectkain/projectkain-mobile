@@ -11,14 +11,15 @@ export class LoginPage {
 
   constructor(
     private authProvider: AuthProvider) {
+
   }
 
   ionViewDidLoad() {}
   ionViewCanEnter() {}
 
-  doLogin() {
+  async doLogin() {
     try {
-      this.authProvider.logIn();
+      await this.authProvider.logIn();
     } catch(e) {
       throw new Error(e);
     }

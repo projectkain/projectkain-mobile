@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Platform } from 'ionic-angular';
@@ -20,7 +20,7 @@ export class MyApp {
 
     this.afAuth.authState.subscribe(auth => {
       this.rootPage = auth? MainPage : FirstRunPage;
-    })
+    });
 
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();

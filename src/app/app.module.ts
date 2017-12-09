@@ -1,21 +1,20 @@
 import { ErrorHandler, NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Facebook } from '@ionic-native/facebook';
 import { StatusBar } from '@ionic-native/status-bar';
 import { IonicStorageModule } from '@ionic/storage';
 import { AngularFireModule } from "angularfire2";
-import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-
-import {
-  AuthProvider,
-} from '../providers/providers';
 
 import { MyApp } from './app.component';
 
-export const firebaseConfig = {
+import { AuthProvider } from '../providers/auth/auth';
+import { RestaurantProvider } from '../providers/restaurant/restaurant';
+
+const FIREBASE_CONFIG = {
   apiKey: "AIzaSyCG5NS26JPIjiKiadt4LrtcGngvt2AWsfE",
   authDomain: "grubie-af410.firebaseapp.com",
   databaseURL: "https://grubie-af410.firebaseio.com",
@@ -30,21 +29,23 @@ export const firebaseConfig = {
   ],
   imports: [
     BrowserModule,
-    HttpModule,
     IonicModule.forRoot(MyApp, {mode: 'ios'}),
     IonicStorageModule.forRoot(),
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(FIREBASE_CONFIG),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    AngularFirestoreModule.enablePersistence()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
   ],
   providers: [
-    AuthProvider,
     SplashScreen,
-    Facebook,
-    AngularFireAuth,
     StatusBar,
+    AuthProvider,
+    Facebook,
+    RestaurantProvider,
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler },
   ]

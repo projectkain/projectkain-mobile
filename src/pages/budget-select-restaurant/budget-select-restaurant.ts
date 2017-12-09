@@ -1,7 +1,8 @@
-import { Restaurant } from './../../models/restaurant';
-import { RestaurantProvider } from './../../mocks/providers/restaurant';
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { RestaurantProvider } from '../../providers/restaurant/restaurant';
+import { Restaurant } from './../../models/restaurant';
 
 /**
  * Generated class for the MenuPage page.
@@ -17,17 +18,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class BudgetSelectRestaurantPage {
 
-  restaurants: Restaurant[];
+  private restaurants: Observable<Restaurant[]>;
+
+  budget:number = this.navParams.get('budget');
   constructor(
     private navCtrl: NavController,
     private navParams: NavParams,
     private restaurantProvider: RestaurantProvider) {
-    this.restaurants = this.restaurantProvider.getAll();
+    this.restaurants = this.restaurantProvider.getRestaurants();
   }
+
+  ionViewDidLoad() {}
 
   select(restaurant: Restaurant) {
     this.navCtrl.push('BudgetMenuItemsPage', {
-      budget: this.navParams.get('budget'),
+      budget: this.budget,
       restaurant: restaurant
     });
   }

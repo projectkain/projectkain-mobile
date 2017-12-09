@@ -7,7 +7,12 @@ import { IonicPage, NavController } from 'ionic-angular';
   templateUrl: 'budget.html',
 })
 export class BudgetPage {
-  budget = 150;
+
+  private budget:Object = {
+    lower: 150,
+    upper: 300
+  };
+
   constructor(private navCtrl: NavController) {}
 
   proceed(budget) {
