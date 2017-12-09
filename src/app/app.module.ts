@@ -1,3 +1,4 @@
+import { CallNumber } from '@ionic-native/call-number';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -46,6 +47,7 @@ const FIREBASE_CONFIG = {
     AuthProvider,
     Facebook,
     RestaurantProvider,
+    CallNumber,
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler },
   ]

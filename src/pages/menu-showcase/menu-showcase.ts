@@ -3,8 +3,8 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { FoodItem } from './../../models/foodItem';
 import { RestaurantProvider } from '../../providers/restaurant/restaurant';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { IonicPage, NavController, NavParams, ActionSheetController, AlertController } from 'ionic-angular';
+import { CallNumber } from '@ionic-native/call-number';
 @IonicPage()
 @Component({
   selector: 'page-menu-showcase',
@@ -18,6 +18,9 @@ export class MenuShowcasePage {
   menu: Observable<FoodItem[]>;
 
   constructor(
+    private actionSheetCtrl: ActionSheetController,
+    private alertCtrl: AlertController,
+    private callNumber: CallNumber,
     private navCtrl: NavController,
     private navParams: NavParams,
     private restaurantProvider: RestaurantProvider) {
@@ -35,4 +38,54 @@ export class MenuShowcasePage {
     });
   }
 
+  presentActionSheet() {
+    let sheet = {
+      title: this.restaurant.name,
+      buttons: []
+    }
+
+    if (this.restaurant.contactNumber != '') {
+      sheet.buttons.unshift({
+        text: `Call ${this.restaurant.contactNumber}`,
+        handler: () => {
+          this.callNumber.callNumber(this.restaurant.contactNumber, true);
+        }
+      });
+    }
+
+    sheet.buttons.unshift({
+      text: 'Show Details',
+      handler: () => {
+        let alert = this.alertCtrl.create({
+          title: this.restaurant.name,
+          message: `<p>Store Hours: ${this.restaurant.storeHours}</p>
+                        <span>${this.restaurant.address}</span>`,
+          buttons: ['OK']
+        });
+        alert.present();
+      }
+    });
+
+    sheet.buttons.unshift({
+      text: 'Upvote',
+      handler: () => {
+        let alert = this.alertCtrl.create({
+          title: this.restaurant.name,
+          message: `You have upvoted ${this.restaurant.name}`,
+          buttons: ['OK']
+        });
+        alert.present();
+      }
+    });
+
+    sheet.buttons.push({
+      text: 'Cancel',
+      role: 'cancel',
+      handler: () => {
+      }
+    });
+
+    let actionSheet = this.actionSheetCtrl.create(sheet);
+    actionSheet.present();
+  }
 }
