@@ -32,7 +32,7 @@
         <div class="item-start" item-start>
           <div class="numbering">{{i+1}}</div>
           <ion-avatar>
-            <img [src]="restaurant.logo"/>
+            <img [src]="restaurant.url"/>
           </ion-avatar>
         </div>
         <h2>{{restaurant.name}}</h2>
@@ -54,10 +54,15 @@
         <div class="item-start" item-start>
           <div class="numbering">{{i+1}}</div>
           <ion-avatar>
-            <!-- <img [src]="restaurant.logo"/> -->
+             <img [src]="restaurant.url"/>
           </ion-avatar>
         </div>
         <h2>{{restaurant.name}}</h2>
+
+        <ion-badge color="secondary" item-end>
+          <ion-icon name="thumbs-up"></ion-icon>
+          {{restaurant.upvotes}}
+        </ion-badge>
       </button>
     </ion-list>
   </div>
