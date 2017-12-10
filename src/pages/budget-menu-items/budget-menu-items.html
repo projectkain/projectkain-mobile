@@ -13,7 +13,7 @@
         <h1 class="heading" text-center>No Available Items</h1>
       </ion-col>
       <ion-col *ngFor="let item of menu | async;" col-6>
-        <ion-card>
+        <ion-card style="height:100%">
           <img src="assets/default-logo.png" />
           <ion-card-content>
             <ion-card-title text-wrap *ngIf="item.Variant === ''">
