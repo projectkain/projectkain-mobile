@@ -9,12 +9,10 @@
         <img [src]="restaurant.url">
       </ion-thumbnail>
       <h2 class="text-bold">{{restaurant.name}}</h2>
-      <p>{{restaurant.address}}</p>
+      <p text-wrap>{{restaurant.address}}</p>
     </ion-item>
     <ion-item class="extra-info">
-      <span ion-text color="ternary" class="text-italic" item-left>P50.00 - P75.00</span>
       <ion-badge color="main" item-end>{{restaurant.category}}</ion-badge>
     </ion-item>
-
   </ion-card>
 </ion-content>

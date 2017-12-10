@@ -11,4 +11,6 @@ export interface Restaurant {
   url:           string;
   upvotes:       number;
   upvotesRank:   number;
+  minPrice?:      number;
+  maxPrice?:      number;
 }
