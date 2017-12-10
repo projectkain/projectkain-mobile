@@ -69,6 +69,10 @@
   padding: 5px 10px;
 }
 
+.dot {
+  content: "\B7";
+}
+
 ion-title {
   font-family: "Museo Sans Rounded 700"
 }
@@ -80,7 +84,7 @@ ion-card-title {
 .resto-details {
   color: color($colors, primary);
   font-family: "Museo Sans Rounded 700";
-  font-size: 0.9em;
+  font-size: 0.7em;
 }
 
 .price {

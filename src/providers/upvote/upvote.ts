@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AuthProvider } from '../../providers/auth/auth';
 import { Upvote } from './../../models/upvote';
-
+import { FirebaseApp } from 'angularfire2';
 import {
   AngularFirestore,
   AngularFirestoreCollection,
@@ -16,7 +16,8 @@ export class UpvoteProvider {
 
   constructor(
     private afs: AngularFirestore,
-    private authProvider: AuthProvider) {
+    private authProvider: AuthProvider,
+    private fb: FirebaseApp) {
     this.upvoteCollection = this.afs.collection('upvotes');
   }
 
@@ -40,15 +41,11 @@ export class UpvoteProvider {
     const newRef = this.upvoteCollection.doc(upvotePath);
     newRef.update(upvote)
       .then(async () => {
-        await newRef.delete();
+        await newRef.delete()
       })
       .catch(error => {
         newRef.set(upvote);
       });
-  }
-
-  checkUpvoted(id) {
-
   }
 
 }

@@ -9,4 +9,6 @@ export interface Restaurant {
   storeHours:    string;
   menu:          FoodItem[];
   url:           string;
+  upvotes:       number;
+  upVotesRank:    number;
 }

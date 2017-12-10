@@ -20,7 +20,7 @@ export class SearchPage {
   }
 
   ionViewDidLoad() {
-    this.restaurants = this.restaurantProvider.getRestaurants();
+    // this.restaurants = this.restaurantProvider.getRestaurants();
   }
 
   search(event) {
