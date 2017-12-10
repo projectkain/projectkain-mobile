@@ -24,10 +24,10 @@
              <ion-icon name="flame"></ion-icon>
               <span>New #3</span>
             </span>
-            <span class="resto-details">
+            <span class="resto-details" *ngIf="restaurant.upvotesRank > 0">
               &bull;
             </span>
-            <span class="resto-details">
+            <span class="resto-details" *ngIf="restaurant.upvotesRank > 0">
              <ion-icon name="flame"></ion-icon>
               <span>Upvotes #{{ restaurant.upvotesRank }}</span>
             </span>

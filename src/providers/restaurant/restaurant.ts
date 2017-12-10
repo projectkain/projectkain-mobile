@@ -28,7 +28,7 @@ export class RestaurantProvider {
 
   getUpvotesList() {
     return this.afs.collection<Restaurant>('restaurants', ref => {
-      return ref.orderBy('upvotesRank', 'asc').limit(20);
+      return ref.where('upvotesRank', '>', 0).orderBy('upvotesRank', 'asc').limit(20);
     }).valueChanges();
   }
 
