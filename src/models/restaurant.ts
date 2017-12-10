@@ -10,5 +10,5 @@ export interface Restaurant {
   menu:          FoodItem[];
   url:           string;
   upvotes:       number;
-  upVotesRank:    number;
+  upvotesRank:   number;
 }
