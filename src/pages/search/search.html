@@ -1,16 +1,20 @@
 <ion-header>
-  <ion-searchbar
-  (ionInput)="search($event)"
-  placeholder="Search for a Restaurant or Meal"
-  debounce="700">
+  <ion-searchbar (ionInput)="search($event)" placeholder="Search for a Restaurant or Meal" debounce="700">
   </ion-searchbar>
 </ion-header>
-<ion-content>
-  <ion-list>
-    <button ion-item *ngFor="let restaurant of restaurants | async">
-      <ion-avatar item-start>
-      </ion-avatar>
-      <h2>{{restaurant.name}}</h2>
-    </button>
-  </ion-list>
+<ion-content padding>
+  <ion-card *ngFor="let restaurant of restaurants | async" class="result-card">
+    <ion-item>
+      <ion-thumbnail item-start>
+        <img [src]="restaurant.url">
+      </ion-thumbnail>
+      <h2 class="text-bold">{{restaurant.name}}</h2>
+      <p>{{restaurant.address}}</p>
+    </ion-item>
+    <ion-item class="extra-info">
+      <span ion-text color="ternary" class="text-italic" item-left>P50.00 - P75.00</span>
+      <ion-badge color="main" item-end>{{restaurant.category}}</ion-badge>
+    </ion-item>
+
+  </ion-card>
 </ion-content>
