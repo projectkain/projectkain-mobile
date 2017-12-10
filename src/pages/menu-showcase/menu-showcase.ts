@@ -17,7 +17,7 @@ export class MenuShowcasePage {
   defaultLogo: string;
   bestsellers: any[];
   menu: Observable<FoodItem[]>;
-  upvotedString: string;
+  upvoted: boolean;
 
   constructor(
     private actionSheetCtrl: ActionSheetController,
@@ -71,18 +71,36 @@ export class MenuShowcasePage {
       }
     });
 
-    sheet.buttons.unshift({
-      text: `${this.upvotedString}`,
-      handler: () => {
-        this.doUpvote();
-        let alert = this.alertCtrl.create({
-          title: this.restaurant.name,
-          message: `You have upvoted ${this.restaurant.name}`,
-          buttons: ['OK']
-        });
-        alert.present();
-      }
-    });
+    if (!this.upvoted) {
+      sheet.buttons.unshift({
+        text: `Upvote`,
+        handler: () => {
+          this.doUpvote();
+          let alert = this.alertCtrl.create({
+            title: this.restaurant.name,
+            message: `You have upvoted ${this.restaurant.name}`,
+            buttons: ['OK']
+          });
+          alert.present();
+        }
+      });
+    }
+    else {
+      sheet.buttons.unshift({
+        text: `Remove Upvote`,
+        role: 'destructive',
+        handler: () => {
+          this.doUpvote();
+          let alert = this.alertCtrl.create({
+            title: this.restaurant.name,
+            message: `You have removed an upvote for ${this.restaurant.name}`,
+            buttons: ['OK']
+          });
+          alert.present();
+        }
+      });
+    }
+
 
     sheet.buttons.push({
       text: 'Cancel',
@@ -101,11 +119,11 @@ export class MenuShowcasePage {
 
   checkUpvoted() {
     this.upvoteProvider.getUserUpvotes().subscribe(upvotes => {
-      if(upvotes.filter(u => u.restoId === this.restaurant.id).length > 0) {
-        this.upvotedString = 'Remove Upvote';
+      if (upvotes.filter(u => u.restoId === this.restaurant.id).length > 0) {
+        this.upvoted = true;
       }
       else {
-        this.upvotedString = 'Upvote';
+        this.upvoted = false;
       }
 
     });
