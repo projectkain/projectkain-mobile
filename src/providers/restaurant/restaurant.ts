@@ -67,5 +67,19 @@ export class RestaurantProvider {
     }).valueChanges();
   }
 
+  getMaxPriceInResto(restoId) {
+    const restoDoc = this.restoCollection.doc(restoId);
+    return restoDoc.collection<FoodItem>('fooditems', ref => {
+      return ref.orderBy('Price', 'desc').limit(1);
+    }).valueChanges();
+  }
+
+  getMinPriceInResto(restoId) {
+    const restoDoc = this.restoCollection.doc(restoId);
+    return restoDoc.collection<FoodItem>('fooditems', ref => {
+      return ref.orderBy('Price', 'asc').limit(1);
+    }).valueChanges();
+  }
+
 
 }
