@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Restaurant } from '../../models/restaurant';
 import { FoodItem } from '../../models/foodItem';
-
+import 'rxjs/add/operator/toPromise';
 import {
   AngularFirestore,
   AngularFirestoreCollection
@@ -49,11 +49,10 @@ export class RestaurantProvider {
 
   getAllMenu() {
     return this.getRestaurants().map(restaurants => {
-      return restaurants.map(restaurant => {
-        restaurant.menu = this.restoCollection.doc(restaurant.id).collection<FoodItem>('fooditems')
-        .valueChanges().map(menu => {
-          return menu;
-        });
+      return restaurants.map(async restaurant => {
+        const data = await this.restoCollection.doc(restaurant.id).collection<FoodItem>('fooditems')
+        .valueChanges().toPromise();
+        restaurant.menu = data;
         return restaurant;
       });
     });
@@ -62,8 +61,8 @@ export class RestaurantProvider {
   getMenuByBudget(restoId, budget) {
     const restoDoc = this.restoCollection.doc(restoId);
     return restoDoc.collection<FoodItem>('fooditems', ref => {
-      return ref.where('Price', '<=', budget.upper)
-      .where('Price', '>=', budget.lower)
+      return ref.where('Price', '<', budget.upper+1)
+      .where('Price', '>', budget.lower-1)
       .orderBy('Price', 'asc');
     }).valueChanges();
   }

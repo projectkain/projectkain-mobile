@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RestaurantProvider } from '../../providers/restaurant/restaurant';
 import { Restaurant } from './../../models/restaurant';
-
+import 'rxjs/add/operator/toPromise';
 /**
  * Generated class for the MenuPage page.
  *
