@@ -47,6 +47,18 @@ export class RestaurantProvider {
     }).valueChanges();
   }
 
+  getAllMenu() {
+    return this.getRestaurants().map(restaurants => {
+      return restaurants.map(restaurant => {
+        restaurant.menu = this.restoCollection.doc(restaurant.id).collection<FoodItem>('fooditems')
+        .valueChanges().map(menu => {
+          return menu;
+        });
+        return restaurant;
+      });
+    });
+  }
+
   getMenuByBudget(restoId, budget) {
     const restoDoc = this.restoCollection.doc(restoId);
     return restoDoc.collection<FoodItem>('fooditems', ref => {
