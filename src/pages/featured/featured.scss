@@ -1,34 +1,49 @@
 page-featured {
-  .featured * {
-    margin-bottom: 0px;
+  /** TOOL BAR **/
+  .toolbar-md {
+    background: #f8f8f8;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    min-height: 32px;
+    padding: 8px 12px;
   }
-  ion-thumbnail>img {
-    border-radius: 100px;
+  /** NAV BAR **/
+  .navbar {
+    min-height: 56px;
   }
-  ion-list>.item.item-block.item-ios {
+  .toolbar-title-md {
+    font-weight: 900;
+    text-align: center;
+  }
+  /** SEGMENT **/
+  .segment-md .segment-button {
+    border: 1px solid color($colors, main);
+    font-family: "Museo Sans Rounded 700";
+    opacity: 1.0;
+    text-transform: capitalize;
+  }
+  .segment-md .segment-button:first-child {
+    border-radius: 8px 0px 0px 8px;
+    border-right: none; // border-left: 1px solid color($colors, main);
+  }
+  .segment-md .segment-button:last-child {
+    border-left: none;
+    border-radius: 0px 8px 8px 0px;
+  }
+  .toolbar .segment-md .segment-button.activated,
+  .toolbar .segment-md .segment-button.segment-activated {
+    background-color: color($colors, main);
+    border: 1px solid color($colors, main);
+    color: white;
+  }
+  /** FEATURED ITEMS **/
+  ion-list>.item.item-block.item-md {
     padding-left: 0px;
     border-bottom: 0.55px solid #c8c7cc;
-  }
-  ion-segment {
-    background-color: white;
-  }
-  .toolbar-ios .segment-button {
-    height: 2.9rem;
-    font-family: "Museo Sans Rounded 700";
-    font-size: 1.35rem;
-    line-height: 2.8rem;
-  }
-  .item-ios ion-avatar img {
-    width: 2.353em;
-    height: 2.353em;
-  }
-  .item-ios h2 {
+  } //Restaurant Name
+  .item-md h2 {
     font-family: "Museo Sans Rounded 700"
   }
-  .label.label-ios {
-    margin-top: 0px;
-  }
-  .item-ios.item-block .item-inner {
+  .item-md.item-block .item-inner {
     border-bottom: 0px;
   }
   .item-start {
