@@ -2,4 +2,17 @@ page-settings {
   ion-list:last-of-type {
     margin-bottom: 0px;
   }
+  .list-md,
+  .list-header-md {
+    margin-bottom: 0px;
+  }
+  .list-md+ion-list ion-list-header {
+    margin-top: 0px;
+  }
+  ion-list>.item-md.item-block:nth-child(4) .item-inner {
+    border-bottom: 0px;
+  }
+  .logout-container{
+    padding: 2px 16px 10px 16px;
+  }
 }

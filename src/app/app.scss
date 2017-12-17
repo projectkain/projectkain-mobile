@@ -85,9 +85,13 @@
   padding: 12px 10px;
 }
 
-.resto-details ion-badge{
+.resto-details ion-badge {
   font-size: 1.2em;
   margin-top: 5px;
+}
+
+.button-md {
+  text-transform: capitalize;
 }
 
 .dot {
@@ -102,7 +106,7 @@ ion-card-title {
   font-family: "Museo Sans Rounded 700";
 }
 
-ion-card > img{
+ion-card>img {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
