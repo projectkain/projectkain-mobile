@@ -6,23 +6,16 @@
 </ion-header>
 
 
-<ion-content padding>
-  <ion-grid text-center>
-    <ion-row>
-      <ion-col>
-        <h1 class="heading" text-center>Discover affordable choices</h1>
-        <h3 text-center>Set your budget</h3>
+<ion-content padding center text-center>
+  <h1 class="heading" text-center>Discover affordable choices</h1>
+  <h4 text-center>Set your budget</h4>
 
-        <div class="budget-illustration">
-          <img src="assets/budget-meal.png">
+  <div class="budget-illustration">
+    <img src="assets/budget-meal.png">
 
-        </div>
-        <h1 class="budget" text-center>P {{ budget.lower }}.00 - P {{ budget.upper }}.00</h1>
-        <ion-range min="50" max="500" snap="true" dualKnobs="true" [(ngModel)]="budget">
-        </ion-range>
-        <button ion-button round color="main" (click)="proceed(budget)">Proceed</button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
+  </div>
+  <h1 class="budget" text-center>P {{ budget.lower }}.00 - P {{ budget.upper }}.00</h1>
+  <ion-range min="50" max="500" snap="true" dualKnobs="true" [(ngModel)]="budget">
+  </ion-range>
+  <button ion-button round color="main" (click)="proceed(budget)">Proceed</button>
 </ion-content>

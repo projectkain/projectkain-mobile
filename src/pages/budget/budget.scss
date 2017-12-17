@@ -1,39 +1,51 @@
 page-budget {
   .budget {
     font-family: 'Museo Sans Rounded 900';
-    font-size: 3.2rem;
+    font-size: 3.0rem;
+    letter-spacing: -2px;
     margin: 0px;
   }
   .heading {
     font-family: 'Museo Sans Rounded 1000';
     font-size: 2.3em;
+    margin-bottom: 0px;
   }
-  .budget-illustration {
-    padding: 10px 75px;
+  h4 {
+    margin: 8px 0px;
   }
-  .range-ios {
-    padding: 0px 33px 25px 33px;
+  .budget-illustration img {
+    max-height: 135px;
+  }
+  .range-ios,
+  .range-md {
+    padding: 15px 10px;
+  }
+  .range-md .range-knob,
+  .range-md .range-knob-min.range-knob-min .range-knob {
+    background-color: white;
+    border: 5px solid black;
+    width: 28px;
+    height: 28px;
+    -webkit-transform: none;
+    transform: none;
   }
   .range-slider {
-    margin-top: -12px;
-    .range-knob-handle {
-      margin-top: -15px;
-    }
-    .range-knob {
-      // background-color: #66c6fe;
-    }
-    .range-bar {
-      // background-color: #99d9ff;
-      // background-color: #66c6fe;
-      border: 5px solid black;
-      border-radius: 15px;
-      box-sizing: content-box;
-      height: 15px;
-    }
-    .range-knob {
-      border: 5px solid black;
-      box-sizing: content-box;
-    }
+    margin-top: -30px;
+  }
+  .range-slider .range-knob {
+    border: 5px solid black;
+    box-sizing: content-box;
+  }
+  .range-slider .range-bar {
+    border: 5px solid black;
+    box-sizing: content-box;
+    height: 15px;
+  }
+  .range-bar .range-bar-active {
+    border-radius: 0px;
+  }
+  [class="range-bar"] {
+    border-radius: 15px;
   }
   ion-grid {
     height: 100%;
