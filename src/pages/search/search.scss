@@ -1,15 +1,32 @@
 page-search {
+  .searchbar-md .searchbar-input {
+    padding: 6px 41px;
+  }
+  ion-content {
+    background-color: #f8f8f8;
+  }
+  .card-md {
+    border-radius: 0.4em;
+  }
   .extra-info {
     border-top: 1px solid lightgray;
+    span {
+      font-family: "Museo Sans Rounded 500";
+      font-size: 0.8em;
+    }
+    ion-badge{
+      font-family: "Museo Sans Rounded 500";
+    }
   }
-  .result-card {
-    margin-bottom: 20px;
+  .address {
+    font-family: "Museo Sans Rounded 500";
+    white-space: wrap;
+    max-height: 33px;
   }
   .text-bold {
-    font-weight: bold;
+    font-family: "Museo Sans Rounded 900";
   }
-
-  .text-italic{
+  .text-italic {
     font-style: italic;
     font-weight: 500;
   }
