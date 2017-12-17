@@ -4,6 +4,10 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
+  <ion-refresher color="primary">
+    <ion-searchbar placeholder="Search for a restaurant">
+    </ion-searchbar>
+  </ion-refresher>
   <ion-grid>
     <ion-row>
       <ion-col col-6 *ngFor="let restaurant of restaurants | async">
@@ -13,24 +17,12 @@
             <ion-card-title>
               {{ restaurant.name }}
             </ion-card-title>
-            <span class="resto-details">
-             <ion-icon name="flame"></ion-icon>
-              <span>Hot #3</span>
-            </span>
-            <span class="resto-details">
-              &bull;
-            </span>
-            <span class="resto-details">
-             <ion-icon name="flame"></ion-icon>
-              <span>New #3</span>
-            </span>
-            <span class="resto-details" *ngIf="restaurant.upvotesRank > 0">
-              &bull;
-            </span>
-            <span class="resto-details" *ngIf="restaurant.upvotesRank > 0">
-             <ion-icon name="flame"></ion-icon>
-              <span>Upvotes #{{ restaurant.upvotesRank }}</span>
-            </span>
+            <div class="resto-details">
+              <ion-badge>
+                <ion-icon name="flame"></ion-icon>
+                <span>Hot #3</span>
+              </ion-badge>
+            </div>
           </ion-card-content>
         </ion-card>
       </ion-col>

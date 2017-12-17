@@ -55,9 +55,10 @@
   border-radius: 0.4em;
 }
 
-.card-title-ios {
-  font-size: 1.1em;
-  font-weight: bold;
+.card-title-ios,
+.card-title-md {
+  font-family: "Museo Sans Rounded 700";
+  font-size: 1em;
   padding-top: 0px;
   padding-bottom: 0px;
   overflow: hidden;
@@ -65,8 +66,28 @@
   white-space: nowrap;
 }
 
+.toolbar-title-md {
+  font-family: "Museo Sans Rounded 700";
+  text-align: center;
+}
+
 .card-content-ios {
   padding: 5px 10px;
+}
+
+.card-md {
+  margin: 0px;
+  width: 100%;
+  border-radius: 0.4em;
+}
+
+.card-content-md {
+  padding: 12px 10px;
+}
+
+.resto-details ion-badge{
+  font-size: 1.2em;
+  margin-top: 5px;
 }
 
 .dot {
@@ -79,6 +100,10 @@ ion-title {
 
 ion-card-title {
   font-family: "Museo Sans Rounded 700";
+}
+
+ion-card > img{
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .resto-details {
