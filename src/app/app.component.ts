@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Platform } from 'ionic-angular';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { FirstRunPage, MainPage } from '../pages/pages';
 
@@ -16,10 +17,14 @@ export class MyApp {
     private platform: Platform,
     private statusBar: StatusBar,
     private splashScreen: SplashScreen,
+    private screen: ScreenOrientation,
     private afAuth: AngularFireAuth) {
 
+    this.screen.lock(this.screen.ORIENTATIONS.PORTRAIT_PRIMARY);
+    this.statusBar.backgroundColorByHexString('#352B6A');
+
     this.afAuth.authState.subscribe(auth => {
-      this.rootPage = auth? MainPage : FirstRunPage;
+      this.rootPage = auth ? MainPage : FirstRunPage;
     });
 
     this.platform.ready().then(() => {
@@ -27,7 +32,9 @@ export class MyApp {
       this.splashScreen.hide();
     });
 
+
+
   }
 
-  ionViewDidLoad() {}
+  ionViewDidLoad() { }
 }
