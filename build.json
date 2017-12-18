@@ -1,0 +1,11 @@
+{
+  "android": {
+    "release": {
+      "keystore": "Grubie.keystore",
+      "storePassword": "grubie",
+      "alias": "Grubie",
+      "password": "grubie",
+      "keystoreType": ""
+    }
+  }
+}
