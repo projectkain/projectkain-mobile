@@ -14,6 +14,7 @@ page-featured {
   .segment-md .segment-button {
     border: 1px solid color($colors, main);
     font-family: "Museo Sans Rounded 700";
+    font-size: 1.4rem;
     opacity: 1.0;
     text-transform: capitalize;
   }
@@ -37,7 +38,12 @@ page-featured {
     border-bottom: 0.55px solid #c8c7cc;
   } //Restaurant Name
   .item-md h2 {
-    font-family: "Museo Sans Rounded 700"
+    font-family: "Museo Sans Rounded 700";
+    font-size: 1.8rem;
+  }
+  .item img{
+    width: 50px;
+    height: 50px;
   }
   .item-md.item-block .item-inner {
     border-bottom: 0px;

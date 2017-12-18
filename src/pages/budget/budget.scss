@@ -1,24 +1,28 @@
 page-budget {
   .budget {
     font-family: 'Museo Sans Rounded 900';
-    font-size: 3.0rem;
+    font-size: 2.0em;
     letter-spacing: -2px;
     margin: 0px;
   }
   .heading {
     font-family: 'Museo Sans Rounded 1000';
-    font-size: 2.3em;
+    font-size: 2.7em;
+    line-height: 42px;
     margin-bottom: 0px;
   }
-  h4 {
-    margin: 8px 0px;
+  h2 {
+    margin: 2px 0px;
   }
   .budget-illustration img {
-    max-height: 135px;
+    max-height: 130px;
+  }
+  .budget-illustration{
+    padding: 8px 0px;
   }
   .range-ios,
   .range-md {
-    padding: 15px 10px;
+    padding: 15px 50px;
   }
   .range-md .range-knob,
   .range-md .range-knob-min.range-knob-min .range-knob {

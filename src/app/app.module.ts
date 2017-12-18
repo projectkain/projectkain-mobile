@@ -31,7 +31,7 @@ const FIREBASE_CONFIG = {
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp, {mode: 'ios'}),
+    IonicModule.forRoot(MyApp, {mode: 'md'}),
     IonicStorageModule.forRoot(),
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFirestoreModule,
