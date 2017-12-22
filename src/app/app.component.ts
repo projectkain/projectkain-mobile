@@ -35,7 +35,6 @@ export class MyApp {
     });
 
     this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
 
