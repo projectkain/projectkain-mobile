@@ -1,3 +1,4 @@
+import { IonicImageLoader } from 'ionic-image-loader';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { CallNumber } from '@ionic-native/call-number';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -38,7 +39,8 @@ const FIREBASE_CONFIG = {
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    AngularFirestoreModule.enablePersistence()
+    AngularFirestoreModule.enablePersistence(),
+    IonicImageLoader.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [

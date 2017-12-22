@@ -14,12 +14,10 @@ export class MenuPage {
   private restaurants: Restaurant[];
   constructor(
     private navCtrl: NavController,
-    private restaurantProvider: RestaurantProvider,
-    private spinnerDialog: SpinnerDialog) {
+    private restaurantProvider: RestaurantProvider) {
   }
 
   ionViewDidLoad() {
-    this.spinnerDialog.show(null, "Please wait");
     this.fetchData();
   }
 
@@ -31,7 +29,6 @@ export class MenuPage {
     this.restaurantProvider.getRestaurants()
       .subscribe(res => {
         this.restaurants = res;
-        this.spinnerDialog.hide();
       });
   }
 

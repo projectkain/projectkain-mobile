@@ -12,7 +12,6 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
-
 @font-face {
   font-family: 'Museo Sans Rounded 300';
   src: url($font-path + '/MuseoSansRounded-300.otf');
@@ -99,6 +98,21 @@
   content: "\B7";
 }
 
+.img-container {
+  background-color: #e8e6e9;
+  position: relative;
+  padding-top: 100%;
+  width: 100%;
+}
+
+.img-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
 ion-title {
   font-family: "Museo Sans Rounded 700"
 }
@@ -148,5 +162,4 @@ ion-icon {
   &[class*="grubie-settings"] {
     mask-image: url(../assets/settings.svg);
   }
-
 }

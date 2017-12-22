@@ -1,3 +1,4 @@
+import { IonicImageLoader } from 'ionic-image-loader';
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { MenuPage } from './menu';
@@ -8,6 +9,7 @@ import { MenuPage } from './menu';
   ],
   imports: [
     IonicPageModule.forChild(MenuPage),
+    IonicImageLoader
   ],
 })
 export class MenuPageModule {}

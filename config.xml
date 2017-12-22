@@ -3,7 +3,7 @@
     <name>Grubie</name>
     <description>An awesome food app.</description>
     <author email="gio@goodstone">GoodStone Team</author>
-    <content original-src="index.html" src="http://192.168.1.5:8100" />
+    <content original-src="index.html" src="http://192.168.1.3:8100" />
     <access origin="*" />
     <allow-navigation href="http://ionic.local/*" />
     <allow-intent href="http://*/*" />
@@ -87,6 +87,7 @@
     <allow-navigation href="http://192.168.1.6:8100" />
     <allow-navigation href="http://169.254.184.244:8100" />
     <allow-navigation href="http://192.168.1.5:8100" />
+    <allow-navigation href="http://192.168.1.3:8100" />
     <engine name="android" spec="6.3.0" />
     <engine name="ios" spec="4.5.2" />
     <plugin name="cordova-plugin-console" spec="^1.0.5" />
@@ -109,4 +110,6 @@
     <plugin name="cordova-plugin-nativestorage" spec="^2.2.2" />
     <plugin name="cordova-plugin-screen-orientation" spec="^2.0.2" />
     <plugin name="cordova-plugin-native-spinner" spec="^1.1.3" />
+    <plugin name="cordova-plugin-file-transfer" spec="~1.7.0" />
+    <plugin name="cordova-plugin-file" spec="~5.0.0" />
 </widget>

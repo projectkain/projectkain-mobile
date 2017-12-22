@@ -1,3 +1,4 @@
+import { ImageLoaderConfig } from 'ionic-image-loader';
 import { Component } from '@angular/core';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -18,7 +19,13 @@ export class MyApp {
     private statusBar: StatusBar,
     private splashScreen: SplashScreen,
     private screen: ScreenOrientation,
-    private afAuth: AngularFireAuth) {
+    private afAuth: AngularFireAuth,
+    private imageLoaderConfig: ImageLoaderConfig) {
+
+    this.imageLoaderConfig.setFallbackUrl('../assets/default-logo.png');
+    this.imageLoaderConfig.enableFallbackAsPlaceholder(true);
+    this.imageLoaderConfig.setConcurrency(10);
+    this.imageLoaderConfig.setImageReturnType('base64')
 
     this.screen.lock(this.screen.ORIENTATIONS.PORTRAIT_PRIMARY);
     this.statusBar.backgroundColorByHexString('#352B6A');
@@ -31,6 +38,7 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+
 
 
 
