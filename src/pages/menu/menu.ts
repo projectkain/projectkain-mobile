@@ -11,7 +11,7 @@ import { RestaurantProvider } from '../../providers/restaurant/restaurant';
   templateUrl: 'menu.html',
 })
 export class MenuPage {
-  private restaurants: Restaurant[];
+  private restaurants: Restaurant[] = null;
   constructor(
     private navCtrl: NavController,
     private restaurantProvider: RestaurantProvider) {

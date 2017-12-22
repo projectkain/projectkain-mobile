@@ -51,6 +51,10 @@
   font-family: "Museo Sans Rounded 500";
 }
 
+.no-scroll .scroll-content {
+  overflow: hidden;
+}
+
 .card-ios {
   border-radius: 0.4em;
 }
@@ -103,6 +107,7 @@
   position: relative;
   padding-top: 100%;
   width: 100%;
+  overflow: hidden;
 }
 
 .img-container img {
@@ -111,6 +116,28 @@
   left: 0;
   bottom: 0;
   right: 0;
+}
+
+@keyframes placeHolderShimmer {
+  0% {
+    background-position: -468px 0
+  }
+  100% {
+    background-position: 468px 0
+  }
+}
+
+.content-placeholder {
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: #e8e6e9;
+  background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+  background-size: 800px 104px;
+  border-radius: 0px;
+  height: 100%;
 }
 
 ion-title {
@@ -135,6 +162,10 @@ ion-card>img {
   color: color($colors, ternary);
   font-family: "Museo Sans Rounded 700";
   font-size: 0.9em;
+}
+
+ion-badge {
+  min-width: 5.2em;
 }
 
 ion-icon {
@@ -162,4 +193,5 @@ ion-icon {
   &[class*="grubie-settings"] {
     mask-image: url(../assets/settings.svg);
   }
+
 }

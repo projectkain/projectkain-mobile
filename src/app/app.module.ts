@@ -1,3 +1,4 @@
+import { ContentPlaceholderComponent } from './../components/content-placeholder/content-placeholder';
 import { IonicImageLoader } from 'ionic-image-loader';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { CallNumber } from '@ionic-native/call-number';
