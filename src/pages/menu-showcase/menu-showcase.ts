@@ -15,8 +15,8 @@ export class MenuShowcasePage {
   restaurant: Restaurant;
   title: string = '';
   defaultLogo: string;
-  bestsellers: any[];
-  menu: Observable<FoodItem[]>;
+  bestsellers: any[] = null;
+  menu: Observable<FoodItem[]> = null;
   upvoted: boolean;
 
   constructor(

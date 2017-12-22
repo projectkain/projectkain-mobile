@@ -8,10 +8,11 @@
     </ion-buttons>
   </ion-navbar>
 </ion-header>
-<ion-content>
+<ion-content [ngClass]="{'no-scroll': !((menu | async)) }">
   <ion-list-header>
     Best Sellers
   </ion-list-header>
+  <content-placeholder [count]="2"></content-placeholder>
   <ion-grid>
     <ion-row>
       <ion-col *ngFor="let bestseller of bestsellers; let i = index;" col-6>
@@ -33,14 +34,15 @@
     Other Meals
     <button ion-button color="ternary" item-end outline (tap)="viewAll()">View All</button>
   </ion-list-header>
+  <content-placeholder [count]="2" *ngIf="!(menu | async)"></content-placeholder>
   <ion-grid>
     <ion-row>
       <ion-col *ngIf="(menu | async)?.length === 0">
         <h1 class="heading" text-center>No Available Items</h1>
       </ion-col>
-      <ion-col *ngFor="let item of menu | async | slice:0:2;" col-6>
+      <ion-col *ngFor="let item of menu | async | slice:0:4;" col-6>
         <ion-card>
-          <img src="assets/default-logo.png"/>
+          <img src="assets/default-logo.png" />
           <ion-card-content>
             <ion-card-title text-wrap *ngIf="item.Variant === ''">
               {{ item.Name }}
