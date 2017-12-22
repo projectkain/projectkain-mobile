@@ -1,3 +1,4 @@
+import { ComponentsModule } from './../../components/components.module';
 import { IonicImageLoader } from 'ionic-image-loader';
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
@@ -7,11 +8,11 @@ import { ContentPlaceholderComponent } from '../../components/content-placeholde
 @NgModule({
   declarations: [
     MenuPage,
-    ContentPlaceholderComponent
   ],
   imports: [
     IonicPageModule.forChild(MenuPage),
     IonicImageLoader,
+    ComponentsModule
   ],
 })
 export class MenuPageModule { }
