@@ -98,6 +98,11 @@
   text-transform: capitalize;
 }
 
+[class="toolbar toolbar-md"] {
+  background: #f8f8f8;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
 .dot {
   content: "\B7";
 }
@@ -193,5 +198,4 @@ ion-icon {
   &[class*="grubie-settings"] {
     mask-image: url(../assets/settings.svg);
   }
-
 }
