@@ -42,7 +42,9 @@
       </ion-col>
       <ion-col *ngFor="let item of menu | async | slice:0:4;" col-6>
         <ion-card>
-          <img src="assets/default-logo.png" />
+          <div class="img-container">
+            <img-loader useImg></img-loader>
+          </div>
           <ion-card-content>
             <ion-card-title text-wrap *ngIf="item.Variant === ''">
               {{ item.Name }}
