@@ -1,3 +1,5 @@
+import { ComponentsModule } from './../../components/components.module';
+import { IonicImageLoader } from 'ionic-image-loader';
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { BudgetSelectRestaurantPage } from './budget-select-restaurant';
@@ -8,6 +10,8 @@ import { BudgetSelectRestaurantPage } from './budget-select-restaurant';
   ],
   imports: [
     IonicPageModule.forChild(BudgetSelectRestaurantPage),
+    IonicImageLoader,
+    ComponentsModule
   ],
 })
 export class BudgetSelectRestaurantPageModule {}

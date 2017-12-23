@@ -4,11 +4,14 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
+  <content-placeholder [count]="6" [noLabel]="true" *ngIf="!(restaurants | async)"></content-placeholder>
   <ion-grid>
     <ion-row>
       <ion-col col-6 *ngFor="let restaurant of restaurants | async">
         <ion-card (tap)="select(restaurant)">
-           <img [src]="restaurant.url"/>
+          <div class="img-container">
+            <img-loader [src]="restaurant.url" useImg></img-loader>
+          </div>
           <ion-card-content>
             <ion-card-title>
               {{ restaurant.name }}

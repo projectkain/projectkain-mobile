@@ -7,6 +7,7 @@ import { Component, Input } from '@angular/core';
 export class ContentPlaceholderComponent {
   private cards: any[] = null;
   @Input('count') count;
+  @Input('noLabel') noLabel = false;
 
   constructor() {}
 
