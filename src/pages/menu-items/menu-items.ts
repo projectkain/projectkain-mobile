@@ -14,7 +14,7 @@ import { RestaurantProvider } from '../../providers/restaurant/restaurant';
 export class MenuItemsPage {
   items: any[];
   defaultLogo: string
-  menu: Observable<FoodItem[]>;
+  menu: Observable<FoodItem[]> = null;
   restaurant: Restaurant;
   constructor(
     private navCtrl: NavController,
