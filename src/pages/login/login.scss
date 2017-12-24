@@ -1,18 +1,33 @@
-.vertical-align-content>* {
-  display: flex!important;
-  align-content: center!important;
-  align-items: center!important;
-}
-
-.logo {
-  padding: 10px 30px;
-}
-
-.container {
-  background-color: #352b6a;
-}
-
-.facebook-btn {
-  background-color: #3b5998;
-  text-transform: none;
+page-login {
+  .container {
+    background-color: #352b6a;
+  }
+  .scroll-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+  }
+  .scroll-content>img {
+    align-self: center;
+    margin-top: -50px;
+  }
+  .logo {
+    padding: 10px 30px;
+  }
+  .facebook-btn,
+  .facebook-btn.activated {
+    background: #4267b2;
+    border-radius: 5px;
+    color: white;
+    height: 40px; // width: 250px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.28em;
+    padding: 0 1.1em 0 0.2em;
+  }
+  [icon-left] ion-icon,
+  [icon-start] ion-icon {
+    padding-right: 0.5em;
+  }
 }
