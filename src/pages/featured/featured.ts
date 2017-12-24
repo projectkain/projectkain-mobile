@@ -16,11 +16,11 @@ import { Observable } from 'rxjs/Observable';
   templateUrl: 'featured.html',
 })
 export class FeaturedPage {
-  hotList = [];
-  newList = [];
-  private upvotesList: Observable<Restaurant[]>;
+  private hotList: any[] = [];
+  private newList: any[] = [];
+  private upvotesList: Restaurant[] = null;
+  private featured: string = 'Upvotes';
 
-  featured: string = 'Hot';
   constructor(
     private navCtrl: NavController,
     private navParams: NavParams,
@@ -44,7 +44,9 @@ export class FeaturedPage {
   }
 
   getUpvotesList() {
-    this.upvotesList = this.restaurantProvider.getUpvotesList();
+    this.restaurantProvider.getUpvotesList().subscribe(res => {
+      this.upvotesList = res;
+    })
   }
 
 

@@ -39,7 +39,13 @@ page-featured {
     font-family: "Museo Sans Rounded 700";
     font-size: 1.8rem;
   }
-  .item img{
+  ion-avatar {
+    background-color: #e8e6e9;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  .item img {
     width: 50px;
     height: 50px;
   }
@@ -60,8 +66,10 @@ page-featured {
     text-align: center;
     width: 20px;
   }
-
-  list-content-placeholder .numbering{
+  list-content-placeholder .numbering {
     color: #e8e6e9;
+  }
+  ion-badge {
+    min-width: 0px;
   }
 }

@@ -1,3 +1,5 @@
+import { ComponentsModule } from './../../components/components.module';
+import { IonicImageLoader } from 'ionic-image-loader';
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { FeaturedPage } from './featured';
@@ -8,6 +10,8 @@ import { FeaturedPage } from './featured';
   ],
   imports: [
     IonicPageModule.forChild(FeaturedPage),
+    IonicImageLoader,
+    ComponentsModule
   ],
 })
 export class FeaturedPageModule {}
