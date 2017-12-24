@@ -16,8 +16,8 @@ import { Observable } from 'rxjs/Observable';
   templateUrl: 'featured.html',
 })
 export class FeaturedPage {
-  private hotList: any[] = [];
-  private newList: any[] = [];
+  private hotList: any[] = null;
+  private newList: any[] = null;
   private upvotesList: Restaurant[] = null;
   private featured: string = 'Upvotes';
 

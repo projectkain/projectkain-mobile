@@ -19,14 +19,17 @@
 </ion-header>
 
 <ion-content>
+  <list-content-placeholder [count]="10"></list-content-placeholder>
+  <div class="white-bg" *ngIf="hotList && featured=='Hot'"></div>
+  <div class="white-bg" *ngIf="newList && featured=='New'"></div>
+  <div class="white-bg" *ngIf="upvotesList && featured=='Upvotes'"></div>
   <div [ngSwitch]="featured" class="featured">
-    <list-content-placeholder [count]="10" *ngIf="!hotList && !newList && !upvotesList"></list-content-placeholder>
     <ion-list *ngSwitchCase="'Hot'">
       <button ion-item *ngFor="let restaurant of hotList; let i = index;" detail-none>
         <div class="item-start" item-start>
           <div class="numbering">{{i+1}}</div>
           <ion-avatar>
-            <img-loader [src]="restaurant.logo" useImg></img-loader>
+            <img-loader [src]="restaurant.url" useImg></img-loader>
           </ion-avatar>
         </div>
         <h2>{{restaurant.name}}</h2>
@@ -37,7 +40,7 @@
         <div class="item-start" item-start>
           <div class="numbering">{{i+1}}</div>
           <ion-avatar>
-            <img-loader [src]="restaurant.logo" useImg></img-loader>
+            <img-loader [src]="restaurant.url" useImg></img-loader>
           </ion-avatar>
         </div>
         <h2>{{restaurant.name}}</h2>
@@ -48,7 +51,7 @@
         <div class="item-start" item-start>
           <div class="numbering">{{i+1}}</div>
           <ion-avatar>
-            <img-loader [src]="restaurant.logo" useImg></img-loader>
+            <img-loader [src]="restaurant.url" useImg></img-loader>
           </ion-avatar>
         </div>
         <h2>{{restaurant.name}}</h2>

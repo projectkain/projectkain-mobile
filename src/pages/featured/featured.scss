@@ -72,4 +72,16 @@ page-featured {
   ion-badge {
     min-width: 0px;
   }
+  list-content-placeholder {
+    position: fixed;
+    width: 100%;
+  }
+
+  .white-bg{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    position: fixed;
+  }
+
 }
