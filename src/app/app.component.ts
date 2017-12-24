@@ -22,7 +22,7 @@ export class MyApp {
     private afAuth: AngularFireAuth,
     private imageLoaderConfig: ImageLoaderConfig) {
 
-    this.imageLoaderConfig.setFallbackUrl('../assets/default-logo.png');
+    this.imageLoaderConfig.setFallbackUrl('assets/default-logo.png');
     this.imageLoaderConfig.enableFallbackAsPlaceholder(true);
     this.imageLoaderConfig.setConcurrency(10);
     this.imageLoaderConfig.setImageReturnType('base64')
