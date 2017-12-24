@@ -3,7 +3,7 @@
     <ion-title>Select a Restaurant</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content>
+<ion-content [ngClass]="{'no-scroll': !(restaurants | async) }">
   <content-placeholder [count]="6" [noLabel]="true" *ngIf="!(restaurants | async)"></content-placeholder>
   <ion-grid>
     <ion-row>
