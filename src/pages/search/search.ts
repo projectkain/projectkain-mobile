@@ -13,6 +13,7 @@ export class SearchPage {
 
   currentItems: any = [];
   private restaurants: Observable<Restaurant[]>;
+  private searchTerm: string = null;
   constructor(
     private navCtrl: NavController,
     private navParams: NavParams,
@@ -25,11 +26,12 @@ export class SearchPage {
 
   search(event) {
     this.restaurants = this.restaurantProvider.getRestaurants();
-    const value = event.target.value;
-    if(value && value.trim() != '') {
+    this.searchTerm = event.target.value;
+    console.log(this.searchTerm);
+    if(this.searchTerm && this.searchTerm.trim() != '') {
       this.restaurants = this.restaurants.map(items => {
         return items.filter(e => {
-          return e.name.trim().toLowerCase().includes(value.trim().toLowerCase());
+          return e.name.trim().toLowerCase().includes(this.searchTerm.trim().toLowerCase());
         });
       });
     }
