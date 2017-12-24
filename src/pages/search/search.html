@@ -14,7 +14,7 @@
   <ion-card *ngFor="let restaurant of restaurants | async" class="result-card">
     <ion-item>
       <ion-avatar item-start>
-        <img [src]="restaurant.url">
+        <img-loader [src]="restaurant.url" useImg></img-loader>
       </ion-avatar>
       <h2 class="text-bold">{{restaurant.name}}</h2>
       <p class="address">{{restaurant.address}}</p>
