@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RestaurantProvider } from '../../providers/restaurant/restaurant';
 import { Restaurant } from './../../models/restaurant';
+import { TabsPage } from '../tabs/tabs';
 
 @IonicPage()
 @Component({
@@ -17,7 +18,8 @@ export class SearchPage {
   constructor(
     private navCtrl: NavController,
     private navParams: NavParams,
-    private restaurantProvider: RestaurantProvider) {
+    private restaurantProvider: RestaurantProvider,
+    private tabs: TabsPage) {
   }
 
   ionViewDidLoad() {

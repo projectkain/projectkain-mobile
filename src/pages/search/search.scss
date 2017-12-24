@@ -44,17 +44,18 @@ page-search {
     height: 100%;
     flex-wrap: wrap;
   }
-
-  .empty-state img{
+  .empty-state img {
     max-height: 150px;
   }
-
-  .empty-state h1{
+  .empty-state h1 {
     font-family: 'Museo Sans Rounded 900';
     font-size: 2.1em;
   }
-  .empty-state h2{
+  .empty-state h2 {
     font-size: 1.5em;
     text-align: center;
+  }
+  .remove-tabs .scroll-content {
+    margin-bottom: 0px !important;
   }
 }

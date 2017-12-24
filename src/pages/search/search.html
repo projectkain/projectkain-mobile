@@ -4,7 +4,7 @@
     </ion-searchbar>
   </ion-toolbar>
 </ion-header>
-<ion-content>
+<ion-content [ngClass]="{'remove-tabs': tabs.checkKeyboard() }">
   <div class="empty-state" *ngIf="!(restaurants | async) || !searchTerm" padding>
     <img src="assets/shop.png">
     <h2>Find your favorite restaurants

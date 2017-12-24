@@ -1,4 +1,4 @@
-<ion-tabs selectedIndex="2">
+<ion-tabs selectedIndex="2" [ngClass]="{'remove-tabs': checkKeyboard() }">
   <ion-tab [root]="tab1Root" tabIcon="grubie-featured"></ion-tab>
   <ion-tab [root]="tab2Root" tabIcon="grubie-search"></ion-tab>
   <ion-tab [root]="tab3Root" tabIcon="grubie-budget"></ion-tab>

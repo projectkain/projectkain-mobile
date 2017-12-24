@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
-
+import { Keyboard } from 'ionic-angular/platform/keyboard';
 import {
   Tab1Root,
   Tab2Root,
@@ -21,5 +21,12 @@ export class TabsPage {
   tab4Root: any = Tab4Root;
   tab5Root: any = Tab5Root;
 
-  constructor(private navCtrl: NavController) {}
+  constructor(
+    private navCtrl: NavController,
+    private keyboard: Keyboard) { }
+
+  checkKeyboard() {
+    return this.keyboard.isOpen();
+  }
+
 }

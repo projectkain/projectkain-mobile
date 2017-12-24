@@ -1,3 +1,4 @@
+import { Keyboard } from '@ionic-native/keyboard';
 import { ContentPlaceholderComponent } from './../components/content-placeholder/content-placeholder';
 import { IonicImageLoader } from 'ionic-image-loader';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
@@ -56,6 +57,7 @@ const FIREBASE_CONFIG = {
     CallNumber,
     ScreenOrientation,
     SpinnerDialog,
+    Keyboard,
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     UpvoteProvider,
