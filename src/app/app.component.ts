@@ -27,8 +27,6 @@ export class MyApp {
     this.imageLoaderConfig.setConcurrency(10);
     this.imageLoaderConfig.setImageReturnType('base64')
 
-    this.screen.lock(this.screen.ORIENTATIONS.PORTRAIT_PRIMARY);
-    this.statusBar.backgroundColorByHexString('#352B6A');
 
     this.afAuth.authState.subscribe(auth => {
       this.rootPage = auth ? MainPage : FirstRunPage;
@@ -36,6 +34,8 @@ export class MyApp {
 
     this.platform.ready().then(() => {
       this.splashScreen.hide();
+      this.statusBar.backgroundColorByHexString('#352B6A');
+      this.screen.lock(this.screen.ORIENTATIONS.PORTRAIT_PRIMARY);
     });
 
 
