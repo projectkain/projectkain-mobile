@@ -55,14 +55,14 @@ export class MenuShowcasePage {
 
     if (this.restaurant.contactNumber != '') {
       sheet.buttons.unshift({
-        text: `Call ${this.restaurant.contactNumber}`,
+        text: `Call ${this.getContactNumber()}`,
         handler: () => {
-          this.callNumber.callNumber(this.restaurant.contactNumber, true);
+          this.callNumber.callNumber(this.getContactNumber(), true);
         }
       });
 
       sheet.buttons.unshift({
-        text: `Send SMS to ${this.restaurant.contactNumber}`,
+        text: `Send SMS to ${this.getContactNumber()}`,
         handler: () => {
           var options = {
             replaceLineBreaks: true,
@@ -70,7 +70,7 @@ export class MenuShowcasePage {
               intent: 'INTENT'
             }
           }
-          this.sms.send(this.restaurant.contactNumber, '', options);
+          this.sms.send(this.getContactNumber(), '', options);
         }
       });
     }
@@ -144,6 +144,13 @@ export class MenuShowcasePage {
       }
 
     });
+  }
+
+  getContactNumber() {
+    if (this.restaurant.contactNumber) {
+      let contactNumber = this.restaurant.contactNumber.trim().replace(' ', '');
+      return `(${contactNumber.substring(0,4)}) ${contactNumber.substring(4,7)} ${contactNumber.substring(7)}`
+    }
   }
 
 }
