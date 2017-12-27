@@ -3,6 +3,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Facebook } from '@ionic-native/facebook';
 import { Observable } from 'rxjs/Observable';
 import { User } from './../../models/user';
+import { SpinnerDialog } from '@ionic-native/spinner-dialog';
 import * as firebase from 'firebase';
 import {
   AngularFirestore,
@@ -17,7 +18,8 @@ export class AuthProvider {
   constructor(
     private afAuth: AngularFireAuth,
     private fb: Facebook,
-    private afs: AngularFirestore) {
+    private afs: AngularFirestore,
+    private spinnerDialog: SpinnerDialog) {
     this.authState = this.afAuth.authState
       .switchMap(user => {
         if (user) {
@@ -51,12 +53,14 @@ export class AuthProvider {
 
   async logIn() {
     try {
-      const response  = await this.fb.login(['email', 'public_profile']);
+      const response = await this.fb.login(['email', 'public_profile']);
       const credentials = firebase.auth.FacebookAuthProvider
         .credential(response.authResponse.accessToken);
+      this.spinnerDialog.show(null, "Logging in");
       await firebase.auth().signInWithCredential(credentials);
       this.updateUserData(this.getCurrentUser());
-    } catch(e) {
+      this.spinnerDialog.hide();
+    } catch (e) {
       throw new Error(e);
     }
   }
@@ -65,7 +69,7 @@ export class AuthProvider {
     try {
       await this.afAuth.auth.signOut();
       this.authState = null;
-    } catch(e) {
+    } catch (e) {
       throw new Error(e);
     }
   }
