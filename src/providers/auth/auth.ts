@@ -3,6 +3,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Facebook } from '@ionic-native/facebook';
 import { Observable } from 'rxjs/Observable';
 import { User } from './../../models/user';
+import { Dialogs } from '@ionic-native/dialogs';
 import { SpinnerDialog } from '@ionic-native/spinner-dialog';
 import * as firebase from 'firebase';
 import {
@@ -19,7 +20,8 @@ export class AuthProvider {
     private afAuth: AngularFireAuth,
     private fb: Facebook,
     private afs: AngularFirestore,
-    private spinnerDialog: SpinnerDialog) {
+    private spinnerDialog: SpinnerDialog,
+    private dialogs: Dialogs) {
     this.authState = this.afAuth.authState
       .switchMap(user => {
         if (user) {
@@ -62,6 +64,7 @@ export class AuthProvider {
       this.spinnerDialog.hide();
     } catch (e) {
       this.spinnerDialog.hide();
+      this.dialogs.alert("An error occurred while logging in. Please try again later.", "Login Failed");
       // throw new Error(e);
     }
   }

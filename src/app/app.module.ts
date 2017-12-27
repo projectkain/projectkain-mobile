@@ -20,6 +20,7 @@ import { AuthProvider } from '../providers/auth/auth';
 import { RestaurantProvider } from '../providers/restaurant/restaurant';
 import { UpvoteProvider } from '../providers/upvote/upvote';
 import { SpinnerDialog } from '@ionic-native/spinner-dialog';
+import { Dialogs } from '@ionic-native/dialogs';
 
 const FIREBASE_CONFIG = {
   apiKey: "AIzaSyCG5NS26JPIjiKiadt4LrtcGngvt2AWsfE",
@@ -58,6 +59,7 @@ const FIREBASE_CONFIG = {
     ScreenOrientation,
     SpinnerDialog,
     Keyboard,
+    Dialogs,
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     UpvoteProvider,
