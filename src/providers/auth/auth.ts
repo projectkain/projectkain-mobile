@@ -53,15 +53,16 @@ export class AuthProvider {
 
   async logIn() {
     try {
+      this.spinnerDialog.show(null, "Loading", true);
       const response = await this.fb.login(['email', 'public_profile']);
       const credentials = firebase.auth.FacebookAuthProvider
         .credential(response.authResponse.accessToken);
-      this.spinnerDialog.show(null, "Logging in");
       await firebase.auth().signInWithCredential(credentials);
       this.updateUserData(this.getCurrentUser());
       this.spinnerDialog.hide();
     } catch (e) {
-      throw new Error(e);
+      this.spinnerDialog.hide();
+      // throw new Error(e);
     }
   }
 
