@@ -49,7 +49,6 @@ export class MenuShowcasePage {
   async presentActionSheet() {
 
     let sheet = {
-      title: this.restaurant.name,
       buttons: []
     }
 
