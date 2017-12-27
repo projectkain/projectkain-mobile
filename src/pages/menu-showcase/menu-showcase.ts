@@ -6,6 +6,9 @@ import { RestaurantProvider } from '../../providers/restaurant/restaurant';
 import { IonicPage, NavController, NavParams, ActionSheetController, AlertController } from 'ionic-angular';
 import { CallNumber } from '@ionic-native/call-number';
 import { UpvoteProvider } from '../../providers/upvote/upvote';
+import { SMS } from '@ionic-native/sms';
+
+
 @IonicPage()
 @Component({
   selector: 'page-menu-showcase',
@@ -26,7 +29,8 @@ export class MenuShowcasePage {
     private navCtrl: NavController,
     private navParams: NavParams,
     private restaurantProvider: RestaurantProvider,
-    private upvoteProvider: UpvoteProvider) {
+    private upvoteProvider: UpvoteProvider,
+    private sms: SMS) {
   }
 
   ionViewDidLoad() {
@@ -54,6 +58,19 @@ export class MenuShowcasePage {
         text: `Call ${this.restaurant.contactNumber}`,
         handler: () => {
           this.callNumber.callNumber(this.restaurant.contactNumber, true);
+        }
+      });
+
+      sheet.buttons.unshift({
+        text: `Send SMS to ${this.restaurant.contactNumber}`,
+        handler: () => {
+          var options = {
+            replaceLineBreaks: true,
+            android: {
+              intent: 'INTENT'
+            }
+          }
+          this.sms.send(this.restaurant.contactNumber, '', options);
         }
       });
     }

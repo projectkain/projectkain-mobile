@@ -1,3 +1,4 @@
+import { SMS } from '@ionic-native/sms';
 import { Keyboard } from '@ionic-native/keyboard';
 import { ContentPlaceholderComponent } from './../components/content-placeholder/content-placeholder';
 import { IonicImageLoader } from 'ionic-image-loader';
@@ -60,6 +61,7 @@ const FIREBASE_CONFIG = {
     SpinnerDialog,
     Keyboard,
     Dialogs,
+    SMS,
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     UpvoteProvider,
