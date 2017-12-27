@@ -5,7 +5,7 @@
 </ion-header>
 <ion-content [ngClass]="{'no-scroll': !restaurants}">
   <ion-refresher color="primary" (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingText="Refreshing...">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh">
     </ion-refresher-content>
   </ion-refresher>
   <content-placeholder [count]="6" *ngIf="!restaurants"></content-placeholder>
