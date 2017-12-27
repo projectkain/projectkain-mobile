@@ -2,8 +2,10 @@
   <ion-navbar color="main">
     <ion-title>{{ title }}</ion-title>
   </ion-navbar>
-  <ion-searchbar (ionInput)="search($event)" placeholder="Search Meal" debounce="700">
-  </ion-searchbar>
+  <ion-toolbar>
+    <ion-searchbar (ionInput)="search($event)" placeholder="Search Meal" debounce="700">
+    </ion-searchbar>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content [ngClass]="{'no-scroll': !(menu | async) }">
