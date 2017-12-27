@@ -32,17 +32,14 @@ page-search {
     font-style: italic;
     font-weight: 500;
   }
-  .empty-state {
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    -webkit-box-align: center;
+  .container {
+    display: flex; // <-- This is responsible for vertical alignment
     justify-content: center;
-    align-content: center;
-    height: 100%;
-    flex-wrap: wrap;
+    height: calc(100vh - 112px);
+  }
+  .empty-state {
+    margin: auto 5px; // <-- This is responsible for vertical alignment
+    text-align: center;
   }
   .empty-state img {
     max-height: 150px;
