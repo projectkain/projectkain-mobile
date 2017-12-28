@@ -7,6 +7,7 @@ import { Platform } from 'ionic-angular';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { FirstRunPage, MainPage } from '../pages/pages';
+import { HeaderColor } from '@ionic-native/header-color';
 
 @Component({
   template: `<ion-nav #content [root]="rootPage"></ion-nav>`
@@ -22,7 +23,8 @@ export class MyApp {
     private screen: ScreenOrientation,
     private afAuth: AngularFireAuth,
     private imageLoaderConfig: ImageLoaderConfig,
-    private eventProvider: EventProvider) {
+    private eventProvider: EventProvider,
+    private headerColor: HeaderColor) {
 
     this.imageLoaderConfig.setFallbackUrl('assets/default-logo.png');
     this.imageLoaderConfig.enableFallbackAsPlaceholder(true);
@@ -37,6 +39,7 @@ export class MyApp {
     this.platform.ready().then(() => {
       this.splashScreen.hide();
       this.statusBar.backgroundColorByHexString('#352B6A');
+      this.headerColor.tint('#352B6A');
       this.screen.lock(this.screen.ORIENTATIONS.PORTRAIT_PRIMARY);
     });
 

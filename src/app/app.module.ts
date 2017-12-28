@@ -1,3 +1,4 @@
+import { HeaderColor } from '@ionic-native/header-color';
 import { SMS } from '@ionic-native/sms';
 import { Keyboard } from '@ionic-native/keyboard';
 import { ContentPlaceholderComponent } from './../components/content-placeholder/content-placeholder';
@@ -63,6 +64,7 @@ const FIREBASE_CONFIG = {
     Keyboard,
     Dialogs,
     EventProvider,
+    HeaderColor,
     SMS,
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler },
