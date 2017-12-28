@@ -29,7 +29,13 @@ export class RestaurantProvider {
   getUpvotesList() {
     return this.afs.collection<Restaurant>('restaurants', ref => {
       return ref.where('upvotesRank', '>', 0).orderBy('upvotesRank', 'asc').limit(20);
-    }).valueChanges();
+    }).snapshotChanges().map(changes => {
+      return changes.map(a => {
+        const data = a.payload.doc.data() as Restaurant;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      });
+    });
   }
 
   // getHotList() {
@@ -51,7 +57,7 @@ export class RestaurantProvider {
     return this.getRestaurants().map(restaurants => {
       return restaurants.map(async restaurant => {
         const data = await this.restoCollection.doc(restaurant.id).collection<FoodItem>('fooditems')
-        .valueChanges().toPromise();
+          .valueChanges().toPromise();
         restaurant.menu = data;
         return restaurant;
       });
@@ -61,9 +67,9 @@ export class RestaurantProvider {
   getMenuByBudget(restoId, budget) {
     const restoDoc = this.restoCollection.doc(restoId);
     return restoDoc.collection<FoodItem>('fooditems', ref => {
-      return ref.where('Price', '<', budget.upper+1)
-      .where('Price', '>', budget.lower-1)
-      .orderBy('Price', 'asc');
+      return ref.where('Price', '<', budget.upper + 1)
+        .where('Price', '>', budget.lower - 1)
+        .orderBy('Price', 'asc');
     }).valueChanges();
   }
 
