@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RestaurantProvider } from '../../providers/restaurant/restaurant';
 import { Restaurant } from './../../models/restaurant';
 import { Observable } from 'rxjs/Observable';
+import { Events } from 'ionic-angular';
 /**
  * Generated class for the FeaturedPage page.
  *
@@ -24,7 +25,8 @@ export class FeaturedPage {
   constructor(
     private navCtrl: NavController,
     private navParams: NavParams,
-    private restaurantProvider: RestaurantProvider) {
+    private restaurantProvider: RestaurantProvider,
+    private events: Events) {
   }
 
   ionViewDidLoad() {
@@ -47,6 +49,10 @@ export class FeaturedPage {
     this.restaurantProvider.getUpvotesList().subscribe(res => {
       this.upvotesList = res;
     })
+  }
+
+  select(restaurant: Restaurant){
+    this.events.publish('featured-restaurant', restaurant, 3);
   }
 
 

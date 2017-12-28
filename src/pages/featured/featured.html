@@ -47,7 +47,7 @@
       </button>
     </ion-list>
     <ion-list *ngSwitchCase="'Upvotes'">
-      <button ion-item *ngFor="let restaurant of upvotesList; let i = index;" detail-none>
+      <button ion-item *ngFor="let restaurant of upvotesList; let i = index;" detail-none (tap)="select(restaurant)">
         <div class="item-start" item-start>
           <div class="numbering">{{i+1}}</div>
           <ion-avatar>

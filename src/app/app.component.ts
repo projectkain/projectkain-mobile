@@ -1,3 +1,4 @@
+import { EventProvider } from './../providers/event/event';
 import { ImageLoaderConfig } from 'ionic-image-loader';
 import { Component } from '@angular/core';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -20,7 +21,8 @@ export class MyApp {
     private splashScreen: SplashScreen,
     private screen: ScreenOrientation,
     private afAuth: AngularFireAuth,
-    private imageLoaderConfig: ImageLoaderConfig) {
+    private imageLoaderConfig: ImageLoaderConfig,
+    private eventProvider: EventProvider) {
 
     this.imageLoaderConfig.setFallbackUrl('assets/default-logo.png');
     this.imageLoaderConfig.enableFallbackAsPlaceholder(true);
