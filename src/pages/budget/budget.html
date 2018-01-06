@@ -16,7 +16,7 @@
 
     </div>
     <h1 class="budget" text-center>P {{ budget.lower }}.00 - P {{ budget.upper }}.00</h1>
-    <ion-range min="50" max="500" snap="true" dualKnobs="true" [(ngModel)]="budget">
+    <ion-range min="10" max="500" snap="true" dualKnobs="true" [(ngModel)]="budget">
     </ion-range>
     <button ion-button round color="main" (click)="proceed(budget)">Proceed</button>
   </div>

@@ -31,16 +31,17 @@ export class MyApp {
     this.imageLoaderConfig.setConcurrency(10);
     this.imageLoaderConfig.setImageReturnType('base64')
 
+    this.rootPage = MainPage;
 
-    this.afAuth.authState.subscribe(auth => {
-      this.rootPage = auth ? MainPage : FirstRunPage;
-    });
+    // this.afAuth.authState.subscribe(auth => {
+    //   this.rootPage = auth ? MainPage : FirstRunPage;
+    // });
 
     this.platform.ready().then(() => {
       this.splashScreen.hide();
       this.statusBar.backgroundColorByHexString('#352B6A');
       this.headerColor.tint('#352B6A');
-      this.screen.lock(this.screen.ORIENTATIONS.PORTRAIT_PRIMARY);
+      // this.screen.lock(this.screen.ORIENTATIONS.PORTRAIT_PRIMARY);
     });
 
 

@@ -26,14 +26,14 @@ export class MenuPage {
   }
 
   fetchData() {
-    this.restaurantProvider.getRestaurants()
+    this.restaurantProvider.getAllRestaurants()
       .subscribe(res => {
         this.restaurants = res;
       });
   }
 
   doRefresh(refresh) {
-    this.restaurantProvider.getRestaurants()
+    this.restaurantProvider.getAllRestaurants()
       .subscribe(res => {
         this.restaurants = res;
         setTimeout(() => {

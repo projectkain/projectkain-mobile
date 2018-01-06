@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
 import { Restaurant } from './../../models/restaurant';
 import { ModalController, IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RestaurantProvider } from '../../providers/restaurant/restaurant';
+import { FoodItemProvider } from '../../providers/food-item/food-item';
 
 @IonicPage()
 @Component({
@@ -15,17 +16,19 @@ export class MenuItemsPage {
   items: any[];
   defaultLogo: string
   menu: Observable<FoodItem[]> = null;
+  temp: Observable<FoodItem[]> = null;
   restaurant: Restaurant;
   constructor(
     private navCtrl: NavController,
     private navParams: NavParams,
     private modalCtrl: ModalController,
-    private restaurantProvider: RestaurantProvider) {
+    private restaurantProvider: RestaurantProvider,
+    private foodItemProvider: FoodItemProvider) {
   }
 
   ionViewWillEnter() {
     this.restaurant = this.navParams.get('restaurant');
-    this.menu = this.restaurantProvider.getMenu(this.restaurant.id);
+    this.temp = this.menu = this.foodItemProvider.getRestoMenu(this.restaurant.id);
   }
 
   filter(){
@@ -34,7 +37,7 @@ export class MenuItemsPage {
   }
 
   search(event) {
-    this.menu = this.restaurantProvider.getMenu(this.restaurant.id);
+    this.menu = this.temp;
     const value = event.target.value;
     if(value && value.trim() != '') {
       this.menu = this.menu.map(items => {

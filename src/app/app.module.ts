@@ -13,13 +13,14 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { IonicStorageModule } from '@ionic/storage';
 import { AngularFireModule } from "angularfire2";
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 
 import { AuthProvider } from '../providers/auth/auth';
 import { RestaurantProvider } from '../providers/restaurant/restaurant';
+import { FoodItemProvider } from '../providers/food-item/food-item';
 import { UpvoteProvider } from '../providers/upvote/upvote';
 import { SpinnerDialog } from '@ionic-native/spinner-dialog';
 import { Dialogs } from '@ionic-native/dialogs';
@@ -43,9 +44,8 @@ const FIREBASE_CONFIG = {
     IonicModule.forRoot(MyApp, {mode: 'md'}),
     IonicStorageModule.forRoot(),
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
-    AngularFirestoreModule,
+    AngularFireDatabaseModule,
     AngularFireAuthModule,
-    AngularFirestoreModule.enablePersistence(),
     IonicImageLoader.forRoot()
   ],
   bootstrap: [IonicApp],
@@ -69,6 +69,7 @@ const FIREBASE_CONFIG = {
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     UpvoteProvider,
+    FoodItemProvider
   ]
 })
 export class AppModule { }

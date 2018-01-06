@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { FoodItemProvider } from '../../providers/food-item/food-item';
 import { RestaurantProvider } from '../../providers/restaurant/restaurant';
 import { Restaurant } from './../../models/restaurant';
+import { FoodItem } from './../../models/foodItem';
 import 'rxjs/add/operator/toPromise';
 /**
  * Generated class for the MenuPage page.
@@ -18,15 +20,21 @@ import 'rxjs/add/operator/toPromise';
 })
 export class BudgetSelectRestaurantPage {
   private restaurants: Observable<Restaurant[]>;
-  budget:number = this.navParams.get('budget');
+  private budget: number;
+  private ids: any;
   constructor(
     private navCtrl: NavController,
     private navParams: NavParams,
-    private restaurantProvider: RestaurantProvider) {
+    private foodItemProvider: FoodItemProvider,
+    private restaurantProvider: RestaurantProvider,) {
   }
 
-  ionViewDidLoad() {
-    this.restaurants = this.restaurantProvider.getRestaurants();
+  ionViewWillEnter() {
+    this.budget = this.navParams.get('budget');
+    this.foodItemProvider.getRestaurantByBudget(this.budget).subscribe(ids => {
+      this.ids = ids;
+      this.restaurants = this.restaurantProvider.getRestaurantsById(ids);
+    });
   }
 
   select(restaurant: Restaurant) {

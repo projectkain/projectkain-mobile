@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 import { IonicPage, NavController } from 'ionic-angular';
+import { FoodItemProvider } from '../../providers/food-item/food-item';
+import { _ } from 'lodash';
 
 @IonicPage()
 @Component({
@@ -8,12 +11,16 @@ import { IonicPage, NavController } from 'ionic-angular';
 })
 export class BudgetPage {
 
+  private restaurantIds: Observable<any[]>;
+
   private budget:Object = {
-    lower: 50,
-    upper: 300
+    lower: 400,
+    upper: 500
   };
 
-  constructor(private navCtrl: NavController) {}
+  constructor(
+    private navCtrl: NavController,
+    private foodItemProvider: FoodItemProvider) {}
 
   proceed(budget) {
     this.navCtrl.push('BudgetSelectRestaurantPage', { budget });

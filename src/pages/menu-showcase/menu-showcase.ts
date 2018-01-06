@@ -1,8 +1,9 @@
-import { Restaurant } from './../../models/restaurant';
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { Restaurant } from './../../models/restaurant';
 import { FoodItem } from './../../models/foodItem';
 import { RestaurantProvider } from '../../providers/restaurant/restaurant';
+import { FoodItemProvider } from '../../providers/food-item/food-item';
 import { IonicPage, NavController, NavParams, ActionSheetController, AlertController } from 'ionic-angular';
 import { CallNumber } from '@ionic-native/call-number';
 import { UpvoteProvider } from '../../providers/upvote/upvote';
@@ -30,38 +31,38 @@ export class MenuShowcasePage {
     private navParams: NavParams,
     private restaurantProvider: RestaurantProvider,
     private upvoteProvider: UpvoteProvider,
-    private sms: SMS) {
+    private sms: SMS,
+    private foodItemProvider: FoodItemProvider) {
   }
 
-  ionViewDidLoad() {
+  ionViewWillEnter() {
     this.restaurant = this.navParams.get('restaurant');
-    this.menu = this.restaurantProvider.getMenu(this.restaurant.id);
+    this.menu = this.foodItemProvider.getRestoMenu(this.restaurant.id);
     this.title = this.restaurant.name;
     this.checkUpvoted();
   }
 
-  viewAll() {
+  viewAll(menu) {
     this.navCtrl.push('MenuItemsPage', {
-      restaurant: this.restaurant,
+      restaurant: this.restaurant
     });
   }
 
-  async presentActionSheet() {
+  presentActionSheet() {
 
-    let sheet = {
-      buttons: []
-    }
+    const sheet = { buttons: [] };
+    const contactNumber = this.getContactNumber();
 
-    if (this.restaurant.contactNumber != '') {
+    if (contactNumber != '') {
       sheet.buttons.unshift({
-        text: `Call ${this.getContactNumber()}`,
+        text: `Call ${contactNumber}`,
         handler: () => {
-          this.callNumber.callNumber(this.getContactNumber(), true);
+          this.callNumber.callNumber(contactNumber, true);
         }
       });
 
       sheet.buttons.unshift({
-        text: `Send SMS to ${this.getContactNumber()}`,
+        text: `Send SMS to ${contactNumber}`,
         handler: () => {
           var options = {
             replaceLineBreaks: true,
@@ -69,7 +70,7 @@ export class MenuShowcasePage {
               intent: 'INTENT'
             }
           }
-          this.sms.send(this.getContactNumber(), '', options);
+          this.sms.send(contactNumber, '', options);
         }
       });
     }
@@ -130,25 +131,28 @@ export class MenuShowcasePage {
   }
 
   doUpvote() {
-    this.upvoteProvider.setUpvote(this.restaurant.id);
+    // this.upvoteProvider.setUpvote(this.restaurant.id);
   }
 
   checkUpvoted() {
-    this.upvoteProvider.getUserUpvotes().subscribe(upvotes => {
-      if (upvotes.filter(u => u.restoId === this.restaurant.id).length > 0) {
-        this.upvoted = true;
-      }
-      else {
-        this.upvoted = false;
-      }
-
-    });
+    // this.upvoteProvider.getUserUpvotes().subscribe(upvotes => {
+    //   if (upvotes.filter(u => u.restoId === this.restaurant.id).length > 0) {
+    //     this.upvoted = true;
+    //   }
+    //   else {
+    //     this.upvoted = false;
+    //   }
+    //
+    // });
   }
 
   getContactNumber() {
     if (this.restaurant.contactNumber) {
       let contactNumber = this.restaurant.contactNumber.trim().replace(' ', '');
       return `(${contactNumber.substring(0,4)}) ${contactNumber.substring(4,7)} ${contactNumber.substring(7)}`
+    }
+    else {
+      return '';
     }
   }
 

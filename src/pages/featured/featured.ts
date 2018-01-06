@@ -46,9 +46,9 @@ export class FeaturedPage {
   }
 
   getUpvotesList() {
-    this.restaurantProvider.getUpvotesList().subscribe(res => {
-      this.upvotesList = res;
-    })
+    // this.restaurantProvider.getUpvotesList().subscribe(res => {
+    //   this.upvotesList = res;
+    // })
   }
 
   select(restaurant: Restaurant){

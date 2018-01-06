@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Restaurant } from './../../models/restaurant';
 import { FoodItem } from './../../models/foodItem';
-import { RestaurantProvider } from '../../providers/restaurant/restaurant';
+import { FoodItemProvider } from '../../providers/food-item/food-item';
 import { IonicPage, NavParams, ActionSheetController, AlertController } from 'ionic-angular';
 import { CallNumber } from '@ionic-native/call-number';
 
@@ -15,6 +15,7 @@ export class BudgetMenuItemsPage {
 
   restaurant: Restaurant;
   menu: Observable<FoodItem[]>;
+  temp: Observable<FoodItem[]>;
   budget: Object;
   title: string = '';
 
@@ -23,18 +24,19 @@ export class BudgetMenuItemsPage {
     private alertCtrl: AlertController,
     private callNumber: CallNumber,
     private navParams: NavParams,
-    private restaurantProvider: RestaurantProvider) {
+    private foodItemProvider: FoodItemProvider) {
   }
 
   ionViewWillEnter() {
     this.restaurant = this.navParams.get('restaurant');
     this.budget = this.navParams.get('budget');
-    this.menu = this.restaurantProvider.getMenuByBudget(this.restaurant.id, this.budget);
+    this.menu = this.foodItemProvider.getFoodItemByBudget(this.restaurant.id, this.budget);
+    this.temp = this.menu;
     this.title = this.restaurant.name;
   }
 
   search(event) {
-    this.menu = this.restaurantProvider.getMenuByBudget(this.restaurant.id, this.budget);
+    this.menu = this.temp;
     const value = event.target.value;
     if (value && value.trim() != '') {
       this.menu = this.menu.map(items => {

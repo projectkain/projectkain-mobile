@@ -25,17 +25,16 @@ export class SearchPage {
   }
 
   ionViewDidLoad() {
-    // this.restaurants = this.restaurantProvider.getRestaurants();
+    this.restaurants = this.restaurantProvider.getAllRestaurants();
   }
 
-  ionViewDidEnter() {
+  ionViewWillEnter() {
     this.searchbar.setFocus();
   }
 
   search(event) {
-    this.restaurants = this.restaurantProvider.getRestaurants();
+    this.restaurants = this.restaurantProvider.getAllRestaurants();
     this.searchTerm = event.target.value;
-    console.log(this.searchTerm);
     if (this.searchTerm && this.searchTerm.trim() != '') {
       this.restaurants = this.restaurants.map(items => {
         return items.filter(e => {

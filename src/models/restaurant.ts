@@ -7,10 +7,7 @@ export interface Restaurant {
   category:      string;
   contactNumber: string;
   storeHours:    string;
-  menu:          FoodItem[];
   url:           string;
   upvotes:       number;
-  upvotesRank:   number;
-  minPrice?:      number;
-  maxPrice?:      number;
+  socialmedia:   object[];
 }
