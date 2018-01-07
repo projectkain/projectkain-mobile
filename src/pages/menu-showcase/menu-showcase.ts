@@ -40,8 +40,7 @@ export class MenuShowcasePage {
   }
 
   ionViewDidLoad() {
-    // this.userId = this.authProvider.getCurrentUserId();
-    this.userId = 'RXdoBLpO7KTOIS7ScDZTglVJJMe2';
+    this.userId = this.authProvider.getCurrentUserId();
   }
 
   ionViewWillEnter() {
