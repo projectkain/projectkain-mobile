@@ -4,11 +4,13 @@ import { Restaurant } from './../../models/restaurant';
 import { FoodItem } from './../../models/foodItem';
 import { RestaurantProvider } from '../../providers/restaurant/restaurant';
 import { FoodItemProvider } from '../../providers/food-item/food-item';
+import { AuthProvider } from '../../providers/auth/auth';
 import { IonicPage, NavController, NavParams, ActionSheetController, AlertController } from 'ionic-angular';
 import { CallNumber } from '@ionic-native/call-number';
 import { UpvoteProvider } from '../../providers/upvote/upvote';
 import { SMS } from '@ionic-native/sms';
 
+import _ from 'lodash';
 
 @IonicPage()
 @Component({
@@ -19,9 +21,10 @@ export class MenuShowcasePage {
   restaurant: Restaurant;
   title: string = '';
   defaultLogo: string;
+  userId: string;
   bestsellers: Array<FoodItem> = [];
   menu: Array<FoodItem> = [];
-  upvoted: boolean;
+  upvoteExists: boolean = false;
 
   constructor(
     private actionSheetCtrl: ActionSheetController,
@@ -32,16 +35,22 @@ export class MenuShowcasePage {
     private restaurantProvider: RestaurantProvider,
     private upvoteProvider: UpvoteProvider,
     private sms: SMS,
-    private foodItemProvider: FoodItemProvider) {
+    private foodItemProvider: FoodItemProvider,
+    private authProvider: AuthProvider) {
+  }
+
+  ionViewDidLoad() {
+    // this.userId = this.authProvider.getCurrentUserId();
+    this.userId = 'RXdoBLpO7KTOIS7ScDZTglVJJMe2';
   }
 
   ionViewWillEnter() {
     this.restaurant = this.navParams.get('restaurant');
+    this.checkUpvoted();
+    this.title = this.restaurant.name;
     this.foodItemProvider.getRestoMenu(this.restaurant.id).subscribe((foods:Array<FoodItem>) => {
       this.menu = foods;
     });
-    this.title = this.restaurant.name;
-    this.checkUpvoted();
   }
 
   viewAll(menu) {
@@ -90,7 +99,7 @@ export class MenuShowcasePage {
       }
     });
 
-    if (!this.upvoted) {
+    if (!this.upvoteExists) {
       sheet.buttons.unshift({
         text: `Upvote`,
         handler: () => {
@@ -132,20 +141,14 @@ export class MenuShowcasePage {
     actionSheet.present();
   }
 
-  doUpvote() {
-    // this.upvoteProvider.setUpvote(this.restaurant.id);
+  async doUpvote() {
+    this.upvoteProvider.setUpvote(this.restaurant.id);
   }
 
   checkUpvoted() {
-    // this.upvoteProvider.getUserUpvotes().subscribe(upvotes => {
-    //   if (upvotes.filter(u => u.restoId === this.restaurant.id).length > 0) {
-    //     this.upvoted = true;
-    //   }
-    //   else {
-    //     this.upvoted = false;
-    //   }
-    //
-    // });
+    this.upvoteProvider.getAFReference().subscribe(upvotes => {
+      this.upvoteExists = _.has(upvotes, `${this.userId}-${this.restaurant.id}`);
+    });
   }
 
   getContactNumber() {
