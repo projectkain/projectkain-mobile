@@ -6,6 +6,8 @@ import { FoodItemProvider } from '../../providers/food-item/food-item';
 import { IonicPage, NavParams, ActionSheetController, AlertController } from 'ionic-angular';
 import { CallNumber } from '@ionic-native/call-number';
 
+import _ from 'lodash';
+
 @IonicPage()
 @Component({
   selector: 'page-budget-menu-items',
@@ -14,8 +16,8 @@ import { CallNumber } from '@ionic-native/call-number';
 export class BudgetMenuItemsPage {
 
   restaurant: Restaurant;
-  menu: Observable<FoodItem[]>;
-  temp: Observable<FoodItem[]>;
+  menu: Array<FoodItem> = [];
+  temp: Array<FoodItem> = [];
   budget: Object;
   title: string = '';
 
@@ -30,19 +32,18 @@ export class BudgetMenuItemsPage {
   ionViewWillEnter() {
     this.restaurant = this.navParams.get('restaurant');
     this.budget = this.navParams.get('budget');
-    this.menu = this.foodItemProvider.getFoodItemByBudget(this.restaurant.id, this.budget);
-    this.temp = this.menu;
     this.title = this.restaurant.name;
+    this.foodItemProvider.getFoodItemByBudget(this.restaurant.id, this.budget).subscribe((foods:Array<FoodItem>) => {
+      this.temp = this.menu = foods;
+    });
   }
 
   search(event) {
     this.menu = this.temp;
     const value = event.target.value;
     if (value && value.trim() != '') {
-      this.menu = this.menu.map(items => {
-        return items.filter(e => {
-          return e.Name.trim().toLowerCase().includes(value.trim().toLowerCase());
-        });
+      this.menu = _.filter(this.menu, item => {
+        return item.Name.trim().toLowerCase().includes(value.trim().toLowerCase());
       });
     }
   }

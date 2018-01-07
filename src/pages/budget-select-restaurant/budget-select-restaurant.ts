@@ -19,7 +19,7 @@ import 'rxjs/add/operator/toPromise';
   templateUrl: 'budget-select-restaurant.html',
 })
 export class BudgetSelectRestaurantPage {
-  private restaurants: Observable<Restaurant[]>;
+  private restaurants: Array<Restaurant> = [];
   private budget: number;
   private ids: any;
   constructor(
@@ -33,7 +33,9 @@ export class BudgetSelectRestaurantPage {
     this.budget = this.navParams.get('budget');
     this.foodItemProvider.getRestaurantByBudget(this.budget).subscribe(ids => {
       this.ids = ids;
-      this.restaurants = this.restaurantProvider.getRestaurantsById(ids);
+      this.restaurantProvider.getRestaurantsById(ids).subscribe((restaurants:Array<Restaurant>) => {
+        this.restaurants = restaurants;
+      });
     });
   }
 

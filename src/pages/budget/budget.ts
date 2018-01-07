@@ -11,10 +11,8 @@ import { _ } from 'lodash';
 })
 export class BudgetPage {
 
-  private restaurantIds: Observable<any[]>;
-
   private budget:Object = {
-    lower: 400,
+    lower: 10,
     upper: 500
   };
 

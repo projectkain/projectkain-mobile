@@ -19,8 +19,8 @@ export class MenuShowcasePage {
   restaurant: Restaurant;
   title: string = '';
   defaultLogo: string;
-  bestsellers: any[] = null;
-  menu: Observable<FoodItem[]> = null;
+  bestsellers: Array<FoodItem> = [];
+  menu: Array<FoodItem> = [];
   upvoted: boolean;
 
   constructor(
@@ -37,7 +37,9 @@ export class MenuShowcasePage {
 
   ionViewWillEnter() {
     this.restaurant = this.navParams.get('restaurant');
-    this.menu = this.foodItemProvider.getRestoMenu(this.restaurant.id);
+    this.foodItemProvider.getRestoMenu(this.restaurant.id).subscribe((foods:Array<FoodItem>) => {
+      this.menu = foods;
+    });
     this.title = this.restaurant.name;
     this.checkUpvoted();
   }

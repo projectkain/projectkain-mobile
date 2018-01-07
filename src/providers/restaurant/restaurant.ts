@@ -27,6 +27,10 @@ export class RestaurantProvider {
     });
   }
 
+  getOneRestaurant(id) {
+    return this.db.object(`/restaurants/${id}`).valueChanges();
+  }
+
   // getHotList() {
   //
   // }

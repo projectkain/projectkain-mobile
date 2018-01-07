@@ -6,6 +6,7 @@ import { Restaurant } from './../../models/restaurant';
 import { ModalController, IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RestaurantProvider } from '../../providers/restaurant/restaurant';
 import { FoodItemProvider } from '../../providers/food-item/food-item';
+import _ from 'lodash';
 
 @IonicPage()
 @Component({
@@ -15,8 +16,8 @@ import { FoodItemProvider } from '../../providers/food-item/food-item';
 export class MenuItemsPage {
   items: any[];
   defaultLogo: string
-  menu: Observable<FoodItem[]> = null;
-  temp: Observable<FoodItem[]> = null;
+  menu: Array<FoodItem> = [];
+  temp: Array<FoodItem> = [];
   restaurant: Restaurant;
   constructor(
     private navCtrl: NavController,
@@ -28,7 +29,9 @@ export class MenuItemsPage {
 
   ionViewWillEnter() {
     this.restaurant = this.navParams.get('restaurant');
-    this.temp = this.menu = this.foodItemProvider.getRestoMenu(this.restaurant.id);
+    this.foodItemProvider.getRestoMenu(this.restaurant.id).subscribe((foods:Array<FoodItem>) => {
+      this.temp = this.menu = foods;
+    });
   }
 
   filter(){
@@ -40,10 +43,8 @@ export class MenuItemsPage {
     this.menu = this.temp;
     const value = event.target.value;
     if(value && value.trim() != '') {
-      this.menu = this.menu.map(items => {
-        return items.filter(e => {
-          return e.Name.trim().toLowerCase().includes(value.trim().toLowerCase());
-        });
+      this.menu = _.filter(this.menu, item => {
+        return item.Name.trim().toLowerCase().includes(value.trim().toLowerCase());
       });
     }
   }

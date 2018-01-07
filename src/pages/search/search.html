@@ -3,7 +3,28 @@
     <ion-searchbar #searchbar (ionInput)="search($event)" placeholder="Search for a Restaurant or Meal" debounce="700" color="main">
     </ion-searchbar>
   </ion-toolbar>
+  <ion-toolbar>
+    <ion-segment color="main" [(ngModel)]="selected">
+      <ion-segment-button value="restaurants">
+        Restaurants
+          {{
+            (((restaurants).length > 0) && searchTerm && searchTerm.trim().length >= 3)
+              ? (restaurants).length
+              : ''
+          }}
+      </ion-segment-button>
+      <ion-segment-button value="food">
+        Food
+        {{
+          (((fooditems).length > 0) && searchTerm && searchTerm.trim().length >= 3)
+            ? (fooditems).length
+            : ''
+        }}
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 </ion-header>
+
 <ion-content [ngClass]="{'remove-tabs': tabs.checkKeyboard() }">
   <div class="container" *ngIf="!searchTerm">
     <div class="empty-state" padding>
@@ -13,26 +34,72 @@
     </div>
   </div>
 
-  <ng-container *ngIf="searchTerm">
-    <ion-card *ngFor="let restaurant of restaurants | async" class="result-card">
-      <ion-item>
-        <ion-avatar item-start>
-          <img-loader [src]="restaurant.url" useImg></img-loader>
-        </ion-avatar>
-        <h2 class="text-bold">{{restaurant.name}}</h2>
-        <p class="address">{{restaurant.address}}</p>
-      </ion-item>
-      <ion-item class="extra-info">
-        <span color="ternary" ion-text item-start>P10.00 - P50.00</span>
-        <ion-badge color="main" item-end>{{restaurant.category}}</ion-badge>
-      </ion-item>
-    </ion-card>
-  </ng-container>
+  <div [ngSwitch]="selected">
+    <div *ngSwitchCase="'restaurants'">
 
-  <div class="container" *ngIf="(restaurants | async)?.length === 0 && searchTerm">
-    <div class="empty-state" padding>
-      <img src="assets/trolley.png">
-      <h2>Oops! No match found for the search term.</h2>
+      <ng-container *ngIf="searchTerm && searchTerm.trim().length >= 3">
+        <ion-card *ngFor="let restaurant of restaurants" class="result-card">
+          <ion-item>
+            <ion-avatar item-start>
+              <img-loader [src]="restaurant.url" useImg></img-loader>
+            </ion-avatar>
+            <h2 class="text-bold">{{restaurant.name}}</h2>
+            <p class="address">{{restaurant.address}}</p>
+          </ion-item>
+          <ion-item class="extra-info">
+            <span color="ternary" ion-text item-start>P10.00 - P50.00</span>
+            <ion-badge color="main" item-end>{{restaurant.category}}</ion-badge>
+          </ion-item>
+        </ion-card>
+      </ng-container>
+
+      <div class="container" *ngIf="(restaurants).length === 0 && searchTerm">
+        <div class="empty-state" padding>
+          <img src="assets/trolley.png">
+          <h2>Oops! No match found for the search term.</h2>
+        </div>
+      </div>
+
+      <div class="container" *ngIf="((restaurants).length > 0) && searchTerm && searchTerm.trim().length < 3">
+        <div class="empty-state" padding>
+          <img src="assets/trolley.png">
+          <h2>Oops! Please enter a longer search term.</h2>
+        </div>
+      </div>
+
+    </div>
+    <div *ngSwitchCase="'food'">
+      <ng-container *ngIf="searchTerm && searchTerm.trim().length >= 3">
+        <ion-card *ngFor="let fooditem of fooditems" class="result-card">
+          <ion-item>
+            <!-- <ion-avatar item-start>
+              <img-loader [src]="restaurant.url" useImg></img-loader>
+            </ion-avatar> -->
+            <h2 class="text-bold">{{fooditem.Name}}</h2>
+            <!-- <p class="address">{{restaurant.address}}</p> -->
+          </ion-item>
+          <ion-item class="extra-info">
+            <span color="ternary" ion-text item-start>P {{ fooditem.Price }}.00</span>
+            <ion-badge color="main" item-end>{{ getOneResto(fooditem.restaurantId).name }}</ion-badge>
+          </ion-item>
+        </ion-card>
+      </ng-container>
+
+      <div class="container" *ngIf="(fooditems).length === 0 && searchTerm">
+        <div class="empty-state" padding>
+          <img src="assets/trolley.png">
+          <h2>Oops! No match found for the search term.</h2>
+        </div>
+      </div>
+
+      <div class="container" *ngIf="((fooditems).length > 0) && searchTerm && searchTerm.trim().length < 3">
+        <div class="empty-state" padding>
+          <img src="assets/trolley.png">
+          <h2>Oops! Please enter a longer search term.</h2>
+        </div>
+      </div>
+
     </div>
   </div>
+
 </ion-content>

@@ -11,7 +11,7 @@ import { RestaurantProvider } from '../../providers/restaurant/restaurant';
   templateUrl: 'menu.html',
 })
 export class MenuPage {
-  private restaurants: Restaurant[] = null;
+  private restaurants: Array<Restaurant> = [];
   constructor(
     private navCtrl: NavController,
     private restaurantProvider: RestaurantProvider) {
@@ -26,10 +26,9 @@ export class MenuPage {
   }
 
   fetchData() {
-    this.restaurantProvider.getAllRestaurants()
-      .subscribe(res => {
-        this.restaurants = res;
-      });
+    this.restaurantProvider.getAllRestaurants().subscribe(res => {
+      this.restaurants = res;
+    });
   }
 
   doRefresh(refresh) {
