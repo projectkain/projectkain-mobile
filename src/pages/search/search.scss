@@ -55,4 +55,38 @@ page-search {
   .remove-tabs .scroll-content {
     margin-bottom: 0px !important;
   }
+  /** TOOL BAR **/
+  .toolbar-md {
+    min-height: 32px;
+    padding: 8px 12px;
+  }
+  /** NAV BAR **/
+  .navbar {
+    min-height: 56px;
+  }
+  .segment-md .segment-button {
+    border: 1px solid color($colors, main);
+    font-family: "Museo Sans Rounded 700";
+    font-size: 1.4rem;
+    opacity: 1.0;
+    text-transform: capitalize;
+  }
+  .segment-md .segment-button:first-child {
+    border-radius: 8px 0px 0px 8px;
+    border-right: none; // border-left: 1px solid color($colors, main);
+  }
+  .segment-md .segment-button:last-child {
+    border-left: none;
+    border-radius: 0px 8px 8px 0px;
+  }
+  .toolbar .segment-md .segment-button.activated,
+  .toolbar .segment-md .segment-button.segment-activated {
+    background-color: color($colors, main);
+    border: 1px solid color($colors, main);
+    color: white;
+  }
+
+  .navbar {
+    min-height: 64px !important;
+  }
 }

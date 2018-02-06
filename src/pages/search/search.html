@@ -1,8 +1,8 @@
 <ion-header no-border>
-  <ion-toolbar color="main">
+  <ion-navbar class="navbar" color="main">
     <ion-searchbar #searchbar (ionInput)="search($event)" placeholder="Search for a Restaurant or Meal" debounce="700" color="main">
     </ion-searchbar>
-  </ion-toolbar>
+  </ion-navbar>
   <ion-toolbar>
     <ion-segment color="main" [(ngModel)]="selected">
       <ion-segment-button value="restaurants">

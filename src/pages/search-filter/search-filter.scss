@@ -17,4 +17,8 @@ page-search-filter {
   ion-item-divider .label.label-ios > ion-icon {
     padding-right: 8px;
   }
+
+  .navbar {
+    min-height: 64px !important;
+  }
 }
