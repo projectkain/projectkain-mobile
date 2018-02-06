@@ -7,19 +7,15 @@
     <ion-segment color="main" [(ngModel)]="selected">
       <ion-segment-button value="restaurants">
         Restaurants
-          {{
-            (((restaurants).length > 0) && searchTerm && searchTerm.trim().length >= 3)
-              ? (restaurants).length
-              : ''
-          }}
+        <ion-badge *ngIf="(((restaurants).length > 0) && searchTerm && searchTerm.trim().length >= 3)">
+          {{ (restaurants).length }}
+        </ion-badge>
       </ion-segment-button>
       <ion-segment-button value="food">
         Food
-        {{
-          (((fooditems).length > 0) && searchTerm && searchTerm.trim().length >= 3)
-            ? (fooditems).length
-            : ''
-        }}
+        <ion-badge *ngIf="(((fooditems).length > 0) && searchTerm && searchTerm.trim().length >= 3)">
+          {{ (fooditems).length }}
+        </ion-badge>
       </ion-segment-button>
     </ion-segment>
   </ion-toolbar>

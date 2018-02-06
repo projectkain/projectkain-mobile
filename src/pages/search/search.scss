@@ -89,4 +89,18 @@ page-search {
   .navbar {
     min-height: 64px !important;
   }
+
+  .badge-md{
+    background-color: color($colors, main);
+    color: white;
+    font-family: "Museo Sans Rounded 900";
+    min-width: 0px;
+    margin-left: 5px;
+    border-radius: 100px;
+  }
+
+  .segment-md-main .segment-button.activated, .segment-md-main .segment-button.segment-activated > .badge-md{
+    background-color: white !important;
+    color: color($colors, main);
+  }
 }
