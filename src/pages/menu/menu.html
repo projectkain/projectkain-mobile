@@ -3,15 +3,15 @@
     <ion-title>Menu</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content [ngClass]="{'no-scroll': !restaurants}">
+<ion-content [ngClass]="{'no-scroll': !restaurants}" padding>
   <ion-refresher color="primary" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh">
     </ion-refresher-content>
   </ion-refresher>
   <content-placeholder [count]="6" *ngIf="!restaurants"></content-placeholder>
-  <ion-grid *ngIf="restaurants" [virtualScroll]="restaurants" approxItemHeight="40px">
-    <ion-row>
-      <ion-col col-6 *virtualItem="let restaurant">
+  <ion-grid *ngIf="restaurants" [virtualScroll]="createRow(restaurants)">
+    <ion-row *virtualItem="let row" approxItemHeight="200px">
+      <ion-col col-6 *ngFor="let restaurant of restaurants | slice:(row*2):(row+1)*2">
         <ion-card (tap)="select(restaurant)">
           <div class="img-container">
             <img-loader [src]="restaurant.url" useImg></img-loader>

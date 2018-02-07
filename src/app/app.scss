@@ -1,17 +1,3 @@
-// http://ionicframework.com/docs/v2/theming/
-// App Global Sass
-// --------------------------------------------------
-// Put style rules here that you want to apply globally. These
-// styles are for the entire app and not just one component.
-// Additionally, this file can be also used as an entry point
-// to import other Sass files to be included in the output CSS.
-//
-// Shared Sass variables, which can be used to adjust Ionic's
-// default Sass variables, belong in "theme/variables.scss".
-//
-// To declare rules for a specific mode, create a child rule
-// for the .md, .ios, or .wp mode classes. The mode class is
-// automatically applied to the <body> element in the app.
 @font-face {
   font-family: 'Museo Sans Rounded 300';
   src: url($font-path + '/MuseoSansRounded-300.otf');
@@ -51,15 +37,18 @@
   font-family: "Museo Sans Rounded 500";
 }
 
-.no-scroll .scroll-content {
-  overflow: hidden;
+//Center Nav Bar Title
+.toolbar-title-md {
+  font-family: "Museo Sans Rounded 700";
+  text-align: center;
 }
 
-.card-ios {
+.card-md{
+  width: calc(100% - 8px);
+  height: calc(100% - 16px);
   border-radius: 0.4em;
 }
 
-.card-title-ios,
 .card-title-md {
   font-family: "Museo Sans Rounded 700";
   font-size: 1.3em;
@@ -70,29 +59,77 @@
   white-space: nowrap;
 }
 
-.toolbar-title-md {
-  font-family: "Museo Sans Rounded 700";
-  text-align: center;
-}
-
-.card-content-ios {
-  padding: 5px 10px;
-}
-
-.card-md {
-  margin: 0px;
-  width: 100%;
-  border-radius: 0.4em;
-}
-
 .card-content-md {
-  padding: 12px 10px;
+  padding: 8px 12px;
 }
 
-.resto-details ion-badge {
-  font-size: 1.2em;
+.card-md .resto-details ion-badge {
+  font-size: 1.05em;
   margin-top: 5px;
 }
+
+.row .col{
+  padding: 0px;
+}
+
+.row > .col:nth-child(1) .card-md{
+  margin: 0px 8px 16px 0px;
+}
+
+.row > .col:nth-child(2) .card-md{
+  margin: 0px 0px 16px 8px;
+}
+
+.row:first-child > .col .card-md{
+  margin-bottom: 0px;
+  height: 99.4%;
+}
+
+/** ICONS **/
+ion-icon {
+  &[class*="grubie-"] {
+    mask-size: contain;
+    mask-position: 50% 50%;
+    mask-repeat: no-repeat;
+    background: currentColor;
+    min-width: 1em;
+    min-height: 1em;
+  }
+
+  //Featured Icon
+  &[class*="grubie-featured"] {
+    mask-image: url(../assets/flame.svg);
+  }
+
+  //Search Icon
+  &[class*="grubie-search"] {
+    mask-image: url(../assets/search.svg);
+  }
+
+  //Budget Icon
+  &[class*="grubie-budget"] {
+    mask-image: url(../assets/budget.svg);
+  }
+
+  //Menu Icon
+  &[class*="grubie-menu"] {
+    mask-image: url(../assets/menu.svg);
+  }
+
+  //Settings Icon
+  &[class*="grubie-settings"] {
+    mask-image: url(../assets/settings.svg);
+  }
+}
+
+
+.no-scroll .scroll-content {
+  overflow: hidden;
+}
+
+
+
+
 
 .button-md {
   text-transform: capitalize;
@@ -103,100 +140,75 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
 
-.dot {
-  content: "\B7";
-}
+// .dot {
+//   content: "\B7";
+// }
 
-.img-container {
-  background-color: #e8e6e9;
-  position: relative;
-  padding-top: 100%;
-  width: 100%;
-  overflow: hidden;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-}
+// .img-container {
+//   background-color: #e8e6e9;
+//   position: relative;
+//   // padding-top: 100%;
+//   // width: 100%;
+//   overflow: hidden;
+//   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+// }
 
-.img-container img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-}
+// .img-container img {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   bottom: 0;
+//   right: 0;
+// }
 
-@keyframes placeHolderShimmer {
-  0% {
-    background-position: -468px 0
-  }
-  100% {
-    background-position: 468px 0
-  }
-}
+// @keyframes placeHolderShimmer {
+//   0% {
+//     background-position: -468px 0
+//   }
+//   100% {
+//     background-position: 468px 0
+//   }
+// }
 
-.content-placeholder {
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
-  animation-iteration-count: infinite;
-  animation-name: placeHolderShimmer;
-  animation-timing-function: linear;
-  background: #e8e6e9;
-  background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
-  background-size: 800px 104px;
-  border-radius: 0px;
-  height: 100%;
-}
+// .content-placeholder {
+//   animation-duration: 1s;
+//   animation-fill-mode: forwards;
+//   animation-iteration-count: infinite;
+//   animation-name: placeHolderShimmer;
+//   animation-timing-function: linear;
+//   background: #e8e6e9;
+//   background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+//   background-size: 800px 104px;
+//   border-radius: 0px;
+//   height: 100%;
+// }
 
-ion-title {
-  font-family: "Museo Sans Rounded 700"
-}
+// ion-title {
+//   font-family: "Museo Sans Rounded 700"
+// }
 
-ion-card-title {
-  font-family: "Museo Sans Rounded 700";
-}
+// ion-card-title {
+//   font-family: "Museo Sans Rounded 700";
+// }
 
-ion-card>img {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
+// ion-card>img {
+//   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+// }
 
-.resto-details {
-  color: color($colors, primary);
-  font-family: "Museo Sans Rounded 700";
-  font-size: 0.7em;
-}
+// .resto-details {
+//   color: color($colors, primary);
+//   font-family: "Museo Sans Rounded 700";
+//   font-size: 0.7em;
+// }
 
-.price {
-  color: color($colors, ternary);
-  font-family: "Museo Sans Rounded 700";
-  font-size: 0.9em;
-}
+// .price {
+//   color: color($colors, ternary);
+//   font-family: "Museo Sans Rounded 700";
+//   font-size: 0.9em;
+// }
 
-ion-badge {
-  min-width: 5.2em;
-}
+// ion-badge {
+//   min-width: 5.2em;
+// }
 
-ion-icon {
-  &[class*="grubie-"] {
-    mask-size: contain;
-    mask-position: 50% 50%;
-    mask-repeat: no-repeat;
-    background: currentColor; // margin-top: 8px;
-    // margin-bottom: 8px;
-    min-width: 1em;
-    min-height: 1em;
-  } // custom icons
-  &[class*="grubie-featured"] {
-    mask-image: url(../assets/flame.svg);
-  }
-  &[class*="grubie-search"] {
-    mask-image: url(../assets/search.svg);
-  }
-  &[class*="grubie-budget"] {
-    mask-image: url(../assets/budget.svg);
-  }
-  &[class*="grubie-menu"] {
-    mask-image: url(../assets/menu.svg);
-  }
-  &[class*="grubie-settings"] {
-    mask-image: url(../assets/settings.svg);
-  }
-}
+
