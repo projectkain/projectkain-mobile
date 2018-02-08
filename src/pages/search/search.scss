@@ -42,12 +42,18 @@ page-search {
     color: white;
   }
 
+  .card-md{
+    margin: 16px;
+    width: calc(100% - 32px);
+  }
+
   //Restaurant Address
   .address {
     font-family: "Museo Sans Rounded 500";
     white-space: wrap;
     max-height: 33px;
   }
+
 
   //Price
   .extra-info {
