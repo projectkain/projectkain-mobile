@@ -1,28 +1,21 @@
 page-menu-showcase {
-  .price {
-    color: color($colors, ternary);
-    font-size: 1.2em;
-  }
   .toolbar-title-md {
     margin-left: -6px !important;
   }
   .list-header-md {
     font-size: 1.4em;
     margin-bottom: 0px;
+    border: 0px;
+    padding: 0px;
   }
   .item-md .item-button {
     font-size: 1.5rem;
-    border-width: 1.7px;
+    border-width: 2px;
+    border-radius: 50px;
+    margin-right: 0px;
   }
 
-  .button-outline-md-ternary{
-
-  }
   .button-inner {
     font-family: 'Museo Sans Rounded 700';
-  }
-
-  .navbar {
-    min-height: 64px !important;
   }
 }
