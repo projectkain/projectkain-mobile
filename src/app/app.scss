@@ -62,10 +62,27 @@
 .card-content-md {
   padding: 8px 12px;
 }
+/* CARD IMAGE BORDER */
+.card-md img {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* CARD BADGE */
+.card-md .resto-details {
+  color: color($colors, primary);
+  font-family: "Museo Sans Rounded 700";
+}
 
 .card-md .resto-details ion-badge {
-  font-size: 1.05em;
+  font-size: 0.7em;
   margin-top: 5px;
+}
+
+/* CARD PRICE */
+.price {
+  color: color($colors, ternary);
+  font-family: "Museo Sans Rounded 300";
+  font-size: 0.98em;
 }
 
 .row .col{
@@ -185,29 +202,12 @@ ion-icon {
 //   height: 100%;
 // }
 
-// ion-title {
-//   font-family: "Museo Sans Rounded 700"
-// }
 
-// ion-card-title {
-//   font-family: "Museo Sans Rounded 700";
-// }
 
-// ion-card>img {
-//   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-// }
 
-// .resto-details {
-//   color: color($colors, primary);
-//   font-family: "Museo Sans Rounded 700";
-//   font-size: 0.7em;
-// }
 
-// .price {
-//   color: color($colors, ternary);
-//   font-family: "Museo Sans Rounded 700";
-//   font-size: 0.9em;
-// }
+
+
 
 // ion-badge {
 //   min-width: 5.2em;
