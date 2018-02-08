@@ -160,4 +160,11 @@ export class MenuShowcasePage {
     }
   }
 
+
+  createRow(items) {
+    var itemsPerRow = 2
+    return Array.from(Array(Math.ceil(items.length / itemsPerRow)).keys());
+  }
+
+
 }
