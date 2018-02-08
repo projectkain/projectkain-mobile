@@ -7,15 +7,11 @@
     </ion-searchbar>
   </ion-toolbar>
 </ion-header>
-
-<ion-content [ngClass]="{'no-scroll': !(menu) }">
+<ion-content [ngClass]="{'no-scroll': !(menu) }" padding>
   <content-placeholder [count]="6" *ngIf="!(menu)"></content-placeholder>
-  <ion-grid class="menu"  [virtualScroll]="menu" approxItemHeight="40px">
-    <ion-row>
-      <ion-col *ngIf="(menu)?.length === 0">
-        <h1 class="heading" text-center>No Available Items</h1>
-      </ion-col>
-      <ion-col *virtualItem="let item" col-6>
+  <ion-grid class="menu" [virtualScroll]="createRow(menu)">
+    <ion-row *virtualItem="let row" approxItemHeight="240px">
+      <ion-col col-6 *ngFor="let item of menu | slice:(row*2):(row+1)*2">
         <ion-card>
           <div class="img-container">
             <img-loader useImg></img-loader>

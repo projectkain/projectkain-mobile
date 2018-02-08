@@ -99,4 +99,10 @@ export class BudgetMenuItemsPage {
     actionSheet.present();
   }
 
+  createRow(restaurants) {
+    var itemsPerRow = 2
+    return Array.from(Array(Math.ceil(restaurants.length / itemsPerRow)).keys());
+  }
+
+
 }
