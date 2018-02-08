@@ -26,14 +26,14 @@ export class BudgetSelectRestaurantPage {
     private navCtrl: NavController,
     private navParams: NavParams,
     private foodItemProvider: FoodItemProvider,
-    private restaurantProvider: RestaurantProvider,) {
+    private restaurantProvider: RestaurantProvider, ) {
   }
 
   ionViewWillEnter() {
     this.budget = this.navParams.get('budget');
     this.foodItemProvider.getRestaurantByBudget(this.budget).subscribe(ids => {
       this.ids = ids;
-      this.restaurantProvider.getRestaurantsById(ids).subscribe((restaurants:Array<Restaurant>) => {
+      this.restaurantProvider.getRestaurantsById(ids).subscribe((restaurants: Array<Restaurant>) => {
         this.restaurants = restaurants;
       });
     });
@@ -45,4 +45,10 @@ export class BudgetSelectRestaurantPage {
       restaurant: restaurant
     });
   }
+
+  createRow(restaurants) {
+    var itemsPerRow = 2
+    return Array.from(Array(Math.ceil(restaurants.length / itemsPerRow)).keys());
+  }
+
 }
