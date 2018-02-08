@@ -1,68 +1,18 @@
 page-search {
+  //Search bar
+  .toolbar .searchbar-md{
+    padding: 10px;
+  }
   .searchbar-md .searchbar-input {
     padding: 6px 41px;
   }
-  ion-content {
-    background-color: #f8f8f8;
-  }
-  .card-md {
-    border-radius: 0.4em;
-    margin: 10px;
-    width: auto;
-  }
-  .extra-info {
-    border-top: 1px solid lightgray;
-    span {
-      font-family: "Museo Sans Rounded 500";
-      font-size: 0.8em;
-    }
-    ion-badge {
-      font-family: "Museo Sans Rounded 500";
-    }
-  }
-  .address {
-    font-family: "Museo Sans Rounded 500";
-    white-space: wrap;
-    max-height: 33px;
-  }
-  .text-bold {
-    font-family: "Museo Sans Rounded 900";
-  }
-  .text-italic {
-    font-style: italic;
-    font-weight: 500;
-  }
-  .container {
-    display: flex; // <-- This is responsible for vertical alignment
-    justify-content: center;
-    height: calc(100vh - 112px);
-  }
-  .empty-state {
-    margin: auto 5px; // <-- This is responsible for vertical alignment
-    text-align: center;
-  }
-  .empty-state img {
-    max-height: 150px;
-  }
-  .empty-state h1 {
-    font-family: 'Museo Sans Rounded 900';
-    font-size: 2.1em;
-  }
-  .empty-state h2 {
-    font-size: 1.5em;
-    text-align: center;
-  }
-  .remove-tabs .scroll-content {
-    margin-bottom: 0px !important;
-  }
-  /** TOOL BAR **/
+
+
+
+  /** TAB TOOL BAR **/
   .toolbar-md {
     min-height: 32px;
     padding: 8px 12px;
-  }
-  /** NAV BAR **/
-  .navbar {
-    min-height: 56px;
   }
   .segment-md .segment-button {
     border: 1px solid color($colors, main);
@@ -79,6 +29,12 @@ page-search {
     border-left: none;
     border-radius: 0px 8px 8px 0px;
   }
+
+  .segment-md-main .segment-button.activated, .segment-md-main .segment-button.segment-activated > .badge-md{
+    background-color: white !important;
+    color: color($colors, main);
+  }
+
   .toolbar .segment-md .segment-button.activated,
   .toolbar .segment-md .segment-button.segment-activated {
     background-color: color($colors, main);
@@ -86,10 +42,26 @@ page-search {
     color: white;
   }
 
-  .navbar {
-    min-height: 64px !important;
+  //Restaurant Address
+  .address {
+    font-family: "Museo Sans Rounded 500";
+    white-space: wrap;
+    max-height: 33px;
   }
 
+  //Price
+  .extra-info {
+    border-top: 1px solid lightgray;
+    span {
+      font-family: "Museo Sans Rounded 500";
+      font-size: 0.8em;
+    }
+    ion-badge {
+      font-family: "Museo Sans Rounded 500";
+    }
+  }
+
+  //Category
   .badge-md{
     background-color: color($colors, main);
     color: white;
@@ -99,8 +71,39 @@ page-search {
     border-radius: 100px;
   }
 
-  .segment-md-main .segment-button.activated, .segment-md-main .segment-button.segment-activated > .badge-md{
-    background-color: white !important;
-    color: color($colors, main);
+  .container {
+    display: flex; // <-- This is responsible for vertical alignment
+    justify-content: center;
+    height: calc(100vh - 112px);
+  }
+
+  //BLANK STATES
+  .empty-state {
+    margin: auto 5px; // <-- This is responsible for vertical alignment
+    text-align: center;
+  }
+  .empty-state img {
+    max-height: 150px;
+  }
+  .empty-state h1 {
+    font-family: 'Museo Sans Rounded 900';
+    font-size: 2.1em;
+  }
+  .empty-state h2 {
+    font-size: 1.5em;
+    text-align: center;
+  }
+
+  //Extras
+  .text-bold {
+    font-family: "Museo Sans Rounded 900";
+  }
+  .text-italic {
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  .remove-tabs .scroll-content {
+    margin-bottom: 0px !important;
   }
 }
