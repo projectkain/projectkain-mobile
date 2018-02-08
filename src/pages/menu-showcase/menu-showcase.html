@@ -41,7 +41,7 @@
   <ion-grid [virtualScroll]="createRow(menu | slice:0:4)" approxItemHeight="40px">
     <ion-row>
       <ion-col *ngIf="(menu)?.length === 0">
-        <h1 class="heading" text-center>No Available Items</h1>
+        <h1 class="empty-page" text-center>No Available Items</h1>
       </ion-col>
     </ion-row>
     <ion-row *virtualItem="let row" approxItemHeight="200px">
